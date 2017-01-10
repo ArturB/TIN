@@ -591,7 +591,7 @@ void* download_thread(void* par) {
 		write_progress_of_download(&file, false);
 		return NULL;
 	}
-	else
+	else if(file->missingBlocks.size() == 0)
 	{
 		safe_cout("File is already downloaded!\n>> ");
 		return NULL;
@@ -803,7 +803,8 @@ void* receiver_thread_UDP(void* par)
 	length = sizeof(clientaddr);
 	while(true)
 	{
-		n = recvfrom(sock, &header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);	
+		n = recvfrom(sock, &header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);
+		cout<<"Odebralem cos na sockecie\n";
 		if (n < 0)
 		{
 			perror("ERROR in recvfrom");	

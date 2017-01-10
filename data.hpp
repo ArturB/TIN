@@ -417,16 +417,17 @@ FileFragment * getFileFragment(FileID *id, long number){
 	ff->number = number;
 	
 	lockMetaDataMutex();
-	for(Resource r : metaData){
-		if(r.id->size == id->size && strcmp(r.id->name,id->name)==0)
-		{
-			for(long l : r.missingBlocks){
+	vector<Resource>::iterator res;
+	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();++it){
+		if(it->id->size == id->size && strcmp(it->id->name,id->name)==0)
+		{	res = it;
+			for(long l : it->missingBlocks){
 				if (l==number)
 				{
 					isFind = false;
 				}		
 			}
-			path = r.filePathName;
+			path = it->filePathName;
 		}
 	}
 	unlockMetaDataMutex();
@@ -438,6 +439,12 @@ FileFragment * getFileFragment(FileID *id, long number){
 	}
 	ifstream file;
 	file.open(path);
+	if(!file.good()){
+	  lockMetaDataMutex();
+	  metaData.erase(res);
+	  unlockMetaDataMutex();
+	  return __null;  
+	}
 	file.seekg(1024*(number-1),ios::beg);
 	if(file.good()){
 		isFind = true;
