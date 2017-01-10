@@ -1,0 +1,3 @@
+delete "file1"
+find all | size > 1000B
+upload "C:/Program Files(x86)/program1.exe" set name "program2"

@@ -1,0 +1,29 @@
+//PRZYK£ADY KOMEND PROGRAMU
+//Artur M. Brodzki, Kalisz 2016
+
+//dodaj plik ze œcie¿ki /home/plik1.txt z nazw¹ "plik1"
+//œcie¿ki i nazwy musz¹ byæ w cudzys³owach
+upload "/home/plik1.txt" as "plik"
+
+//usuñ plik o nazwie "plik2"
+delete "plik2"
+
+//znajdŸ jeden plik o nazwie "plik1"
+find one | name "plik1"
+
+//znajdŸ wszystkie pliki o nazwach zaczynaj¹cych siê od "plik"
+//u¿yamy tu wyra¿enia regularnego
+//jako oznaczenia warunku mo¿emy u¿ywaæ zamiennie znaku | albo s³owa where
+find all where name "plik.*"
+
+//wyœwietl maksymalnie 10 plików o rozmiarze 1MB i w³aœcicielu "Artur"
+find first 10 | size 1MB && owner "Artur"
+
+//wyœwietl wszystkie pliki których w³aœcicielem jest "Artur" lub "Adam"
+find all | owner == "Artur" || owner == "Adam"
+
+//mo¿liwe jest te¿ wykonywanie poleceñ terminala z poziomu interpretere
+//komendê terminala poprzedzamy przez :!
+//np poni¿sze czyœci ekran
+//komenda musi byæ w " "
+:! "cls"
