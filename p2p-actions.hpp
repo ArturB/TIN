@@ -115,7 +115,8 @@ void main_init() {
 	pthread_mutex_init(&cmtx, NULL);
 	initiateMutexes();
 	id = get_id();
-	//std::cout << "POBIERAM DANE:" << deserializeMetaData() << std::endl;
+	//Tu jest deserializacja
+	std::cout << "POBIERAM DANE:" << deserializeMetaData() << std::endl;
 
 	pthread_t receiverThreadUDP;
 	if(pthread_create(&receiverThreadUDP, NULL, receiver_thread_UDP, NULL)) 
@@ -138,7 +139,8 @@ void main_destroy() {
 	pthread_mutex_destroy(&termtx);
 	pthread_mutex_destroy(&cmtx);
 	destroyMutexes();
-	//std::cout << "ZRZUCAM DANE:" << serializeMetaData() << std::endl;
+	//Tu jest serializacja
+	std::cout << "ZRZUCAM DANE:" << serializeMetaData() << std::endl;
 }
 
 
@@ -1233,14 +1235,30 @@ void* own_msg_reaction(void* par)
 
 void check_files_validations()
 {
-	//SPRAWDZENIE WSZYSTKICH PLIKOW, TYLKO PYTANIE JAK NAPISAC DO ICH WLASCICIELI SKORO ZNAMY MAC ALE NIE ZNAMY IP? HMM -- BROADCAST
-	list<FileID*> fileList; //potrzebna taka funkcja, ktora zwraca wszystkie FileID
+	list<FileID*> fileList = getFileIds();
 	NetMsg netMsg;
 	netMsg.header.type = OWN_MSG;
 	for(FileID* fid : fileList)
 	{
-		netMsg.setFileId(fid);
-		send_broadcast(&(netMsg.header));
+		if(bytesToLong(fid->owner) != id)
+		{
+			netMsg.setFileId(fid);
+			send_broadcast(&(netMsg.header));
+		}
+	}
+
+	fileList = getUnlinked();
+	netMsg.header.type = DEL_MSG;
+	for(FileID* fid : fileList)
+	{
+		if(bytesToLong(fid->owner) == id)
+		{
+			netMsg.setFileId(fid);
+			send_broadcast(&(netMsg.header));
+		}
+		free((void*)fid->name);
+		free((void*)fid->owner);
+		delete fid;		
 	} 	
 }
 

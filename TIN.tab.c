@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.0.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.2"
+#define YYBISON_VERSION "3.0.4"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -161,7 +161,7 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
+
 union YYSTYPE
 {
 #line 31 "TIN.y" /* yacc.c:355  */
@@ -174,6 +174,8 @@ union YYSTYPE
 
 #line 176 "TIN.tab.c" /* yacc.c:355  */
 };
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -187,7 +189,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 191 "TIN.tab.c" /* yacc.c:358  */
+#line 193 "TIN.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1295,43 +1297,43 @@ yyreduce:
         case 2:
 #line 88 "TIN.y" /* yacc.c:1646  */
     { upload_action(); errno = 0; YYACCEPT; }
-#line 1299 "TIN.tab.c" /* yacc.c:1646  */
+#line 1301 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
 #line 89 "TIN.y" /* yacc.c:1646  */
     { download_action(); errno = 0; YYACCEPT; }
-#line 1305 "TIN.tab.c" /* yacc.c:1646  */
+#line 1307 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
 #line 90 "TIN.y" /* yacc.c:1646  */
     { delete_action(); errno = 0; YYACCEPT; }
-#line 1311 "TIN.tab.c" /* yacc.c:1646  */
+#line 1313 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
 #line 91 "TIN.y" /* yacc.c:1646  */
     { find_action(); errno = 0;   YYACCEPT; }
-#line 1317 "TIN.tab.c" /* yacc.c:1646  */
+#line 1319 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 92 "TIN.y" /* yacc.c:1646  */
     { system((yyvsp[-1].ipath)); safe_cout(prompt); errno = 0; }
-#line 1323 "TIN.tab.c" /* yacc.c:1646  */
+#line 1325 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 93 "TIN.y" /* yacc.c:1646  */
     { yyerror(""); errno = SYNTAX_ERR; return -1; }
-#line 1329 "TIN.tab.c" /* yacc.c:1646  */
+#line 1331 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
 #line 94 "TIN.y" /* yacc.c:1646  */
     { main_destroy(); exit(0); }
-#line 1335 "TIN.tab.c" /* yacc.c:1646  */
+#line 1337 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
@@ -1342,7 +1344,7 @@ yyreduce:
 		cmdata.fileName = (yyvsp[0].iname);
 		pthread_mutex_unlock(&cmtx);
 	}
-#line 1346 "TIN.tab.c" /* yacc.c:1646  */
+#line 1348 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
@@ -1353,7 +1355,7 @@ yyreduce:
 		cmdata.filePath = "";
 		pthread_mutex_unlock(&cmtx);
 	}
-#line 1357 "TIN.tab.c" /* yacc.c:1646  */
+#line 1359 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
@@ -1365,7 +1367,7 @@ yyreduce:
 		cmdata.ids = (yyvsp[0].ids);
 		pthread_mutex_unlock(&cmtx);
 	}
-#line 1369 "TIN.tab.c" /* yacc.c:1646  */
+#line 1371 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
@@ -1376,7 +1378,7 @@ yyreduce:
 		cmdata.fileSize = (yyvsp[0].inatural);
 		pthread_mutex_unlock(&cmtx);
 	}
-#line 1380 "TIN.tab.c" /* yacc.c:1646  */
+#line 1382 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
@@ -1388,7 +1390,7 @@ yyreduce:
 		  cmdata.find_first = false;
 		  pthread_mutex_unlock(&cmtx);
 	  }
-#line 1392 "TIN.tab.c" /* yacc.c:1646  */
+#line 1394 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
@@ -1400,7 +1402,7 @@ yyreduce:
 		  cmdata.find_first = false;
 		  pthread_mutex_unlock(&cmtx);
 	}
-#line 1404 "TIN.tab.c" /* yacc.c:1646  */
+#line 1406 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
@@ -1413,7 +1415,7 @@ yyreduce:
 		  cmdata.find_first_count = (yyvsp[0].inatural);
 		  pthread_mutex_unlock(&cmtx);
 	}
-#line 1417 "TIN.tab.c" /* yacc.c:1646  */
+#line 1419 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
@@ -1426,7 +1428,7 @@ yyreduce:
 		  res.time = 0;
 		  (yyval.id) = res;
 	  }
-#line 1430 "TIN.tab.c" /* yacc.c:1646  */
+#line 1432 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
@@ -1439,7 +1441,7 @@ yyreduce:
 		  res.time = 0;
 		  (yyval.id) = res;
 	  }
-#line 1443 "TIN.tab.c" /* yacc.c:1646  */
+#line 1445 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
@@ -1452,37 +1454,37 @@ yyreduce:
 		  res.time = 0;
 		  (yyval.id) = res;
 	  }
-#line 1456 "TIN.tab.c" /* yacc.c:1646  */
+#line 1458 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
 #line 187 "TIN.y" /* yacc.c:1646  */
     { (yyval.inatural) = (yyvsp[-1].inatural) * (yyvsp[0].inatural); }
-#line 1462 "TIN.tab.c" /* yacc.c:1646  */
+#line 1464 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
 #line 191 "TIN.y" /* yacc.c:1646  */
     { (yyval.inatural) = 1; }
-#line 1468 "TIN.tab.c" /* yacc.c:1646  */
+#line 1470 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
 #line 192 "TIN.y" /* yacc.c:1646  */
     { (yyval.inatural) = 1024; }
-#line 1474 "TIN.tab.c" /* yacc.c:1646  */
+#line 1476 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
 #line 193 "TIN.y" /* yacc.c:1646  */
     { (yyval.inatural) = 1024 * 1024; }
-#line 1480 "TIN.tab.c" /* yacc.c:1646  */
+#line 1482 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
 #line 194 "TIN.y" /* yacc.c:1646  */
     { (yyval.inatural) = 1024 * 1024 * 1024; }
-#line 1486 "TIN.tab.c" /* yacc.c:1646  */
+#line 1488 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
@@ -1490,7 +1492,7 @@ yyreduce:
     { 
 		  (yyval.id) = (yyvsp[0].id);
 	  }
-#line 1494 "TIN.tab.c" /* yacc.c:1646  */
+#line 1496 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
@@ -1507,7 +1509,7 @@ yyreduce:
 			  res.time = (yyvsp[0].id).time;
 		  (yyval.id) = res;
 	}
-#line 1511 "TIN.tab.c" /* yacc.c:1646  */
+#line 1513 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
@@ -1519,7 +1521,7 @@ yyreduce:
 		  res.size = 1;
 		  (yyval.ids) = res;
 	  }
-#line 1523 "TIN.tab.c" /* yacc.c:1646  */
+#line 1525 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
@@ -1534,11 +1536,11 @@ yyreduce:
 		  
 		  (yyval.ids) = res;
 	  }
-#line 1538 "TIN.tab.c" /* yacc.c:1646  */
+#line 1540 "TIN.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1542 "TIN.tab.c" /* yacc.c:1646  */
+#line 1544 "TIN.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

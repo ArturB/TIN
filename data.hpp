@@ -82,7 +82,7 @@ vector<long> des2vectorLong(string build, char dividerLeft, char dividerRight);
 string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight);
 bool serializeMetaData();
 bool deserializeMetaData();
-
+list<FileID*> getUnlinked();
 
 
 
@@ -120,7 +120,7 @@ FileID * addFile(string pathName, string fileName)
 	res.filePathName = pathName;
 	res.is_downloading = false;
 	res.peers.clear();
-
+	res.missingBlocks.clear();
 	toReturn->time = time(0);
 	
 	lockMetaDataMutex();
@@ -295,6 +295,24 @@ FileID deleteFile(string pathName)
 	return toReturn;
 }
 
+list<FileID*> getUnlinked()
+{
+	list<FileID*> result;
+	lockMetaDataMutex();
+	struct stat info;
+	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();it++){
+		printFileID(it->id);
+		if( it->missingBlocks.empty() && (stat(it->filePathName.c_str(), &info) != 0))
+		{	
+			std::cout << "Usuniecie zasobu z bledna lokalizacja pliku: " << it->id->name <<endl;
+			result.push_front(it->id);
+			metaData.erase(it);
+			it--;
+		}
+	}	
+	unlockMetaDataMutex();
+	return result;
+}
 
 vector<FileID*> myFindInStorage(ResourceHeader *header){
 	vector<FileID*> vector;
@@ -313,14 +331,14 @@ vector<FileID*> myFindInStorage(ResourceHeader *header){
 	
 	for(Resource res : metaData){
 		if(checkName && checkSize){			
-			if(strcmp(header->name,res.id->name)==0 && headerSize==res.id->size && res.peers.empty()){
+			if(strcmp(header->name,res.id->name)==0 && headerSize==res.id->size && res.missingBlocks.empty()){
 				vector.push_back(res.id);
 			}
-		}else if(checkName && !checkSize && res.peers.empty()){
+		}else if(checkName && !checkSize && res.missingBlocks.empty()){
 			if(strcmp(header->name,res.id->name)==0){
 				vector.push_back(res.id);
 			}
-		}else if(!checkName && checkSize && res.peers.empty()){
+		}else if(!checkName && checkSize && res.missingBlocks.empty()){
 			if(headerSize==res.id->size){
 				vector.push_back(res.id);
 			}
@@ -757,7 +775,10 @@ FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	FileID *toReturn = new FileID();
 	toReturn->name = strdup(parts.at(0).c_str());
-	toReturn->owner = strdup(parts.at(1).c_str());
+	uint64_t owner = stringToT<uint64_t>(parts.at(1));
+	char * ownerId =(char*)malloc(6);
+	memcpy(ownerId,&owner,sizeof(char)*6);
+	toReturn->owner = ownerId;
 	toReturn->size = stringToT<uint64_t>(parts.at(2));
 	toReturn->time = stringToT<time_t>(parts.at(3));
 	return toReturn;
@@ -765,12 +786,12 @@ FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 string ser2FileID(FileID *id, char dividerLeft, char dividerRight){
 	string toReturn="";
 	char *name = strdup(id->name);
-	char *owner = strdup(id->owner);
 	uint64_t size = id->size;
 	time_t time = id->time;
 	vector<string> parts;
 	parts.push_back(string(name));
-	parts.push_back(string(owner));
+	uint64_t owner = bytesToLong(id->owner);
+	parts.push_back(tToString<uint64_t>(owner));
 	parts.push_back(tToString<uint64_t>(size));
 	parts.push_back(tToString<time_t>(time));
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);

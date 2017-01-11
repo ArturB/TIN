@@ -27,3 +27,6 @@ find all | owner == "Artur" || owner == "Adam"
 //np poni¿sze czyœci ekran
 //komenda musi byæ w " "
 :! "cls"
+
+
+
