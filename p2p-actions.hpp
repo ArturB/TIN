@@ -260,16 +260,16 @@ struct FileIDStruct fileid_from_header(ResourceHeader* header)
 	struct FileIDStruct id;
 	
 	int i;
-	for(i = 0; header->name[i] != 0 && i < 256; ++i);
 
-	id.name = new char[i];
-	id.owner = new char[6];
+	char* buf_name = strdup(header->name);//new char[i];
+	char* buf_owner = new char[6];
 
-	memcpy((void*) id.name, header->name, i);
-	memcpy((void*) id.owner, header->owner, 6);
+	memcpy(buf_owner, header->owner, 6);
+	id.name = buf_name;
+	id.owner = buf_owner;
 	id.size = header->size.longNum;
 	id.time = header->time.ttime;
-
+	cout <<  id.name << " " <<  header->name << endl;
 	return id;
 }
 
@@ -294,7 +294,7 @@ void* response_down_tcp(void* par)
 		return NULL;
 	}
 
-	if (rec_bytes < MIN_MSG_SIZE)
+	if (rec_bytes < sizeof(down_msg))
 	{
 		close(msgsock);
 		return NULL;
@@ -305,7 +305,7 @@ void* response_down_tcp(void* par)
 	
 	FileID* file = isFileInStorage(&net_msg.header);
 
-
+	
 	bool send_cant;
 	if(file == NULL)
 	{	
@@ -320,21 +320,22 @@ void* response_down_tcp(void* par)
 		for(int i = 0; i < net_msg.blocks.size(); ++i)
 		{
 
-		if(isFileInStorage(&net_msg.header) == NULL)
-		{
-			close(msgsock);
-			return NULL;	
-		}
-
+			if(isFileInStorage(&net_msg.header) == NULL)
+			{
+				close(msgsock);
+				return NULL;	
+			}
 			FileID id = fileid_from_header(&net_msg.header);
 			FileFragment* file_fragment = getFileFragment(&id, net_msg.blocks[i]); 
-
 
 			delete id.name;
 			delete id.owner;
 
 			if(file_fragment == NULL)
+			{
 				send_cant = true;
+				break;
+			}
 			else
 			{
 				if (sendto(msgsock, file_fragment, sizeof(FileFragment), 0, 
@@ -350,8 +351,9 @@ void* response_down_tcp(void* par)
 	}
 	if(send_cant)
 	{
-		net_msg.header.type = CANT_MSG;
-		if (sendto(msgsock, &net_msg.header, MIN_MSG_SIZE, 0, 
+		FileFragment file;
+		file.number = 0;
+		if (sendto(msgsock, &file, sizeof(file), 0, 
 			(sockaddr *)&clientaddr, sizeof(&clientaddr)) < 0)
 		{
 			close(msgsock);
@@ -433,86 +435,83 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 
 	struct sockaddr_in *clientaddr;
 	int length;
-	char buffor[MAX_MSG_SIZE];
-	int rec_bytes = recvfrom((*host)->sock, &buffor, sizeof(FileFragment), 0, (struct sockaddr *) clientaddr,  (socklen_t*) &length);
+	FileFragment file_fragment;
+	int rec_bytes, tmp_rec_bytes;
+	rec_bytes = 0;
 
-	if (rec_bytes < 0)
+	while(rec_bytes != sizeof(FileFragment))
 	{
-		perror("Recvfrom");
-		close((*host)->sock);	
+		tmp_rec_bytes = recvfrom((*host)->sock, &file_fragment + rec_bytes, sizeof(FileFragment) - rec_bytes, 0, (struct sockaddr *) clientaddr,  (socklen_t*) &length);
+
+		if (tmp_rec_bytes < 0)
+		{
+			perror("Recvfrom");
+			close((*host)->sock);	
+			(*host) = file_downloading->using_hosts.erase((*host));
+			return false;
+		}
+		else if(tmp_rec_bytes == 0)
+		{
+			safe_cout("Close conection\n>> ");
+			close((*host)->sock);
+			return true;
+		}
+		rec_bytes += tmp_rec_bytes;
+	}
+
+
+	if(file_fragment.number == 0)
+	{
 		(*host) = file_downloading->using_hosts.erase((*host));
 		return false;
 	}
-	else if(rec_bytes == 0)
+
+	if(!saveFileFragment((*file_downloading->file)->id, &file_fragment))
 	{
-		safe_cout("Close conection\n>> ");
-		close((*host)->sock);
-		return true;
+		return false;
 	}
-	else if(rec_bytes > MIN_MSG_SIZE)
+
+
+	vector<Resource>::iterator* res = file_downloading->file;
+	if((*host)->is_all_fragments() && (*res)->missingBlocks.size()!= 0) 
 	{
-		if(rec_bytes == sizeof(FileFragment))
+		if(file_downloading->speed_in_hosts((*host)->get_speed()) == HOST_NUMER)
 		{
-			FileFragment file_fragment;
-			memcpy(&file_fragment, buffor, sizeof(FileFragment));
-			if(!saveFileFragment((*file_downloading->file)->id, &file_fragment))
-			{
-				return false;
-			}
-
-
-			vector<Resource>::iterator* res = file_downloading->file;
-			if((*host)->is_all_fragments() && (*res)->missingBlocks.size()!= 0) 
-			{
-				if(file_downloading->speed_in_hosts((*host)->get_speed()) == HOST_NUMER)
-				{
-					close((*host)->sock);
-					file_downloading->avaiable_hosts.push_back(*(*host));
-					(*host) = file_downloading->using_hosts.erase((*host));
-				}
-				else
-				{
-					if(file_downloading->speed_in_hosts((*host)->get_speed() < 3 ))
-					{
-						(*host)->grow_portion();
-					}
-
-					DownMsg msg;
-
-					bzero(&msg.header.name, sizeof(msg.header.name));
-					memcpy(&msg.header.name, (*file_downloading->file)->id->name, sizeof(msg.header.name));		
-
-					msg.header.size.longNum = (*file_downloading->file)->id->size;	
-					msg.header.time.ttime = (*file_downloading->file)->id->time;	
-					memcpy(&msg.header.owner, (*file_downloading->file)->id->owner, sizeof(msg.header.owner));	
-				
-					msg.header.type = DOWN_MSG;	
-				
-					int internval_count;
-					*fragment_counter = get_next_fragments(msg.fragments, &(*file_downloading->file)->missingBlocks, &internval_count, (*host)->portion, *fragment_counter);
-
-					close((*host)->sock);
-					if((*host)->connect_host_socket())
-					{
-						send_down_message(&msg, (*host)->sock);
-					}
-					else
-					{
-						(*host) = file_downloading->using_hosts.erase((*host));
-					}
-				}
-			}
-		}
-		else if(rec_bytes == sizeof(ResourceHeader))
-		{
-			ResourceHeader header;
-			memcpy(&header, &buffor, sizeof(header));
-			if(header.type == CANT_MSG)
-				(*host) = file_downloading->using_hosts.erase((*host));
-			return false;
+			close((*host)->sock);
+			file_downloading->avaiable_hosts.push_back(*(*host));
+			(*host) = file_downloading->using_hosts.erase((*host));
 		}
 		else
-			return true;
+		{
+			if(file_downloading->speed_in_hosts((*host)->get_speed() < 3 ))
+			{
+				(*host)->grow_portion();
+			}
+
+			DownMsg msg;
+
+			bzero(&msg.header.name, sizeof(msg.header.name));
+			memcpy(&msg.header.name, (*file_downloading->file)->id->name, sizeof(msg.header.name));		
+
+			msg.header.size.longNum = (*file_downloading->file)->id->size;	
+			msg.header.time.ttime = (*file_downloading->file)->id->time;	
+			memcpy(&msg.header.owner, (*file_downloading->file)->id->owner, sizeof(msg.header.owner));	
+		
+			msg.header.type = DOWN_MSG;	
+		
+			int internval_count;
+			*fragment_counter = get_next_fragments(msg.fragments, &(*file_downloading->file)->missingBlocks, &internval_count, (*host)->portion, *fragment_counter);
+			close((*host)->sock);
+			if((*host)->connect_host_socket())
+			{
+				if(!send_down_message(&msg, (*host)->sock))
+					(*host) = file_downloading->using_hosts.erase((*host));
+			}
+			else
+			{
+				(*host) = file_downloading->using_hosts.erase((*host));
+			}
+		}
 	}
 	return true;
 }
@@ -1014,7 +1013,7 @@ void* find_thread(void* par) {
 
 ResourceHeader miodek;
 
-	while(time(0) - now < 5)
+	while(time(0) - now < 1)
 	{
 		n = recvfrom(sock, header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);	//CZEMU HEADER NIE JEST ZAINICJALIZOWANE?!
 
@@ -1207,7 +1206,6 @@ void* find_msg_reaction(void* par)
 //cout << "find_msg_reaction" << endl;
 	NetMsg *netMsg = (NetMsg*) par;
 	vector<FileID*> myFids;
-//cout << netMsg->header.name << endl;
 	myFids = myFindInStorage(&(netMsg->header));
 	for(FileID* fid : myFids)
 	{
