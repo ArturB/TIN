@@ -456,6 +456,7 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 		{
 			safe_cout("Close conection\n>> ");
 			close((*host)->sock);
+			(*host) = file_downloading->using_hosts.erase((*host));
 			return true;
 		}
 		rec_bytes += tmp_rec_bytes;
@@ -587,11 +588,11 @@ void* download_thread(void* par) {
 		command_data.ids.ids[0] = fileid_from_header(&header);
 		find_thread((void*)&command_data);
 	}
-	else if(file->is_downloading)
-	{
-		write_progress_of_download(&file, false);
-		return NULL;
-	}
+	//else if(file->is_downloading)	//DO ZROBIENIA!
+	//{
+	//	write_progress_of_download(&file, false);
+	///	return NULL;
+	//}
 	else if(file->missingBlocks.size() == 0)
 	{
 		safe_cout("File is already downloaded!\n>> ");
@@ -604,7 +605,7 @@ void* download_thread(void* par) {
 		return NULL;
 	}
 
-	file->filePathName = returnFilePath(configFilePath, file->id->name);
+	file->filePathName = returnFilePath(configFilePath, file->id->name); //poprawic
 	DownMsg down_msg; 
 	FileDownload file_downloading(&file);
 	
@@ -622,7 +623,7 @@ void* download_thread(void* par) {
 	down_msg.header.time.ttime = file->id->time;
 	memcpy((void*) &down_msg.header.owner, file->id->owner, 6);
 
-	deque<Host>::iterator it = file_downloading.avaiable_hosts.begin();
+	deque<Host>::iterator it = file_downloading.avaiable_hosts.begin();	//moze end
 	for(int i = 0; i < HOST_NUMER && i < file_downloading.avaiable_hosts.size(); ++i)
 	{
 		int intervals_count;
@@ -653,20 +654,23 @@ void* download_thread(void* par) {
 	bool recive_any_fragment = false;
 	while(true)
 	{
+cout  << "test 0 " << file_downloading.using_hosts.size() << endl;
 		if(file_downloading.using_hosts.size() < HOST_NUMER)
 		{
+cout << " TEST 1 " << endl;
 			CommandData command_data;
 			command_data.ids.size = 1;
 			FileID id = fileid_from_header(&header);
 			command_data.ids.ids = new FileID[1];
 			command_data.ids.ids[0] = fileid_from_header(&header);
-
+cout << " TEST 2 " << file_downloading.using_hosts.size() << " " << file_downloading.avaiable_hosts.size() << endl;
 			while(file_downloading.using_hosts.size() == 0 && file_downloading.avaiable_hosts.size() == 0)
 			{
-				sleep(TIMEOUT_SEC_FIND_AGAIN);
+cout << " TEST 3  " << endl;
 				find_thread((void*)&command_data);
 
 				file_downloading.avaiable_hosts = file->peers;
+				sleep(TIMEOUT_SEC_FIND_AGAIN);
 			}
 			
 			while(file_downloading.using_hosts.size() < HOST_NUMER && file_downloading.avaiable_hosts.size() > 0)
@@ -944,7 +948,7 @@ void send_response(NetMsg *data, int port)
 	}
 
 	if (sendto(sock, &(data->header), MIN_MSG_SIZE, 0, 
-		(sockaddr *)Target_addr, sizeof(*Target_addr)) < 0)	//POPRAWKI
+		(sockaddr *)Target_addr, *(data->addres_length)) < 0)	//POPRAWKI
 	{
 		perror("Send call error");
 		close(sock);
@@ -991,6 +995,8 @@ void* find_thread(void* par) {
 	tv.tv_usec = 0; 
 
 	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
+//	int optval = 1;
+//	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const void *)&optval , sizeof(int));
 
 	server.sin_family= AF_INET;
 	server.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -1010,18 +1016,20 @@ void* find_thread(void* par) {
 	if(pthread_create(&find_msg_sender, NULL, find_msg_sender_thread, &parT)) { // błąd przy tworzeniu wątku
 		safe_cout(threadFailed);
 		return NULL;
-	}
+	}	//NIE POTRZEBNY WATEK, W CIELE TEGO
 	time_t now = time(0);
 
-ResourceHeader miodek;
 
-	while(time(0) - now < 1)
+	while(time(0) - now < 2)
 	{
+cout << "CZEKAM NA WIADOMOSC" << endl;
 		n = recvfrom(sock, header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);	//CZEMU HEADER NIE JEST ZAINICJALIZOWANE?!
-
+		//n = recv(sock, header, MIN_MSG_SIZE, 0);
+cout << "ODEBRALEM size " << n << endl;
 		if(errno == EAGAIN || errno == EWOULDBLOCK)
 		{
-			//safe_cout("TimeOut!!!...\n>> ");
+			safe_cout("TimeOut!!!...\n>> ");
+			perror("ERROR in recvfrom");	
 			errno = 0;
 			continue;			
 		}
@@ -1041,6 +1049,7 @@ ResourceHeader miodek;
 			send_response(&netMsg);
 			continue;
 		}
+cout << "ODEBRALEM HAS 2" << endl;
 		resourceIt = openResource(header);
 		bool isUnique = true;
 		for(int i=0; i<(*resourceIt).peers.size(); i++)
@@ -1053,6 +1062,7 @@ ResourceHeader miodek;
 		}
 		if(isUnique)
 		{
+cout << "ODEBRALEM HAS 3" << endl;
 			(*resourceIt).peers.push_back(Host(&clientaddr,&length));
 		}
 
@@ -1212,12 +1222,13 @@ void* force_del_msg_reaction(void* par)
 //NOWY WATEK, JEZELI MAMY ODSYLAMY HAS
 void* find_msg_reaction(void* par)
 {
-//cout << "find_msg_reaction" << endl;
+cout << "find_msg_reaction" << endl;
 	NetMsg *netMsg = (NetMsg*) par;
 	vector<FileID*> myFids;
 	myFids = myFindInStorage(&(netMsg->header));
 	for(FileID* fid : myFids)
 	{
+cout << "znalazlem, wysylam: " << fid->name << endl;
 		netMsg->setFileId(fid);
 		netMsg->header.type = HAS_MSG;
 		send_response(netMsg, FIND_PORT);
