@@ -104,7 +104,7 @@ UploadInst:
 	;
 
 DeleteInst:
-	DELETE FILENAME {
+	DELETE PATH {
 		pthread_mutex_lock(&cmtx);
 		cmdata.fileName = $2;
 		cmdata.filePath = "";

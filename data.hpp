@@ -192,7 +192,7 @@ std::vector<Resource> getMetaData(){
 bool changeOwner(FileID * id, const char * newOwner, time_t addTime)
 {
 	char * ownerName =(char*)malloc(6);
-	memcpy(ownerName,&newOwner,sizeof(char)*6);
+	memcpy(ownerName,newOwner,sizeof(char)*6);
 	id->owner = ownerName;
 	id->time = addTime;
 }
@@ -416,7 +416,7 @@ void copyBits(void const * const ptrSource,void const * const ptrDest,size_t con
 }
 void printFileID(FileID *id){
 	if(id!=__null){
-		cout<<"name: "<<id->name<<" owner:"<<id->owner<<" size:"<<id->size;
+		cout<<"name: "<<id->name<<" owner:"<< bytesToLong(id->owner)<<" size:"<< id->size;
 	
 		tm *ptm = localtime(&(id->time));
 		char buffer[33];

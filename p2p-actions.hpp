@@ -1034,6 +1034,13 @@ ResourceHeader miodek;
 		{
 			continue;
 		}
+		if(bytesToLong(header->owner) == id && isFileInStorage(header)==NULL)
+		{
+			NetMsg netMsg(header,&clientaddr, &length);
+			netMsg.header.type = FORCE_DEL_MSG;
+			send_response(&netMsg);
+			continue;
+		}
 		resourceIt = openResource(header);
 		bool isUnique = true;
 		for(int i=0; i<(*resourceIt).peers.size(); i++)

@@ -213,3 +213,5 @@ pip-log.txt
 .mr.developer.cfg
 /p2p.config
 /metaData.txt
+/tin
+/TIN.tab.c
