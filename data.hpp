@@ -87,26 +87,38 @@ list<FileID*> getUnlinked();
 
 
 
-FileID * addFile(string pathName, string fileName)
+vector<Resource>::iterator addFile(string pathName, string fileName)
 {
 	string path = pathName;
-	
+	vector<Resource>::iterator it;
+
 	lockMetaDataMutex();
-	for(Resource res : metaData){
-		if(res.filePathName == path){
+	for(it = metaData.begin(); it<metaData.end(); it++){
+		if(it->filePathName == path){
 			unlockMetaDataMutex();
-			return __null;
+			return it;
 		}
 	}	
 	unlockMetaDataMutex();
 	
 	ifstream file(path.c_str());
 	if(!file.good())
-		return __null;
+		return metaData.end();
 
 	struct stat buf;
-	stat(path.c_str(),&buf);
-	uint64_t uSize = buf.st_size;
+	stat(path.c_str(),&buf);			
+	uint64_t uSize = buf.st_size;			
+
+	lockMetaDataMutex();
+	//sprawdzenie, czy nie ma resourcu o takej samej nazwie i size
+	for(it = metaData.begin(); it<metaData.end(); it++){
+		if(!strcmp(it->id->name,fileName.c_str()) && it->id->size == uSize){
+			unlockMetaDataMutex();
+			return it;
+		}
+	}	
+	unlockMetaDataMutex();
+
 	uint64_t ownerId = get_id();
 	char * ownerName =(char*)malloc(6);
 	memcpy(ownerName,&ownerId,sizeof(char)*6);
@@ -125,9 +137,10 @@ FileID * addFile(string pathName, string fileName)
 	
 	lockMetaDataMutex();
 	metaData.push_back(res);
+	it = metaData.end();
+	it--;
 	unlockMetaDataMutex();
-	
-	return toReturn;
+	return it;
 }
 
 
@@ -151,7 +164,8 @@ bool deleteFile(FileID * id)
 		{
 			if (!stat((it->filePathName).c_str(), &info))
 			{
-				cout << "Resource deleted! name: " << id->name << "; size: " << to_string(id->size) << endl;
+				cout << "Resource deleted! name: " +  string(it->id->name)  +  "; size: "  +  to_string(it->id->size) << endl;
+				cout << flush;
 				if( remove((it->filePathName).c_str()) != 0 )
 	    				perror( "Error while deleting physical file" );
 			}
@@ -271,7 +285,7 @@ FileIDs findInStorage(ResourceHeader * header)
 
 
 FileID deleteFile(string pathName)
-{
+{							
 	FileID toReturn;
 	
 	lockMetaDataMutex();
@@ -284,6 +298,16 @@ FileID deleteFile(string pathName)
 			toReturn.size = it->id->size;
 			toReturn.time = it->id->time;
 			delete it->id;
+			if(bytesToLong(it->id->owner) != get_id())
+			{
+				struct stat info;
+				if (!stat((it->filePathName).c_str(), &info))
+				{
+					cout << "Resource deleted! name: " << it->id->name << "; size: " << to_string(it->id->size) << endl;
+					if( remove((it->filePathName).c_str()) != 0 )
+	    					perror( "Error while deleting physical file" );
+				}
+			}
 			metaData.erase(it);
 			unlockMetaDataMutex();
 			return toReturn;
@@ -589,6 +613,7 @@ void unlockMetaDataMutex(){
 	pthread_mutex_unlock(&metaDataMutex);	
 }
 
+//funkja ma bledy, ale chyba niuzywana
 void findAndLock(FileID id){
 	pthread_mutex_lock(&fileMutexDequeMutex);
 	bool locked = false;
@@ -617,6 +642,7 @@ void findAndLock(FileID id){
 		toLock->lock();
 }
 
+//funkja ma bledy, ale chyba niuzywana
 bool findAndUnlock(FileID id){
 	bool lock = false;
 	vector<mutex_wrapper>::iterator toUnlock;
@@ -634,6 +660,7 @@ bool findAndUnlock(FileID id){
 	return lock;
 }
 
+//funkja ma bledy, ale chyba niuzywana
 bool findAndDelete(FileID id){
 	bool lock = false;
 	pthread_mutex_lock(&fileMutexDequeMutex);

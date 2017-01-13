@@ -155,19 +155,30 @@ void upload_action() {
 void* upload_thread(void* par) {
 	struct CommandData parT = *((struct CommandData*)par);
 	safe_cout("Uploading file " + parT.fileName + "...\n>> ");
-	FileID* fid;
-	fid = addFile(parT.filePath, parT.fileName);
-	if(fid == NULL)
+	vector<Resource>::iterator it;
+	it = addFile(parT.filePath, parT.fileName);
+	if(!isValidResource(it))
 	{
-		safe_cout("Uploading unsuccessfull!\n>> ");
+		safe_cout("Uploading unsuccessfull! Invalid path\n>> ");
 	}
 	else
 	{
-		safe_cout("File " + parT.fileName + " uploaded!\n>> ");
-		NetMsg netMsg;
-		netMsg.setFileId(fid);
-		netMsg.header.type = UP_MSG;
-		send_broadcast(&(netMsg.header));
+		if(strcmp(it->id->name,parT.fileName.c_str()))
+		{
+			safe_cout("Uploading unsuccessfull! In storage exists resource, which shares that file.\n>> ");
+		}
+		else if(it->filePathName != parT.filePath)
+		{
+			safe_cout("Uploading unsuccessfull! In storage exists resource, which has the same name and size \n>> ");
+		}
+		else
+		{
+			safe_cout("File " + parT.fileName + " uploaded!\n>> ");
+			NetMsg netMsg;
+			netMsg.setFileId(it->id);
+			netMsg.header.type = UP_MSG;
+			send_broadcast(&(netMsg.header));
+		}
 	}
 }
 
@@ -199,9 +210,9 @@ void* delete_thread(void* par) {
 			netMsg.setFileId(&fid);
 			netMsg.header.type = DEL_MSG;
 			send_broadcast(&(netMsg.header));
-			free((void*)fid.name);
-			free((void*)fid.owner);
 		}
+		free((void*)fid.name);
+		free((void*)fid.owner);
 	}
 }
 
@@ -340,6 +351,7 @@ void* response_down_tcp(void* par)
 			}
 			else
 			{
+cout << file_fragment->number << " number " << endl;
 				if (sendto(msgsock, file_fragment, sizeof(FileFragment), 0, 
 					(sockaddr *)&clientaddr, sizeof(&clientaddr)) < 0)
 				{
@@ -1172,9 +1184,11 @@ void* has_msg_reaction(void* par)
 			if(netMsg->header.time.ttime < myFid->time)
 			{
 				changeOwner(myFid,netMsg->header.owner, netMsg->header.time.ttime);
+				safe_cout("Your resource (" + string(myFid->name) + " " + to_string(myFid->size)  + "b)confiscated! You were parasitic owner!\n>> ");
 			}
 			else if(netMsg->header.time.ttime == myFid->time)
 			{
+				safe_cout("A conflict of adding the same resource by different users\n>> ");
 				netMsg->header.type = FORCE_DEL_MSG;
 				send_response(netMsg);
 				deleteFile(myFid);
