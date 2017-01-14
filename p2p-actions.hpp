@@ -35,7 +35,7 @@ void printFileID(FileID f) {
 	//if(f.owner)
 	//	cout<<"Owner: "<<f.owner<<", ";
 	if(f.size)
-		cout<<"Size: "<<f.size<<", ";
+		cout<<"Size: "<<f.size;
 	//if(f.time)
 	//	cout<<"Time: "<<f.time;
 	cout<<". "<<endl;
@@ -52,6 +52,7 @@ void* find_thread(void*);
 void* find_msg_sender_thread(void *par);
 void* find_msg_sender_thread(void *par);
 void* download_thread(void* par);
+void* download_file(void* par);
 void  download_action();
 void check_files_validations();
 //uint64_t get_id();
@@ -73,6 +74,8 @@ void write_progress_of_download(vector<Resource>::iterator* file);
 int get_next_fragments(Interval* result, vector<long>* input, int* intervals_count, int portion, int from);
 struct FileIDStruct fileid_from_header(ResourceHeader* header);
 ResourceHeader header_from_command_data(CommandData* data);
+void run_downloadings();
+
 
 //mutex chroniący dostęp do stdout
 pthread_mutex_t termtx;
@@ -87,6 +90,7 @@ const char* errMsg = "command error";
 const char* threadFailed = "Creating command thread failed!\n>> ";
 const char* receiverFailed = "Creating receiver thread failed!\n>> ";
 const char* tcpThreadFailed = "Creating data-changing thread failed!\n>> ";
+const char* downloadThreadFailed = "Creating download thread failed!\n>> ";
 
 //zmienne
 
@@ -132,6 +136,7 @@ void main_init() {
 	
 
 	check_files_validations();
+	run_downloadings();
 }
 
 //destrukcja muteksów i innych aktywów
@@ -216,9 +221,9 @@ void* delete_thread(void* par) {
 	}
 }
 
+//Wątek nasłuchujący na próby połączenia TCP w celu pobrania od nas danych.
 void* receiver_thread_TCP(void* par) 
 {
-	//safe_cout("receiver_thread_TCP\n>> ");
 	int sock, length;
 	struct sockaddr_in server;
 	struct sockaddr_in client;
@@ -240,7 +245,7 @@ void* receiver_thread_TCP(void* par)
 
 	if (bind(sock, (struct sockaddr *) &server, sizeof server) == -1)
 	{
-		perror("DOWN loop:Binding stream socket");
+		perror("DOWN loop: Binding stream socket");
 		exit(1);
 	}
 
@@ -261,34 +266,15 @@ void* receiver_thread_TCP(void* par)
 				safe_cout(tcpThreadFailed);
 			}
 		}
-		//close(msgsock);
 	} while(true);
 
 	exit(0);
 }
 
 
-struct FileIDStruct fileid_from_header(ResourceHeader* header)
-{
-	struct FileIDStruct id;
-	
-	int i;
-
-	char* buf_name = strdup(header->name);//new char[i];
-	char* buf_owner = new char[6];
-
-	memcpy(buf_owner, header->owner, 6);
-	id.name = buf_name;
-	id.owner = buf_owner;
-	id.size = header->size.longNum;
-	id.time = header->time.ttime;
-	cout <<  id.name << " " <<  header->name << endl;
-	return id;
-}
-
+//Funkcja odpowiadająca na pojedyńcze zapytanie DOWN
 void* response_down_tcp(void* par)
 {
-	//safe_cout("response_down_tcp\n>> ");
 	int msgsock = *((int*)par);
 	int rec_bytes;
 	DownMsg down_msg;
@@ -302,7 +288,6 @@ void* response_down_tcp(void* par)
 
 	if (rec_bytes < 0)
 	{
-		perror("ERROR in recvfrom");
 		close(msgsock);	
 		return NULL;
 	}
@@ -351,7 +336,6 @@ void* response_down_tcp(void* par)
 			}
 			else
 			{
-cout << file_fragment->number << " number " << endl;
 				if (sendto(msgsock, file_fragment, sizeof(FileFragment), 0, 
 					(sockaddr *)&clientaddr, sizeof(&clientaddr)) < 0)
 				{
@@ -377,10 +361,10 @@ cout << file_fragment->number << " number " << endl;
 	close(msgsock);
 }
 
-
+//Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać.
 int get_next_fragments(Interval* result, vector<long>* input, int* intervals_count, int portion, int from)
 {
-	bzero(result, 64*sizeof(Interval));
+	bzero(result, 64 * sizeof(Interval));
 
 	int i, j , choosen_fragments;
 	choosen_fragments = 0;
@@ -426,8 +410,6 @@ int get_next_fragments(Interval* result, vector<long>* input, int* intervals_cou
 		return (*input)[input->size()-1];
 	else
 		return (*input)[i-1];
-
-
 }
 
 
@@ -436,14 +418,13 @@ bool send_down_message(DownMsg* down_msg, int socket_tcp)
 
 	if (send(socket_tcp, down_msg, sizeof(DownMsg), 0) < 0)
 	{
-		perror("SEND");
 		close(socket_tcp);
 		return false;
 	}
 	return true;
 }
 
-
+//Funkcja zajmująca się odbiorem pojedyńczego fragmentu pliku.
 bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading, int* fragment_counter)
 {	
 
@@ -457,20 +438,20 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 	{
 		tmp_rec_bytes = recvfrom((*host)->sock, &file_fragment + rec_bytes, sizeof(FileFragment) - rec_bytes, 0, (struct sockaddr *) clientaddr,  (socklen_t*) &length);
 
-		if (tmp_rec_bytes < 0)
+		if (tmp_rec_bytes <= 0)
 		{
-			perror("Recvfrom");
+			//perror("Recvfrom");
 			close((*host)->sock);	
 			(*host) = file_downloading->using_hosts.erase((*host));
 			return false;
 		}
-		else if(tmp_rec_bytes == 0)
+		/*else if(tmp_rec_bytes == 0)
 		{
 			safe_cout("Close conection\n>> ");
 			close((*host)->sock);
 			(*host) = file_downloading->using_hosts.erase((*host));
 			return true;
-		}
+		}*/
 		rec_bytes += tmp_rec_bytes;
 	}
 
@@ -498,19 +479,19 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 		}
 		else
 		{
-			if(file_downloading->speed_in_hosts((*host)->get_speed() < 3 ))
+			if(file_downloading->speed_in_hosts((*host)->get_speed() < TOP_HOSTS ))
 			{
 				(*host)->grow_portion();
 			}
 
 			DownMsg msg;
 
-			bzero(&msg.header.name, sizeof(msg.header.name));
-			memcpy(&msg.header.name, (*file_downloading->file)->id->name, sizeof(msg.header.name));		
+			bzero(msg.header.name, sizeof(msg.header.name));
+			memcpy(msg.header.name, (*file_downloading->file)->id->name, sizeof(msg.header.name));	
 
 			msg.header.size.longNum = (*file_downloading->file)->id->size;	
 			msg.header.time.ttime = (*file_downloading->file)->id->time;	
-			memcpy(&msg.header.owner, (*file_downloading->file)->id->owner, sizeof(msg.header.owner));	
+			memcpy(msg.header.owner, (*file_downloading->file)->id->owner, sizeof(msg.header.owner));
 		
 			msg.header.type = DOWN_MSG;	
 		
@@ -554,10 +535,9 @@ void write_progress_of_download(vector<Resource>::iterator* file, bool break_dow
 
 void download_action() {
 	pthread_t downloadThread;
-	if(
-		pthread_create(&downloadThread, NULL, download_thread, (void*)&cmdata) 
-	) { // błąd przy tworzeniu wątku
-		safe_cout(threadFailed);
+	if(pthread_create(&downloadThread, NULL, download_thread, (void*)&cmdata)) 
+	{ 
+		safe_cout(downloadThreadFailed);
 	}
 }
 
@@ -569,10 +549,9 @@ ResourceHeader header_from_command_data(CommandData* data)
 	bzero(result.name, sizeof(result.name));
 	int i;
 
-
 	const char *cstr = data->fileName.c_str();
 
-	memcpy((void*) result.name, cstr, data->fileName.size());	// Z USUWANIEM ""
+	memcpy((void*) result.name, cstr, data->fileName.size());
 	result.size.longNum = data->fileSize;
 
 	result.time.ttime = 0;
@@ -580,36 +559,65 @@ ResourceHeader header_from_command_data(CommandData* data)
 	return result;
 }
 
+ResourceHeader header_from_id(FileID* file, MsgType type)
+{
+	ResourceHeader header;
+	bzero(header.name, sizeof(header.name));
+	header.type = type;
+	int name_length;
+	for(name_length = 0; file->name[name_length] != 0 && name_length < 256; ++name_length);
+	memcpy((void*) header.name, file->name, name_length);
 
-void* download_thread(void* par) {
-	int info_message = 0;
-	int fragment_counter = 0;
+	header.size.longNum = file->size;
+	header.time.ttime = file->time;
+	memcpy((void*) header.owner, file->owner, 6);
+	return header;
+}
 
+struct FileIDStruct fileid_from_header(ResourceHeader* header)
+{
+	struct FileIDStruct id;
+	
+	int i;
+
+	char* buf_name = strdup(header->name);
+	char* buf_owner = new char[6];
+
+	memcpy(buf_owner, header->owner, 6);
+	id.name = buf_name;
+	id.owner = buf_owner;
+	id.size = header->size.longNum;
+	id.time = header->time.ttime;
+	return id;
+}
+
+void* download_thread(void* par) 
+{
 	safe_cout("Dowloading...\n>> ");
 	
 	ResourceHeader header = header_from_command_data((struct CommandData*)par);
+
 	vector<Resource>::iterator file = getResource(&header);
-	
-	bool is_valid =  isValidResource(file);
+	bool is_valid = isValidResource(file);
 	if(!is_valid)
 	{
 		CommandData command_data;
 		command_data.ids.size = 1;
-		FileID id = fileid_from_header(&header);
 		command_data.ids.ids = new FileID;
 		command_data.ids.ids[0] = fileid_from_header(&header);
 		find_thread((void*)&command_data);
 	}
-	//else if(file->is_downloading)	//DO ZROBIENIA!
-	//{
-	//	write_progress_of_download(&file, false);
-	///	return NULL;
-	//}
+	else if(fileIsDownloading(file))
+	{
+		write_progress_of_download(&file, false);
+		return NULL;
+	}
 	else if(file->missingBlocks.size() == 0)
 	{
 		safe_cout("File is already downloaded!\n>> ");
 		return NULL;
 	}
+
 	file = getResource(&header);
 	if(!isValidResource(file))
 	{
@@ -617,25 +625,39 @@ void* download_thread(void* par) {
 		return NULL;
 	}
 
-	file->filePathName = returnFilePath(configFilePath, file->id->name); //poprawic
-	DownMsg down_msg; 
-	FileDownload file_downloading(&file);
-	
+	if(file->filePathName == "")
+	{
+		file->filePathName = returnFilePath(configFilePath, file->id->name);
+		if(file->filePathName == "")
+		{
+			return NULL;
+		}
+	}
+	vector<Resource>::iterator* param = new vector<Resource>::iterator;
+	*param = file;
+	download_file((void*) param);
+	return NULL;
+}
 
+
+void* download_file(void* par)
+{
+	vector<Resource>::iterator file = *((vector<Resource>::iterator*) par);
+	delete (vector<Resource>::iterator*) par;
+	int info_message = 0;
+	int fragment_counter = 0;
+	ResourceHeader header;
+
+	FileDownload file_downloading(&file);
 	file_downloading.avaiable_hosts = file->peers; 
 
-	down_msg.header.type = DOWN_MSG;
-	bzero(&down_msg.header.name, sizeof(down_msg.header.name));
+	setFileIsDownloading(file);
 
-	int name_length;
+	DownMsg down_msg; 
+	header = header_from_id(file->id, DOWN_MSG);
+	down_msg.header = header;
 
-	for(name_length = 0; file->id->name[name_length] != 0 && name_length < 256; ++name_length);
-	memcpy((void*) &down_msg.header.name, file->id->name, name_length);
-	down_msg.header.size.longNum = file->id->size;
-	down_msg.header.time.ttime = file->id->time;
-	memcpy((void*) &down_msg.header.owner, file->id->owner, 6);
-
-	deque<Host>::iterator it = file_downloading.avaiable_hosts.begin();	//moze end
+	deque<Host>::iterator it = file_downloading.avaiable_hosts.begin();
 	for(int i = 0; i < HOST_NUMER && i < file_downloading.avaiable_hosts.size(); ++i)
 	{
 		int intervals_count;
@@ -658,27 +680,22 @@ void* download_thread(void* par) {
 			it = file_downloading.avaiable_hosts.erase(it);
 		}
 	}
+
 	fd_set descriptors;
 	struct timeval timeout;
-
 	timeout.tv_sec = TIMEOUT_SEC;
 	timeout.tv_usec = 0;
 	bool recive_any_fragment = false;
 	while(true)
 	{
-cout  << "test 0 " << file_downloading.using_hosts.size() << endl;
 		if(file_downloading.using_hosts.size() < HOST_NUMER)
 		{
-cout << " TEST 1 " << endl;
 			CommandData command_data;
 			command_data.ids.size = 1;
-			FileID id = fileid_from_header(&header);
 			command_data.ids.ids = new FileID[1];
 			command_data.ids.ids[0] = fileid_from_header(&header);
-cout << " TEST 2 " << file_downloading.using_hosts.size() << " " << file_downloading.avaiable_hosts.size() << endl;
 			while(file_downloading.using_hosts.size() == 0 && file_downloading.avaiable_hosts.size() == 0)
 			{
-cout << " TEST 3  " << endl;
 				find_thread((void*)&command_data);
 
 				file_downloading.avaiable_hosts = file->peers;
@@ -746,25 +763,17 @@ cout << " TEST 3  " << endl;
 				++it;
 		}
 
-		if(!recive_any_fragment)
-		{
-			close_hosts_sockets(&file_downloading.using_hosts);
-			file_downloading.using_hosts.clear();
-			file_downloading.avaiable_hosts.clear();
-
-		}
 
 		double percent = ((double)(file_downloading.fragments - file->missingBlocks.size())/((double)file_downloading.fragments));
 		percent *= 100;
 
-		//if((int)percent % 10 < 5) 
-		//{
-			if(info_message + 1 <= (int)percent/10)
-			{
-				info_message = (int)percent/10;
-				write_progress_of_download(&file, false);
-			}
-		//}
+
+		if(info_message + 1 <= (int)percent/5)
+		{
+			info_message = (int)percent/5;
+			write_progress_of_download(&file, false);
+		}
+
 		
 		if(file->missingBlocks.size() == 0)
 		{
@@ -773,6 +782,13 @@ cout << " TEST 3  " << endl;
 			return NULL;
 		}
 
+		if(!recive_any_fragment)
+		{
+			close_hosts_sockets(&file_downloading.using_hosts);
+			file_downloading.using_hosts.clear();
+			file_downloading.avaiable_hosts.clear();
+
+		}
 	}
 
 	return NULL;
@@ -1061,7 +1077,6 @@ cout << "ODEBRALEM size " << n << endl;
 			send_response(&netMsg);
 			continue;
 		}
-cout << "ODEBRALEM HAS 2" << endl;
 		resourceIt = openResource(header);
 		bool isUnique = true;
 		for(int i=0; i<(*resourceIt).peers.size(); i++)
@@ -1074,7 +1089,6 @@ cout << "ODEBRALEM HAS 2" << endl;
 		}
 		if(isUnique)
 		{
-cout << "ODEBRALEM HAS 3" << endl;
 			(*resourceIt).peers.push_back(Host(&clientaddr,&length));
 		}
 
@@ -1291,7 +1305,26 @@ void check_files_validations()
 		free((void*)fid->name);
 		free((void*)fid->owner);
 		delete fid;		
-	} 	
+	} 
+}
+
+void run_downloadings()
+{
+	lockMetaDataMutex();
+	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();it++){
+		if(it->missingBlocks.size() != 0)
+		{
+			vector<Resource>::iterator* param = new vector<Resource>::iterator;
+			*param = it;
+			pthread_t receiverThreadTCP;
+			if(pthread_create(&receiverThreadTCP, NULL, download_file, (void*) param)) 
+			{
+				safe_cout(downloadThreadFailed);
+			}
+		}
+
+	}
+	unlockMetaDataMutex();
 }
 
 #endif

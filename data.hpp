@@ -83,9 +83,24 @@ string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight);
 bool serializeMetaData();
 bool deserializeMetaData();
 list<FileID*> getUnlinked();
+bool fileIsDownloading(vector<Resource>::iterator it);
+bool setFileIsDownloading(vector<Resource>::iterator it);
 
+bool fileIsDownloading(vector<Resource>::iterator it)
+{
+	lockMetaDataMutex();
+	bool result = it->is_downloading;
+	unlockMetaDataMutex();
+cout << result << endl;
+	return result;
+}
 
-
+bool setFileIsDownloading(vector<Resource>::iterator it)
+{
+	lockMetaDataMutex();
+	it->is_downloading = true;
+	unlockMetaDataMutex();
+}
 
 vector<Resource>::iterator addFile(string pathName, string fileName)
 {
@@ -1016,7 +1031,7 @@ string returnFilePath(const char * cfg_path, const char *filename)
 		fs.close();
 	else{
 		perror("Cannot create file to downloading.\n");
-		return NULL;
+		return "";
 	}
 	return filePath;
 

@@ -24,10 +24,11 @@ const int PORT = 35787;
 const int FIND_PORT = 35788;
 
 const int HOST_NUMER = 10;
-const int START_FRAGMENT_COUNT = 5;
-const int TIMEOUT_SEC = 35;
+const int START_FRAGMENT_COUNT = 20;
+const int TIMEOUT_SEC = 10;
 const int TIMEOUT_SEC_FIND_AGAIN = 2;
-const double GROW_PORTION = 1.3;
+const double GROW_PORTION = 1.2;
+const int TOP_HOSTS = 3;
 
 
 
