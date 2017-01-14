@@ -808,7 +808,7 @@ string ser2Resource(Resource *r, char dividerLeft, char dividerRight){
 	parts.push_back(r->filePathName);
 	parts.push_back(ser2dequeHost(&(r->peers),dividerLeft,dividerRight));
 	parts.push_back(ser2vectorLong((r->missingBlocks),dividerLeft,dividerRight));
-	parts.push_back(tToString<bool>(r->is_downloading));
+	parts.push_back(tToString<bool>(false));
 	
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
