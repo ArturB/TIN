@@ -509,7 +509,16 @@ void printFileID(FileID *id){
 	}
 }
 
-
+/*
+	Zwraca szukany FileFragment.
+	FileID okresla, z ktorego pliku pochodzi fragment,
+	a number ktory fragment to jest.
+	
+	Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci,
+	to jego pozycja jest kasowana w metaDanych.
+	Jezeli nie udalo sie odnalezc pliku badz fragmentu w nim, zwraca null.
+	
+*/
 FileFragment * getFileFragment(FileID *id, long number){
 	bool isFind = true;
 	string path;
@@ -554,7 +563,15 @@ FileFragment * getFileFragment(FileID *id, long number){
 	file.close();
 	return ff;
 }
-
+/*
+	Zapisuje fragment FileFragment fragment pliku okreslonego przez FileID id do pamieci.
+	Wymagane jest, aby plik istnial w metadanych, oraz jako plik w pamieci - inaczej zwracane jest false.
+	
+	Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci,
+	to jego pozycja jest kasowana w metaDanych. 
+	
+	Zwraca false jezeli zapis sie nie powiodl, plik nie istnial w pamieci badz w metaDanych.
+*/
 bool saveFileFragment(FileID *id, FileFragment *fragment){
 	vector<Resource>::iterator res;
 	vector<long>::iterator blockToDelete;
@@ -610,7 +627,9 @@ bool saveFileFragment(FileID *id, FileFragment *fragment){
 	return true;
 };
 
-
+/*
+	Inicjuje dwa mutexy uzywane przy dostepie do metaDanych oraz listyMutexow dla plikow.
+*/
 bool initiateMutexes(){
 	if(pthread_mutex_init(&metaDataMutex,__null)!=0){
 		cerr<<"metaDataMutex initialisation failed\n";
@@ -622,14 +641,24 @@ bool initiateMutexes(){
 	}
 	
 }
+/*
+	Zwalnia dwa mutexy uzywane przy dostepie do metaDanych oraz listyMutexow dla plikow.
+*/
 bool destroyMutexes(){
 	pthread_mutex_destroy(&metaDataMutex);
 	pthread_mutex_destroy(&fileMutexDequeMutex);
 	return true;
 }
+/*
+	Lock na mutexie dostepu do metaDanych
+*/
 void lockMetaDataMutex(){
 	pthread_mutex_lock(&metaDataMutex);	
 }
+
+/*
+	Unlock na mutexie dostepu do metaDanych
+*/
 void unlockMetaDataMutex(){
 	pthread_mutex_unlock(&metaDataMutex);	
 }
@@ -688,19 +717,30 @@ uint64_t get_id()
 	}
 	return id;
 }
-
+/*
+	Template. Konertuje proste typy zmiennych jak liczby do stringa.
+*/
 template <typename T> inline std::string tToString(const T& t){
 	std::stringstream ss;
 	ss << t;
 	return ss.str();
 }
+
+/*
+	Template. Konertuje stringi na proste typy zmiennych jak liczby.
+*/
 template <typename T> inline T stringToT(std::string s){
 	std::istringstream stream(s);
 	T t;
 	stream >> t;
 	return t;
 }
-
+/*
+	Funkcja przyjmujaca zserializowanego stringa. 
+	Rozpakowuje go na czesci i zwraca w postaci vectora.
+	Części moga skladac sie z większej ilosci czesci.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 vector<string> putToParts(string s, char dividerLeft, char dividerRight){
 
 	vector<string> parts;
@@ -726,6 +766,11 @@ vector<string> putToParts(string s, char dividerLeft, char dividerRight){
 	
 	return parts;
 }
+/*
+	Funkcja przyjmujaca czesci z bedace stringai z vectora stringow.
+	opakowuje je w jeden zserializowany string.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string buildFromParts(vector<string> parts,char dividerLeft, char dividerRight){
 	string toReturn="";
 	for(string part:parts){
@@ -734,6 +779,11 @@ string buildFromParts(vector<string> parts,char dividerLeft, char dividerRight){
 	}
 	return toReturn;
 }
+/*
+	Funkcja ta zamienia zserializowany string na obiekt typu Resource,
+	do ktorego zwraca wskaznik.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 Resource *des2Resource(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	Resource *toReturn = new Resource();
@@ -745,6 +795,10 @@ Resource *des2Resource(string build, char dividerLeft, char dividerRight){
 
 	return toReturn;
 }
+/*
+	Serializuje obiekt typu Resource do postaci stringa.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string ser2Resource(Resource *r, char dividerLeft, char dividerRight){
 	string toReturn="";
 
@@ -758,6 +812,11 @@ string ser2Resource(Resource *r, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+/*
+	Funkcja ta zamienia zserializowany string na obiekt typu FileID,
+	do ktorego zwraca wskaznik.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	FileID *toReturn = new FileID();
@@ -770,6 +829,10 @@ FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 	toReturn->time = stringToT<time_t>(parts.at(3));
 	return toReturn;
 }
+/*
+	Serializuje obiekt typu FileID do postaci stringa.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string ser2FileID(FileID *id, char dividerLeft, char dividerRight){
 	string toReturn="";
 	char *name = strdup(id->name);
@@ -784,6 +847,11 @@ string ser2FileID(FileID *id, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+/*
+	Funkcja ta zamienia zserializowany string na obiekt typu FileID,
+	do ktorego zwraca wskaznik.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 Host *des2Host(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	Host *toReturn = new Host();
@@ -796,6 +864,10 @@ Host *des2Host(string build, char dividerLeft, char dividerRight){
 	toReturn->addr_length = stringToT<socklen_t>(parts.at(6));
 	return toReturn;
 }
+/*
+	Serializuje obiekt typu Host do postaci stringa.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string ser2Host(Host *host, char dividerLeft, char dividerRight){
 	string toReturn="";
 	int sock = host->sock;
@@ -817,6 +889,11 @@ string ser2Host(Host *host, char dividerLeft, char dividerRight){
 	return toReturn;
 
 }
+
+/*
+	Funkcja ta zamienia zserializowany string na obiekt typu sockaddr_in.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 sockaddr_in des2SockAddr_in(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	sockaddr_in toReturn;
@@ -827,6 +904,10 @@ sockaddr_in des2SockAddr_in(string build, char dividerLeft, char dividerRight){
 	memcpy(toReturn.sin_zero,&zero,sizeof(toReturn.sin_zero));
 	return toReturn;
 }
+/*
+	Serializuje obiekt typu sockaddr_in do postaci stringa.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string ser2SockAddr_in(sockaddr_in sa, char dividerLeft, char dividerRight){
 	string toReturn="";
 	
@@ -841,6 +922,10 @@ string ser2SockAddr_in(sockaddr_in sa, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+/*
+	Funkcja ta zamienia zserializowany string na obiekt typu deque<Host>.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 deque<Host> *des2dequeHost(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	deque<Host> *toReturn = new deque<Host>();
@@ -851,6 +936,10 @@ deque<Host> *des2dequeHost(string build, char dividerLeft, char dividerRight){
 	}
 	return toReturn;
 }
+/*
+	Serializuje obiekt typu deque<Host> do postaci stringa.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string ser2dequeHost(deque<Host> *d, char dividerLeft, char dividerRight){
 	string toReturn="";
 	
@@ -862,6 +951,10 @@ string ser2dequeHost(deque<Host> *d, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+/*
+	Funkcja ta zamienia zserializowany string na obiekt typu vector<long>.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 vector<long> des2vectorLong(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
 	vector<long> toReturn;
@@ -872,6 +965,10 @@ vector<long> des2vectorLong(string build, char dividerLeft, char dividerRight){
 	}
 	return toReturn;
 }
+/*
+	Serializuje obiekt typu vector<long> do postaci stringa.
+	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+*/
 string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight){
 	string toReturn="";
 	
@@ -883,6 +980,11 @@ string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+/*
+	Zapisuje cala zserializowana metadate do pliku "_metaData.txt" w sciezce programu.
+	Jako dividerLeft i dividerRight uzywa odpowiednio '<' i '>'
+	Zwraca true jezeli utworzenie pliku sie powiodlo, false w przeciwnym przypadku.
+*/
 bool serializeMetaData(){
 	lockMetaDataMutex();
 	vector<Resource> container = metaData;
@@ -899,6 +1001,12 @@ bool serializeMetaData(){
 	file.close();
 	return true;
 }
+
+/*
+	Otwiera plik z metaData _metaData.txt i deserializuje go w vector<Resource>
+	bedacy metadanymi. 
+	Zwraca true jezeli udalo jej sie odnalezc odpowiedni plik _metaData.txt
+*/
 bool deserializeMetaData(){
 	vector<Resource> container;
 	ifstream file("_metaData.txt");
