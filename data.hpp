@@ -1067,7 +1067,7 @@ string returnFilePath(const char * cfg_path, const char *filename)
 	ifstream configFile(cfg_path);
 	if (!configFile.is_open()){
 		perror("Cannot open config file.\n");
-		return NULL;
+		return "";
 	}
 	configFile.getline(directorypath, 400);
 	configFile.close();
