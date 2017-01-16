@@ -1,7 +1,10 @@
 /*
- * Akcje interpretera klienta z TIN
- * Definicje procedur wykoywanych w reakcji na komendy
- * Artur M. Brodzki, Kalisz 2016
+ * Plik zawierający funkcje realizujące sieciową logike aplikacji.
+ * Miejsce dodawania bibliotek.
+ * Anna Skupińska
+ * Artur M. Brodzki
+ * Adam Małkowski
+ * Piotr Włodkowski
  */
 #ifndef P2P_ACTIONS_HPP
 #define P2P_ACTIONS_HPP
@@ -29,20 +32,8 @@ struct CommandData {
 
 struct CommandData cmdata;
 
-void printFileID(FileID f) {
-	if(f.name)
-		cout<<"Name: "<<f.name<<", ";
-	//if(f.owner)
-	//	cout<<"Owner: "<<f.owner<<", ";
-	if(f.size)
-		cout<<"Size: "<<f.size;
-	//if(f.time)
-	//	cout<<"Time: "<<f.time;
-	cout<<". "<<endl;
-}
 
 
-//deklaracje procedur
 void  upload_action();
 void* upload_thread(void*);
 void  delete_action();
@@ -55,7 +46,6 @@ void* download_thread(void* par);
 void* download_file(void* par);
 void  download_action();
 void check_files_validations();
-//uint64_t get_id();
 void* receiver_thread_UDP(void*);
 void* receiver_thread_TCP(void*);
 void* up_msg_reaction(void*);
@@ -65,7 +55,6 @@ void* force_del_msg_reaction(void* par);
 void* find_msg_reaction(void* par);
 void* own_msg_reaction(void* par);
 void* response_down_tcp(void* par);
-
 void send_broadcast(ResourceHeader *header);
 void send_response(NetMsg *netMsg, int port = PORT);
 bool recive_fragment(deque<Host>::iterator it, FileDownload file_downloading);
@@ -77,12 +66,12 @@ ResourceHeader header_from_command_data(CommandData* data);
 void run_downloadings();
 
 
-//mutex chroniący dostęp do stdout
+//Mutex chroniący dostęp do stdout
 pthread_mutex_t termtx;
-//mutex chroniący dostęp do cmdata
+//Mutex chroniący dostęp do cmdata
 pthread_mutex_t cmtx;
 
-//komunikaty
+//Komunikaty
 const char* welcome = 
 	"Welcome in Pompous AAP File Transfer Protocol v1.0!\nRemember: your computer is your friend.\nPlease type a command now.\n";
 const char* prompt = ">> ";
@@ -103,15 +92,28 @@ uint64_t id;
 	    PROCEDURY
  ***************************/
 
-//bezpieczne wypisywanie na stdout z relizacją wzajemnego wykluczania
+//Metoda wypisująca identyfikator.
+void printFileID(FileID f) {
+	if(f.name)
+		cout<<"Name: "<<f.name<<", ";
+	if(f.size)
+		cout<<"Size: "<<f.size;
+	cout<<". "<<endl;
+}
+
+//Bezpieczne wypisywanie na stdout z relizacją wzajemnego wykluczania.
 void safe_cout(string str) {
 	pthread_mutex_lock(&termtx);
 	cout<<str;
 	fflush(stdout);
 	pthread_mutex_unlock(&termtx);
 }
-
-//procedura wołana bezpośrednio po uruchomieniu programu
+/*
+	Procedura wołana bezpośrednio po uruchomieniu programu.
+	Inicjuje mutexy, pobiera ID obecnego klienta, deserializuje metadane
+	tworzy wątki nasłuchując, sprawdza poprawność danych 
+	oraz uruchamia przerwane procesy pobierania.
+*/
 void main_init() {
 
 
@@ -120,7 +122,7 @@ void main_init() {
 	initiateMutexes();
 	id = get_id();
 	//Tu jest deserializacja
-	std::cout << "POBIERAM DANE:" << deserializeMetaData() << std::endl;
+	std::cout << "Loading metadata:" << deserializeMetaData() << std::endl;
 
 	pthread_t receiverThreadUDP;
 	if(pthread_create(&receiverThreadUDP, NULL, receiver_thread_UDP, NULL)) 
@@ -134,18 +136,16 @@ void main_init() {
 		safe_cout(receiverFailed);
 	}
 	
-
-	check_files_validations();
 	run_downloadings();
+	check_files_validations();
 }
 
-//destrukcja muteksów i innych aktywów
+//Destrukcja muteksów i innych aktywów
 void main_destroy() {
 	pthread_mutex_destroy(&termtx);
 	pthread_mutex_destroy(&cmtx);
 	destroyMutexes();
-	//Tu jest serializacja
-	std::cout << "ZRZUCAM DANE:" << serializeMetaData() << std::endl;
+	std::cout << "Save metadata:" << serializeMetaData() << std::endl;
 }
 
 
@@ -220,8 +220,10 @@ void* delete_thread(void* par) {
 		free((void*)fid.owner);
 	}
 }
-
-//Wątek nasłuchujący na próby połączenia TCP w celu pobrania od nas danych.
+/*
+	Wątek nasłuchujący na próby połączenia TCP w celu pobrania od nas danych.
+	W przypadku nawiązania uruchamia wątek obsługujący dane połączenie.
+*/
 void* receiver_thread_TCP(void* par) 
 {
 	int sock, length;
@@ -232,7 +234,7 @@ void* receiver_thread_TCP(void* par)
 
 	sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sock == -1) {
-		perror("DOWN loop: Opening stream socket");
+		perror("DOWN loop: Opening stream socket\n>> ");
 		exit(1);
 	}
 
@@ -245,19 +247,19 @@ void* receiver_thread_TCP(void* par)
 
 	if (bind(sock, (struct sockaddr *) &server, sizeof server) == -1)
 	{
-		perror("DOWN loop: Binding stream socket");
+		perror("DOWN loop: Binding stream socket\n>> ");
 		exit(1);
 	}
 
-	if(listen(sock, 5)!= 0)
-		perror ("DOWN loop: Listen call error");
+	if(listen(sock, TCP_ONE_TIME_CONNECTION)!= 0)
+		perror ("DOWN loop: Listen call error\n>> ");
 
 	do {
 
 		msgsock = accept(sock,(struct sockaddr *) 0,(socklen_t*) 0);
 
 		if (msgsock == -1 )
-			perror("DOWN loop: Accept call error");
+			perror("DOWN loop: Accept call error\n>> ");
 		else 
 		{
 			pthread_t responseTCP;
@@ -272,7 +274,14 @@ void* receiver_thread_TCP(void* par)
 }
 
 
-//Funkcja odpowiadająca na pojedyńcze zapytanie DOWN
+/*
+	Ciało wątku obsługującego zapytanie DOWN.
+	Po odebraniu wiadomości sprawdza o jaki fragmenty jesteśmy pytani i 
+	odsyła je kolejno.
+	W przypadku wystąpienia problemów i zakończenia transmisji wysyła
+	fragment z numerem 0 co oznacza zakończenie transmisji.
+
+*/
 void* response_down_tcp(void* par)
 {
 	int msgsock = *((int*)par);
@@ -361,7 +370,15 @@ void* response_down_tcp(void* par)
 	close(msgsock);
 }
 
-//Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać.
+/*
+	Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać.
+	result		- parametr wynikowy, lista przedziałów o które mamy spytać.
+	intervals_count - parametr wynikowy, liczba przedziałów.
+	input		- lista brakujących bloków.
+	portion		- liczba fragmentów o które zapytamy.
+	from		- ostatni fragment o który zapytaliśmy.
+	Zwraca numer ostatniego fragmentu o który zapytamy.
+*/
 int get_next_fragments(Interval* result, vector<long>* input, int* intervals_count, int portion, int from)
 {
 	bzero(result, 64 * sizeof(Interval));
@@ -412,7 +429,7 @@ int get_next_fragments(Interval* result, vector<long>* input, int* intervals_cou
 		return (*input)[i-1];
 }
 
-
+//Funkcja wysyłająca wiadomość DOWN.
 bool send_down_message(DownMsg* down_msg, int socket_tcp)
 {
 
@@ -424,7 +441,19 @@ bool send_down_message(DownMsg* down_msg, int socket_tcp)
 	return true;
 }
 
-//Funkcja zajmująca się odbiorem pojedyńczego fragmentu pliku.
+/*
+	Funkcja zajmująca się odbiorem pojedyńczego fragmentu zasobu.
+	W przypadku wystąpienia problemów z odbiorem, usuwa nadawce
+	z listy maszyn od których pobieramy.
+	W przypadku gdy był to ostatni pakiet na który czekaliśmy
+	od danego nadawcy
+		a) jeżeli był najwolniejszym dostawcą, usuwa go
+			z listy maszyn od których pobieramy
+		b) w. p. p. prosi go o następne fragmenty
+		
+	Zwraca true gdy udało się odebrać fragment.
+*/
+
 bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading, int* fragment_counter)
 {	
 
@@ -440,18 +469,10 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 
 		if (tmp_rec_bytes <= 0)
 		{
-			//perror("Recvfrom");
 			close((*host)->sock);	
 			(*host) = file_downloading->using_hosts.erase((*host));
 			return false;
 		}
-		/*else if(tmp_rec_bytes == 0)
-		{
-			safe_cout("Close conection\n>> ");
-			close((*host)->sock);
-			(*host) = file_downloading->using_hosts.erase((*host));
-			return true;
-		}*/
 		rec_bytes += tmp_rec_bytes;
 	}
 
@@ -511,7 +532,10 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 	}
 	return true;
 }
-
+/*
+	Wyświetla komunikat o stanie pobierania.
+	break_downloading - gdy true, wypisuje informacje o przerwaniu pobierania pliku.
+*/
 void write_progress_of_download(vector<Resource>::iterator* file, bool break_downloading)	
 {
 	int fragments = (*file)->id->size/1024 ;
@@ -541,7 +565,7 @@ void download_action() {
 	}
 }
 
-
+//Funkcja pomocnicza tworząca strukturę ResourceHeader z CommandData.
 ResourceHeader header_from_command_data(CommandData* data)
 {
 	ResourceHeader result;
@@ -559,6 +583,7 @@ ResourceHeader header_from_command_data(CommandData* data)
 	return result;
 }
 
+//Funkcja pomocnicza tworząca strukturę ResourceHeader z FileID.
 ResourceHeader header_from_id(FileID* file, MsgType type)
 {
 	ResourceHeader header;
@@ -574,6 +599,7 @@ ResourceHeader header_from_id(FileID* file, MsgType type)
 	return header;
 }
 
+//Funkcja pomocnicza tworząca strukturę FileID z ResourceHeader.
 struct FileIDStruct fileid_from_header(ResourceHeader* header)
 {
 	struct FileIDStruct id;
@@ -591,6 +617,10 @@ struct FileIDStruct fileid_from_header(ResourceHeader* header)
 	return id;
 }
 
+/*
+	Ciało wątku pobierającego.
+	Próbuje znaleść zasób w sieci, jeżeli mu to się uda rozpoczyna pobieranie zasobu.
+*/
 void* download_thread(void* par) 
 {
 	safe_cout("Dowloading...\n>> ");
@@ -639,6 +669,20 @@ void* download_thread(void* par)
 	return NULL;
 }
 
+/*
+	Funkcja odpowiadająca za pobieranie zasobu.
+	Rozsyła zapytania o zasoby do pierwszych HOST_NUMER dostępnych maszyn,
+	następnie w pętli czego na odbiór fragmentu po czym
+	go zapisuje.
+	Po upłynięciu time-outu w czekaniu na fragment 
+	czyści liste dostępnych maszyn i wyszukuj je od nowa.
+	W przypadku gdy nie ma żadnych dostępnych maszyn, w pętli czeka 
+	i rozsyła zapytanie FIND.
+	Gdy są dostępne maszyny od których nie pobieramy, rozpoczyna pobieranie.
+	
+	Co około 5% pobierania wypisuje o tym informacje.
+
+*/
 
 void* download_file(void* par)
 {
@@ -794,6 +838,7 @@ void* download_file(void* par)
 	return NULL;
 }
 
+//Funkcja zamykająca połączenia z maszynami z zadanego kontenera.
 void close_hosts_sockets(deque<Host> *collection)
 {
 	deque<Host>::iterator it = collection->begin();
@@ -1308,6 +1353,7 @@ void check_files_validations()
 	} 
 }
 
+//Funkcja uruchamiająca procesy pobierania niedokończone podczas ostatniego działania aplikacji.
 void run_downloadings()
 {
 	lockMetaDataMutex();

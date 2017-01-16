@@ -91,7 +91,6 @@ bool fileIsDownloading(vector<Resource>::iterator it)
 	lockMetaDataMutex();
 	bool result = it->is_downloading;
 	unlockMetaDataMutex();
-cout << result << endl;
 	return result;
 }
 

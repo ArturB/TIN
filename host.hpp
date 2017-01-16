@@ -1,3 +1,11 @@
+/*
+ * Klasa pomocnicza reprezentująca maszynę od której pobieramy dane.
+ * Anna Skupińska
+ * Artur M. Brodzki
+ * Adam Małkowski
+ * Piotr Włodkowski
+ */
+
 #ifndef HOST_H
 #define HOST_H
 
@@ -11,14 +19,11 @@ class Host
 		struct sockaddr_in addr;	
 		socklen_t addr_length;	
 
-		Host()
-		{
+		Host(){}
 
-		};
-		~Host()
-		{
+		~Host(){}
 
-		}
+		//Konstruktor przygotowujący podstawowe informacje o maszynie i połączeniu z nią - w tym jej adres.
 		Host(struct sockaddr_in* host_addr, socklen_t* host_addr_length)
 		{
 			addr = *host_addr;
@@ -29,7 +34,7 @@ class Host
 			get_fragment = 0;
 		}
 
-
+		//Metoda zestawiająca połączenie.
 		bool connect_host_socket()
 		{
 			sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -50,17 +55,20 @@ class Host
 			return true;
 		}
 
+		//Metoda inkrementująca liczbe pobranych pakietów w ramacj połączenia oraz zwracająca czy odebraliśmy wszystki fragmenty o które prosiliśmy.
 		bool is_all_fragments()
 		{
 			++get_fragment;
 			return asked_fragment <= get_fragment;
 		}
 
+		//Metoda zwracająca prędkość pobierania z danej maszyny.
 		double get_speed()
 		{
 			return get_fragment / time_of_start;
 		}
 
+		//Metoda zwiększająca porcje fragmentów o które będziemy prosić w zapytaniu DOWN.
 		void grow_portion()
 		{
 			portion = (int) ((double)portion * GROW_PORTION);

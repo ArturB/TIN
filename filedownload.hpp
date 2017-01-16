@@ -1,3 +1,11 @@
+/*
+ * Klasa pomocnicza zbierająca podstawowe informacje nt. procesu pobierania pliku
+ * Anna Skupińska
+ * Artur M. Brodzki
+ * Adam Małkowski
+ * Piotr Włodkowski
+ */
+
 #ifndef FILEDOWNLOAD_H
 #define FILEDOWNLOAD_H
 
@@ -11,6 +19,7 @@ class FileDownload
 		deque<Host> using_hosts;
 		int fragments;
 
+		//Konstruktor - liczy liczbe fragmentów pliku.
 		FileDownload(vector<Resource>::iterator* param)
 		{
 			file = param;
@@ -19,6 +28,7 @@ class FileDownload
 				++fragments;
 		}
 
+		//Metoda podająca które miejsce na liście elementów od których pobieramy zajmuje elemenet o zadanej prędkości.
 		int speed_in_hosts(double speed)
 		{
 			int place = 1;

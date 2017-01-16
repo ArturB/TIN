@@ -1,6 +1,13 @@
+/*
+ * Klasa związana z komunikatem.
+ * Anna Skupińska
+ * Artur M. Brodzki
+ * Adam Małkowski
+ * Piotr Włodkowski
+ */
+
 #ifndef NETMSG_H
 #define NETMSG_H
-
 
 #include "structs.h"
 
@@ -11,15 +18,11 @@ class NetMsg {
 		struct sockaddr_in* sender;
 		socklen_t* addres_length;
 
-		NetMsg()
-		{
+		NetMsg(){}
 
-		}
+		~NetMsg(){}
 
-		~NetMsg()
-		{
-		}
-
+		//Konstruktor przygotwujący wiadomość na podstawie nagłówka oraz adresu odbiorcy.
 		NetMsg(ResourceHeader* h, struct sockaddr_in* sender_addr, socklen_t* addr_length)
 		{
 			memcpy(&header, h, sizeof(header));	
@@ -27,7 +30,7 @@ class NetMsg {
 			addres_length = addr_length;
 		}
 
-
+		//Konstruktor obiektu reprezentującego odebrana wiadomość DOWN.
 		NetMsg(DownMsg* d, struct sockaddr_in* sender_addr, socklen_t* addr_length)
 		{
 			memcpy(&header, &(d->header), sizeof(header));
@@ -43,7 +46,7 @@ class NetMsg {
 			}
 		}
 		
-
+		//Metoda tworząca nagłówek na podstawie FileID.
 		void setFileId(FileID* fid)
 		{
 			if(fid->name != NULL)
@@ -54,6 +57,7 @@ class NetMsg {
 			header.time.ttime = fid->time;
 		}
 
+		//Metoda ustawiająca adresata na podstawie obiektu Host.
 		void setReceiver(Host h)
 		{
 			sender = &(h.addr);
