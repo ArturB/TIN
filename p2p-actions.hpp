@@ -157,6 +157,10 @@ void upload_action() {
 	}
 }
 
+/*
+	Cialo watku obslugujacego operacje dodania zasobu.
+	W przypadku udanego dodania rozsyla o tym fakcie informace wraz z danymi zasobu.
+*/
 void* upload_thread(void* par) {
 	struct CommandData parT = *((struct CommandData*)par);
 	safe_cout("Uploading file " + parT.fileName + "...\n>> ");
@@ -195,7 +199,11 @@ void delete_action() {
 	}
 }
 
-
+/*
+	Cialo watku obslugujacego operacje usuniecia zasobu.
+	W przypadku udanego usuniecia zasobu, ktorego bylismy wlascicielami,
+	rozsyla o tym fakcie informace wraz z danymi usunietego zasobu.
+*/
 void* delete_thread(void* par) {
 	struct CommandData parT = *((struct CommandData*)par);
 	safe_cout("Deleting file " + parT.fileName + "...\n>> ");
@@ -849,8 +857,9 @@ void close_hosts_sockets(deque<Host> *collection)
 	}
 }
 
-//procedura wątku nasłuchującego komunikatów
-//od innych węzłów sieci
+/* procedura wątku nasłuchującego komunikatów
+	od innych węzłów sieci
+*/
 void* receiver_thread_UDP(void* par) 
 {
 	int sock;
@@ -888,14 +897,8 @@ void* receiver_thread_UDP(void* par)
 			perror("ERROR in recvfrom");	
 			break;
 		}
-		if(clientaddr.sin_addr.s_addr == server.sin_addr.s_addr)	//Odebralismy wiadomosc, ktora sami wyslalismy //POPRAWKI TO NIE BEDZIE DZIALAC NIESTETY!
-		{
-			cout << "Odebralismy wiadomosc, ktora sami wyslalismy" << endl;
-			continue;
-		}
 
-		NetMsg *netMsg = new NetMsg(&header, &clientaddr, &length); //POPRAWKI		
-
+		NetMsg *netMsg = new NetMsg(&header, &clientaddr, &length);
 		switch(header.type)
 		{
 			pthread_t newThread;
@@ -904,38 +907,31 @@ void* receiver_thread_UDP(void* par)
 				{
 					safe_cout(receiverFailed);
 				}
-				// W NOWYM WATKU: SPRAWDZENIE CZY MAMY TAKI PLIK, JEZELI TAK TO ODSYLAMY OWN
 				break;
 			case HAS_MSG:
-				//cout << "HAS" << endl;
 				if(pthread_create(&newThread, NULL, has_msg_reaction, netMsg)) 
 				{
 					safe_cout(receiverFailed);
 				}
-				// NOWY WATEK, SPRAWDZAMY CZY POSIADAMY PLIK I CZY JEST NASZ, JEZELI NIE WYWLASZCZAMY, DODAJEMY INFO NT. PLIKU
 				break;
 			case DEL_MSG:
-				//cout << "USUWANIE" << endl;
 				if(pthread_create(&newThread, NULL, del_msg_reaction, netMsg)) 
 				{
 					safe_cout(receiverFailed);
 				}
-				//NOWY WATEK,JEZELI TO NASZ ZASOB, ODSYLAMY HAS, JEZELI MAMY GO TO USUWAMY I PRZERYWAMY TRANSAKCJE (JAK?)
 				break;
 			case FORCE_DEL_MSG:
 			case DONT_MSG:
-				//NOWY WATEK,USUWAMY ZASOB I PRZERYWAMY TRANSAKCJE
 				if(pthread_create(&newThread, NULL, force_del_msg_reaction, netMsg)) 
 				{
 					safe_cout(receiverFailed);
 				}
 				break;	
 			case FIND_MSG:
-				if(pthread_create(&newThread, NULL, find_msg_reaction, netMsg)) 		//DO POPRAWKI - ZMIENNA AUTOMATYCZNA A NOWY WATEK, IDZIE W PIZDU
+				if(pthread_create(&newThread, NULL, find_msg_reaction, netMsg)) 
 				{
 					safe_cout(receiverFailed);
 				}
-				//NOWY WATEK, JEZELI MAMY ODSYLAMY HAS
 				break;	
 			case OWN_MSG:
 				if(pthread_create(&newThread, NULL, own_msg_reaction, netMsg)) 
@@ -944,7 +940,6 @@ void* receiver_thread_UDP(void* par)
 				}
 				break;	
 			default:
-				//error!
 				break;
 		}
 
@@ -952,6 +947,9 @@ void* receiver_thread_UDP(void* par)
 	close(sock);
 }
 
+/*
+	wyslanie broadcastem wskazanej struktury ResourceHeader
+*/
 void send_broadcast(ResourceHeader *header)
 {
 	int sock;
@@ -983,7 +981,7 @@ void send_broadcast(ResourceHeader *header)
 	}
 	
 	if (sendto(sock, header, MIN_MSG_SIZE, 0, 
-		(sockaddr *)&Target_addr, sizeof(Target_addr)) < 0)	//POPRAWKI &header i &Target_addr
+		(sockaddr *)&Target_addr, sizeof(Target_addr)) < 0)	
 	{
 		perror("Send call error");
 		close(sock);
@@ -993,10 +991,13 @@ void send_broadcast(ResourceHeader *header)
 	close(sock);
 }
 
+/*
+	wyslanie wiadomosci, ktorej tresc i adres odbiorcy zapisane sa w obiekcie NetMsg 
+	znajdujacym sie pod adresem, ktory podajemy w argumencie wywolania funkcji
+*/
 void send_response(NetMsg *data, int port)
 {
 	int sock;
-	char msg[MIN_MSG_SIZE];
 
 	sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP );
 	if (sock == -1) {
@@ -1021,7 +1022,7 @@ void send_response(NetMsg *data, int port)
 	}
 
 	if (sendto(sock, &(data->header), MIN_MSG_SIZE, 0, 
-		(sockaddr *)Target_addr, *(data->addres_length)) < 0)	//POPRAWKI
+		(sockaddr *)Target_addr, *(data->addres_length)) < 0)
 	{
 		perror("Send call error");
 		close(sock);
@@ -1041,17 +1042,22 @@ void find_action() {
 	}
 }
 
-//procedura wątku obsługi komendy find
+/*
+	Procedura wątku obsługi komendy find. Funkcja przez okreslony czas
+	zbiera informacje HAS_MSG na temat zasobow, (lub wyszukuje okreslona liczba zasobow),
+	tworzy struktury, ktore umozliwia pobranie tych zasobow i przypisuje do nich liste peerow, 
+	od ktorych zasob mozna sciagnac. Rozwiazuje tez konflikty wlascicieli, jesli je stwierdzi.
+*/
 void* find_thread(void* par) {
 	struct CommandData parT = *((struct CommandData*)par);
 	int sock;
 	int n;
 
 	struct sockaddr_in server;
-	struct sockaddr_in clientaddr;		//POPRAWKI
+	struct sockaddr_in clientaddr;
 	socklen_t length;
-	length = sizeof(clientaddr);	//POPRAWKI
-	ResourceHeader* header = new ResourceHeader(); //POPRAWKI
+	length = sizeof(clientaddr);
+	ResourceHeader* header = new ResourceHeader();
 	vector<Resource>::iterator resourceIt;
 	set<FileID*> found;
 
@@ -1064,12 +1070,10 @@ void* find_thread(void* par) {
 	}
 
 	struct timeval tv;
-	tv.tv_sec = 1;  /* 1 Secs Timeout */
+	tv.tv_sec = 1;  /* 1-sekundowy timeout*/
 	tv.tv_usec = 0; 
 
 	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
-//	int optval = 1;
-//	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const void *)&optval , sizeof(int));
 
 	server.sin_family= AF_INET;
 	server.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -1089,20 +1093,17 @@ void* find_thread(void* par) {
 	if(pthread_create(&find_msg_sender, NULL, find_msg_sender_thread, &parT)) { // błąd przy tworzeniu wątku
 		safe_cout(threadFailed);
 		return NULL;
-	}	//NIE POTRZEBNY WATEK, W CIELE TEGO
+	}
 	time_t now = time(0);
 
 
 	while(time(0) - now < 2)
 	{
 cout << "CZEKAM NA WIADOMOSC" << endl;
-		n = recvfrom(sock, header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);	//CZEMU HEADER NIE JEST ZAINICJALIZOWANE?!
-		//n = recv(sock, header, MIN_MSG_SIZE, 0);
+		n = recvfrom(sock, header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);
 cout << "ODEBRALEM size " << n << endl;
-		if(errno == EAGAIN || errno == EWOULDBLOCK)
+		if(errno == EAGAIN || errno == EWOULDBLOCK)	//timeout
 		{
-			safe_cout("TimeOut!!!...\n>> ");
-			perror("ERROR in recvfrom");	
 			errno = 0;
 			continue;			
 		}
@@ -1111,10 +1112,12 @@ cout << "ODEBRALEM size " << n << endl;
 			perror("ERROR in recvfrom");	
 			return NULL;
 		}
-		if(header->type != HAS_MSG)
+		if(header->type != HAS_MSG)	//zly komunikat
 		{
 			continue;
 		}
+
+		//ktos przyslal informacje o zasobie, ktorego bylismy wlascicielami (usunelismy zasob)
 		if(bytesToLong(header->owner) == id && isFileInStorage(header)==NULL)
 		{
 			NetMsg netMsg(header,&clientaddr, &length);
@@ -1122,9 +1125,11 @@ cout << "ODEBRALEM size " << n << endl;
 			send_response(&netMsg);
 			continue;
 		}
-		resourceIt = openResource(header);
+
+		resourceIt = openResource(header);	//stworzenie lub zwrocenie struktury zasobu
 		bool isUnique = true;
-		for(int i=0; i<(*resourceIt).peers.size(); i++)
+		//sprawdzenie, czy nie mamy juz zapisanego adresu wezla, ktory przyslal nam informacje o zasobie
+		for(int i=0; i<(*resourceIt).peers.size(); i++)	
 		{
 			if((*resourceIt).peers[i].addr.sin_addr.s_addr == clientaddr.sin_addr.s_addr)
 			{
@@ -1132,7 +1137,7 @@ cout << "ODEBRALEM size " << n << endl;
 				break;
 			}
 		}
-		if(isUnique)
+		if(isUnique)		//zapisanie adresu wezla do listy peerow danego zasobu
 		{
 			(*resourceIt).peers.push_back(Host(&clientaddr,&length));
 		}
@@ -1140,10 +1145,7 @@ cout << "ODEBRALEM size " << n << endl;
 		uint64_t headerOwner = bytesToLong(header->owner);
 		uint64_t resourceOwner = bytesToLong((*resourceIt).id->owner);
 		found.insert((*resourceIt).id);
-
-
-
-		if(headerOwner != resourceOwner)
+		if(headerOwner != resourceOwner)	//roziwazywanie konfliktow wlascicieli
 		{
 			NetMsg netMsg(header, &clientaddr, &length);
 			if((header->time.ttime) > ((*resourceIt).id->time))
@@ -1175,7 +1177,7 @@ cout << "ODEBRALEM size " << n << endl;
 			}
 		}
 
-		if(parT.find_one || (parT.find_first && found.size() == parT.find_first_count))
+		if(parT.find_one || (parT.find_first && found.size() == parT.find_first_count))	//warunki konca - znalezlismy wymagana ilosc zasobow
 		{
 			break;
 		}
@@ -1185,7 +1187,7 @@ cout << "ODEBRALEM size " << n << endl;
 	{
 		safe_cout("No results!\n>> ");
 	}
-	else
+	else									//wypisanie wynikow wyszukiwania
 	{
 		safe_cout("Results:\n>> ");
 		for(FileID *fid : found) {
@@ -1196,7 +1198,10 @@ cout << "ODEBRALEM size " << n << endl;
 	}
 }
 
-//PORCEDURA WATKU, KTORY WYSYLA KOMUNIKATY FIND, NIE WIEM, CZY NOWY WĄTEK JEST KOCIECZNIE POTRZEBNY
+/*
+	Cialo watku, uruchamianego, by rozeslac komunikaty FIND_MSG
+	z informacjami o zasobach, ktorych szukamy.
+*/
 void* find_msg_sender_thread(void *par)
 {
 	struct CommandData parT;
@@ -1211,15 +1216,18 @@ void* find_msg_sender_thread(void *par)
 }
 
 
-//SPRAWDZENIE CZY MAMY TAKI PLIK, JEZELI TAK TO ODSYLAMY HAS
+/*
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu UP_MSG.
+	Jesli mamy zasob, o ktorym dostalismy inforamacje - odsylamy komunikat
+	HAS_MSG czym powodujemy wywlaszczenie.
+*/
 void* up_msg_reaction(void* par)
 {
 	NetMsg *netMsg = (NetMsg*) par;
 	FileID *myFid;
 	myFid = isFileInStorage(&(netMsg->header));
-	if(myFid!=NULL)// MAMY TEN PLIK!
+	if(myFid!=NULL)// MAMY TEN ZASOB
 	{
-		//std::cout<< "WYWŁASZCZAMYYYY!" << std::endl;
 		printHeader(&netMsg->header);
 		netMsg->setFileId(myFid);
 		netMsg->header.type = HAS_MSG;                                                                                                           
@@ -1228,13 +1236,19 @@ void* up_msg_reaction(void* par)
 	delete netMsg;
 }
 
-//SPRAWDZAMY CZY POSIADAMY PLIK I CZY JEST NASZ, JEZELI NIE WYWLASZCZAMY
+/*
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu HAS_MSG.
+	Jesli z informacji o zasobie wynika, ze mamy do niego przypisanego
+	wlasciciela pasozytniczego - nastepuje zmiana wlasciciela.
+	W razie konfliktow wlascicieli i rownosci czasow dodania - rozsylane jest
+	zadanie natychmiastowego usuniecia zasobu - FORCE_DEL
+*/
 void* has_msg_reaction(void* par)
 {
 	NetMsg *netMsg = (NetMsg*) par;
 	FileID *myFid;
 	myFid = isFileInStorage(&(netMsg->header));
-	if(myFid!=NULL)	// MAMY TEN PLIK!
+	if(myFid!=NULL)	// MAMY TEN ZASOB
 	{
 		uint64_t myOwner = bytesToLong(myFid->owner);
 		uint64_t recOwner = bytesToLong(netMsg->header.owner);
@@ -1243,7 +1257,10 @@ void* has_msg_reaction(void* par)
 			if(netMsg->header.time.ttime < myFid->time)
 			{
 				changeOwner(myFid,netMsg->header.owner, netMsg->header.time.ttime);
-				safe_cout("Your resource (" + string(myFid->name) + " " + to_string(myFid->size)  + "b)confiscated! You were parasitic owner!\n>> ");
+				if(myOwner == get_id())		//to byl nasz zasob - wywlaszczenie
+				{
+					safe_cout("Your resource (" + string(myFid->name) + " " + to_string(myFid->size)  + "b)confiscated! You were parasitic owner!\n>> ");
+				}
 			}
 			else if(netMsg->header.time.ttime == myFid->time)
 			{
@@ -1257,13 +1274,20 @@ void* has_msg_reaction(void* par)
 	delete netMsg;
 }
 
-//NOWY WATEK,JEZELI TO NASZ ZASOB, ODSYLAMY HAS, JEZELI MAMY GO TO USUWAMY I PRZERYWAMY TRANSAKCJE
+/*
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu DEL_MSG.
+	Funkcja natychmiast usuwa zasob, o ktorym otrzymala informacje, jesli go posiada 
+	i spelniony jest ktorys z warunkow:
+	a)informacje o wlascicielach sa zgodne 
+	b)czas dodania zasobu przez wlasciciela uzyskany z wiadomosci jest wczesniejszy niz
+	  zapisany w lokalnym wezle
+*/
 void* del_msg_reaction(void* par)
 {
 	NetMsg *netMsg = (NetMsg*) par;
 	FileID *myFid;
 	myFid = isFileInStorage(&(netMsg->header));
-	if(myFid!=NULL)	// MAMY TEN PLIK!
+	if(myFid!=NULL)	// MAMY TEN ZASOB
 	{
 		uint64_t myOwner = bytesToLong(myFid->owner);
 		uint64_t recOwner = bytesToLong(netMsg->header.owner);
@@ -1279,20 +1303,29 @@ void* del_msg_reaction(void* par)
 	delete netMsg;
 }
 
-//USUN ZASOB BEZ ZBEDNYCH PYTAN
+/*
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FORCE_DEL_MSG lub DONT_MSG.
+	Funkcja natychmiast usuwa zasob, o ktorym otrzymala informacje, jesli go posiada.
+*/
 void* force_del_msg_reaction(void* par)
 {
 	NetMsg *netMsg = (NetMsg*) par;
 	FileID *myFid;
 	myFid = isFileInStorage(&(netMsg->header));
-	if(myFid!=NULL)	// MAMY TEN PLIK!
+	if(myFid!=NULL)	// mamy ten zasob
 	{
 		deleteFile(myFid);
 	}
 	delete netMsg;
 }
 
-//NOWY WATEK, JEZELI MAMY ODSYLAMY HAS
+/*
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FIND_MSG.
+	Fukcja wyszukuje zasoby, ktore pasuja do przyslanych kryteriow wyszukiwania, a ktore
+	mamy sciagniete w calosci. Wysyla informacje o tych zasobach wraz z wiadomoscia HAS_MSG
+	do wezla, od ktorego otrzymalismy komunikat FIND_MSG na port, na ktorym nasłuchuje wątek
+	wyszukiwania zasobow.
+*/
 void* find_msg_reaction(void* par)
 {
 cout << "find_msg_reaction" << endl;
@@ -1309,14 +1342,19 @@ cout << "znalazlem, wysylam: " << fid->name << endl;
 	delete netMsg;
 }
 
-//NOWY WATEK, JEZELI NIE MAMY ZASOBU, DONT
+/*
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu OWN_MSG.
+	Fukcja sprawdza, czy mamy zasob, o ktorym informacje otrzymalismy.
+	Jesli nie, a bylismy jego wlascicielem, odsylamy do wezla, ktory przyslal 
+	nam wiadomosc OWN_MSG komunikat DONT_MSG.
+*/
 void* own_msg_reaction(void* par)
 {
 	NetMsg *netMsg = (NetMsg*) par;
 	FileID *myFid;
 	uint64_t owner = bytesToLong(netMsg->header.owner);
 	myFid = isFileInStorage(&(netMsg->header));
-	if(myFid==NULL && owner==id)	// NIE MAMY PLIKU, A BYLISMY WLASCICIELAMI
+	if(myFid==NULL && owner==id)	// NIE MAMY ZASOBU, A BYLISMY WLASCICIELAMI
 	{	
 		netMsg->header.type = DONT_MSG;
 		send_response(netMsg);
@@ -1324,6 +1362,13 @@ void* own_msg_reaction(void* par)
 	delete netMsg;
 }
 
+/*
+	Funkcja dla każdego zasobu, ktorego nie jest wlascicielem sprawdza, czy
+	wlasciceil nie usunal tego zasobu (wysyla broadcast z informacja o zasobie i
+	komunikatem OWN_MSG)
+	Usuwa takze zasoby, ktorych powiazane pliki sa uszkodzone lub usuniete.
+	Jesli wezel byl wlascicielem tych zasobow, rozsyla wiadomosc o ich usunieciu.
+*/
 void check_files_validations()
 {
 	list<FileID*> fileList = getFileIds();

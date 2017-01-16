@@ -14,6 +14,7 @@
 #include "filedownload.hpp"
 
 
+//sciezka do pliku konfiguracyjnego okreslajacego katalog, do ktorego zapisywane beda sciagniete pliki
 const char* configFilePath = "./p2p.config";
 
 struct mutex_wrapper : std::mutex
@@ -41,7 +42,6 @@ public:
 bool deleteFile(FileID* id);
 vector<Resource>::iterator openResource(ResourceHeader *header);
 vector<FileID*> myFindInStorage(ResourceHeader *header);
-FileID myDeleteFileFileID(string pathName);
 vector<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *isNotEmpty);
 std::vector<Resource> getMetaData();
 void printBits(size_t const size, void const * const ptr);
@@ -50,21 +50,16 @@ void printHost(Host *h);
 void printFileID(FileID *id);
 FileFragment * getFileFragment(FileID *id, long number);
 bool saveFileFragment(FileID *id, FileFragment *fragment);
-bool addEmptyFile(FileID *id);
 bool initiateMutexes();
 bool destroyMutexes();
 void lockMetaDataMutex();
 void unlockMetaDataMutex();
-void findAndLock(FileID id);
-bool findAndUnlock(FileID id);
-bool findAndDelete(FileID id);
 uint64_t get_id();
 void printHeader(ResourceHeader* header);
 uint64_t bytesToLong(const char* bytes);
 std::vector<Resource> metaData;
 pthread_mutex_t metaDataMutex;
 pthread_mutex_t fileMutexDequeMutex;
-vector<mutex_wrapper> mutexVector;
 string returnFilePath(const char * cfg_path, const char *filename);
 vector<string> putToParts(string s, char dividerLeft, char dividerRight);
 string buildFromParts(vector<string> parts,char dividerLeft, char dividerRight);
@@ -101,6 +96,16 @@ bool setFileIsDownloading(vector<Resource>::iterator it)
 	unlockMetaDataMutex();
 }
 
+
+
+/*	Dodanie pliku do wezla.
+	pathName - sciezka do pliku na dysku
+	filename - nazwa, pod jaka plik bedzie udostepniony jako zasob
+	Funkcja tworzy nowy zasob, umieszcza go w vector<Resource> i zwraca do niego iterator.
+	Jesli istnieje już zasob o tej samej nazwie i rozmiarze lub udostepniajacy plik spod tej samej lokalizacji,
+	operacja dodania nie udaje sie i zwracany jest iterator do tego zasobu.
+	Jesli sciezka do pliku jest nieprawidlowa - zwracany jest iterator::end()
+*/
 vector<Resource>::iterator addFile(string pathName, string fileName)
 {
 	string path = pathName;
@@ -124,6 +129,7 @@ vector<Resource>::iterator addFile(string pathName, string fileName)
 	uint64_t uSize = buf.st_size;			
 
 	lockMetaDataMutex();
+
 	//sprawdzenie, czy nie ma resourcu o takej samej nazwie i size
 	for(it = metaData.begin(); it<metaData.end(); it++){
 		if(!strcmp(it->id->name,fileName.c_str()) && it->id->size == uSize){
@@ -158,6 +164,10 @@ vector<Resource>::iterator addFile(string pathName, string fileName)
 }
 
 
+/*
+	Funkcja zwraca liste wszystkich wskazan do struktur FileID zwiazanych
+	z zasobami Resource, wsytepujacymi w bazie wezla (zarowno tych, ktorych jestesmy wlascicielami jak i nie)
+*/
 list<FileID*> getFileIds()
 {
 	list<FileID*> toReturn;
@@ -169,6 +179,12 @@ list<FileID*> getFileIds()
 	return toReturn;
 }
 
+
+/*
+	Funkcja na podstawie przekazanego wskazania na strukture FileID usuwa zwiazany z nia zasob.
+	Usuwa takze plik na dysku, zwiazany z danym zasobem. Zwraca true w przypadku zakonczenia
+	operacji usuniecie zasobu.
+*/
 bool deleteFile(FileID * id)
 {
 	struct stat info;
@@ -192,9 +208,15 @@ bool deleteFile(FileID * id)
 		}
 	}	
 	unlockMetaDataMutex();
-	return true;
+	return false;
 }
 
+/*
+	Na podstawie przekazanego adresu struktury ResourceHeader funkcja zwraca
+	adres struktury FileID, ktora ma zgodne pola name i size z tym, co znajduje sie 
+	w strukturze ResourceHeader. Jesli w bazie zasobow nie ma odpowiadajacego obiektu,
+	funkjca zwraca null.
+*/
 FileID * isFileInStorage(ResourceHeader * header)
 {
 	FileID *toReturn=__null;
@@ -210,6 +232,7 @@ FileID * isFileInStorage(ResourceHeader * header)
 	unlockMetaDataMutex();
 	return __null;
 }
+
 std::vector<Resource> getMetaData(){
 	lockMetaDataMutex();
 	vector<Resource> toReturn = metaData;
@@ -217,6 +240,10 @@ std::vector<Resource> getMetaData(){
 	return toReturn;
 }
 
+/*
+	zmiana wlasciciela zasobu i czasu dodania zasobu, zwiazanego ze struktura FileID pod adresem id
+	
+*/
 bool changeOwner(FileID * id, const char * newOwner, time_t addTime)
 {
 	char * ownerName =(char*)malloc(6);
@@ -226,6 +253,12 @@ bool changeOwner(FileID * id, const char * newOwner, time_t addTime)
 }
 
 
+/*
+	Funkcja zwraca iterator, ktory wskazuje na obiekt Reosurce, ktory mozna
+	zidentyfikowac po strukturze ResourceHeader spod adresu przekazanego jako argument funkcji
+	(zasob o takiej samej nazwie i rozmiarze, jak podaje obiket struktury).
+	Jesli taki zasob nie istnieje w bazie, jest on tworzony.
+*/
 vector<Resource>::iterator openResource(ResourceHeader * header)
 {
 	pthread_mutex_lock(&metaDataMutex);
@@ -292,12 +325,13 @@ bool isValidResource(vector<Resource>::iterator resource)
 }
 
 
-FileIDs findInStorage(ResourceHeader * header)
-{
-	return FileIDs();
-}
-
-
+/*
+	Usuniecie zasobu zwiazanego z plikiem spod lokalizacji podanej w argumencie wywolania.
+	Jesli nie jestesmy wlascicielami zasobu - plik zostaje usuniety z dysku, w przeciwnym
+	wypadku nie jest. Funkcja zwraca strukture FileID zawierajaca informacje o usunietym
+	zasobie. Jesli w bazie nie ma zasobu zwiazanego ze wskazywanym plikiem - pole name
+	w strukturze FileID rowne jest null.
+*/
 FileID deleteFile(string pathName)
 {							
 	FileID toReturn;
@@ -333,6 +367,11 @@ FileID deleteFile(string pathName)
 	return toReturn;
 }
 
+/*
+	Funkcja zwraca liste adresow obiektow struktur FileID, zwiazanych
+	z zasobami, ktorych lokalizacja na dysku jest bledna (plik przeniesiony
+	lub usuniety). Usuwa tez zwiazane obiekty Resource.
+*/
 list<FileID*> getUnlinked()
 {
 	list<FileID*> result;
@@ -342,7 +381,6 @@ list<FileID*> getUnlinked()
 		printFileID(it->id);
 		if( it->missingBlocks.empty() && (stat(it->filePathName.c_str(), &info) != 0))
 		{	
-			std::cout << "Usuniecie zasobu z bledna lokalizacja pliku: " << it->id->name <<endl;
 			result.push_front(it->id);
 			metaData.erase(it);
 			it--;
@@ -352,6 +390,12 @@ list<FileID*> getUnlinked()
 	return result;
 }
 
+/*
+	Funkcja zwraca wektor adresów struktur FileID zwiazanych z zasobami, 
+	ktore mamy w calosci (sciagniety caly plik lub nasz plik),
+	a ktore pasuja do struktury ResourceHeader pod adresem przekazanym do funkcji
+	(pasujace pola name i size).
+*/
 vector<FileID*> myFindInStorage(ResourceHeader *header){
 	vector<FileID*> vector;
 
@@ -452,6 +496,7 @@ void copyBits(void const * const ptrSource,void const * const ptrDest,size_t con
 		bD[i] = byteIn;
 	}
 }
+
 void printFileID(FileID *id){
 	if(id!=__null){
 		cout<<"name: "<<id->name<<" owner:"<< bytesToLong(id->owner)<<" size:"<< id->size;
@@ -509,6 +554,7 @@ FileFragment * getFileFragment(FileID *id, long number){
 	file.close();
 	return ff;
 }
+
 bool saveFileFragment(FileID *id, FileFragment *fragment){
 	vector<Resource>::iterator res;
 	vector<long>::iterator blockToDelete;
@@ -563,45 +609,6 @@ bool saveFileFragment(FileID *id, FileFragment *fragment){
 	
 	return true;
 };
-bool addEmptyFile(FileID *id){
-	
-	lockMetaDataMutex();
-	for(Resource res : metaData){
-		if(strcmp(res.id->name,id->name)==0 && res.id->size==id->size)
-			{
-				unlockMetaDataMutex();
-				return false;
-			}
-	}
-	unlockMetaDataMutex();
-	
-	char cwd[1024];
-	getcwd(cwd, sizeof(cwd));
-	string pathString = string(cwd);
-	pathString+='/';
-	pathString+=string(id->name);
-	Resource *r = new Resource();
-	FileID *newId = new FileID();
-	newId->size = id->size;
-	newId->time = id->time;
-	newId->name = strdup(id->name);
-	newId->owner = strdup(id->owner);
-	r->filePathName = pathString;
-	r->id = newId;
-	r->is_downloading = true;
-	r->peers.clear();
-	for(long i=1;i<=(int)(1+(newId->size)/1024);i++)
-		r->missingBlocks.push_back(i);
-	
-	ofstream fileNew;
-	fileNew.open(pathString);
-	fileNew.close();
-	lockMetaDataMutex();
-	metaData.push_back(*r);
-	unlockMetaDataMutex();
-	delete r;
-	return true;
-}
 
 
 bool initiateMutexes(){
@@ -627,72 +634,11 @@ void unlockMetaDataMutex(){
 	pthread_mutex_unlock(&metaDataMutex);	
 }
 
-//funkja ma bledy, ale chyba niuzywana
-void findAndLock(FileID id){
-	pthread_mutex_lock(&fileMutexDequeMutex);
-	bool locked = false;
-	vector<mutex_wrapper>::iterator toLock;
-	for(vector<mutex_wrapper>::iterator it = mutexVector.begin(); it<mutexVector.end();it++)
-	{
-		if(it->size == id.size && it->name==string(id.name)){
-			toLock = it;
-			locked = true;
-		}
-		
-	}
-	if(!locked)
-	{
-		mutexVector.push_back(*new mutex_wrapper(string(id.name),id.size));
-		for(vector<mutex_wrapper>::iterator it = mutexVector.begin(); it<mutexVector.end();it++)
-		{
-			if(it->size == id.size && it->name==string(id.name)){
-				toLock = it;
-				locked = true;
-			}
-		}
-	}
-	pthread_mutex_unlock(&fileMutexDequeMutex);
-	if(locked)
-		toLock->lock();
-}
-
-//funkja ma bledy, ale chyba niuzywana
-bool findAndUnlock(FileID id){
-	bool lock = false;
-	vector<mutex_wrapper>::iterator toUnlock;
-	pthread_mutex_lock(&fileMutexDequeMutex);
-	for(vector<mutex_wrapper>::iterator it = mutexVector.begin(); it<mutexVector.end();it++)
-	{
-		if(it->size == id.size && it->name==string(id.name)){
-			toUnlock = it;
-			lock = true;
-		}
-	}
-	pthread_mutex_unlock(&fileMutexDequeMutex);
-	if(lock)
-		toUnlock->unlock();
-	return lock;
-}
-
-//funkja ma bledy, ale chyba niuzywana
-bool findAndDelete(FileID id){
-	bool lock = false;
-	pthread_mutex_lock(&fileMutexDequeMutex);
-	vector<mutex_wrapper>::iterator toErase;
-	for(vector<mutex_wrapper>::iterator it = mutexVector.begin(); it<mutexVector.end();it++)
-	{
-		if(it->size == id.size && it->name==string(id.name)){
-			it->size = 0;
-			it->name = "";
-			lock = true;
-			break;
-		}
-	}
-	pthread_mutex_unlock(&fileMutexDequeMutex);
-	return lock;
-
-}
-
+/*
+	Funkcja zwraca id wezla na podstawie adresu MAC karty sieciowej.
+	Preferowana jest karta ethernetowa, jesli takiej nie ma - pobierany
+	jest adres MAC pierwszej karty sieciowej z listy.
+*/
 uint64_t get_id()
 {
     uint64_t id = 0;
@@ -969,7 +915,9 @@ bool deserializeMetaData(){
 	return true;
 }
 
-
+/*
+	Pomocnicza funkcja, konwertujaca liczbe zakodowana w 6 bajtach na uint64_t
+*/
 uint64_t bytesToLong(const char* bytes)
 {
 	union ByteLong{
@@ -994,6 +942,12 @@ void printHeader(ResourceHeader* header)
 }
 
 
+/*
+	Funkcja zwraca w postaci string'a wygenerowana sciezke do pliku o nazwie filename i tworzy tam pusty plik.
+	cfg_path to sciezka do pliku konfiguracyjnego, w ktorym znajdziemy lokalizacje katalogu, w ktorym znalezc ma sie plik.
+	Funkcja zwraca pusty string, jesli nie mozna otworzyc pliku konfiguracyjnego, podana tam sciezka jest nieprawidlowa lub
+	nie mozna utworzyc nowego, pustego pliku.
+*/
 string returnFilePath(const char * cfg_path, const char *filename)
 {
 	struct stat info;
@@ -1006,6 +960,11 @@ string returnFilePath(const char * cfg_path, const char *filename)
 	configFile.getline(directorypath, 400);
 	configFile.close();
 	string fName(filename);
+	if(!stat(directorypath,&info))
+	{
+		perror("Directory path given in congiuration file is invalid.\n");
+		return "";
+	}
 	string filePath = string(directorypath) + "/" +  fName;
 	if (!stat(filePath.c_str(), &info))
 	{
