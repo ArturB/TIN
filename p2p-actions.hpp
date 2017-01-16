@@ -303,12 +303,6 @@ void* response_down_tcp(void* par)
 
 	rec_bytes = recvfrom(msgsock, &down_msg, sizeof(down_msg), 0, (struct sockaddr *) &clientaddr,  &length);
 
-	if (rec_bytes < 0)
-	{
-		close(msgsock);	
-		return NULL;
-	}
-
 	if (rec_bytes < sizeof(down_msg))
 	{
 		close(msgsock);
@@ -471,19 +465,22 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 	int rec_bytes, tmp_rec_bytes;
 	rec_bytes = 0;
 
+
 	while(rec_bytes != sizeof(FileFragment))
 	{
+        cout << "PETLA 1" << endl;
 		tmp_rec_bytes = recvfrom((*host)->sock, &file_fragment + rec_bytes, sizeof(FileFragment) - rec_bytes, 0, (struct sockaddr *) clientaddr,  (socklen_t*) &length);
 
-		if (tmp_rec_bytes <= 0)
+		if (tmp_rec_bytes <= 8)
 		{
 			close((*host)->sock);	
 			(*host) = file_downloading->using_hosts.erase((*host));
 			return false;
 		}
 		rec_bytes += tmp_rec_bytes;
+        cout << "KONIEC : " << rec_bytes << endl;
 	}
-
+    cout << "odebralem fragment numer " << file_fragment.number << endl;
 
 	if(file_fragment.number == 0)
 	{
@@ -500,7 +497,7 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 	vector<Resource>::iterator* res = file_downloading->file;
 	if((*host)->is_all_fragments() && (*res)->missingBlocks.size()!= 0) 
 	{
-		if(file_downloading->speed_in_hosts((*host)->get_speed()) == HOST_NUMER)
+		if(file_downloading->speed_in_hosts((*host)->get_speed()) == HOST_NUMER && HOST_NUMER != 1)
 		{
 			close((*host)->sock);
 			file_downloading->avaiable_hosts.push_back(*(*host));
@@ -531,6 +528,8 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 			{
 				if(!send_down_message(&msg, (*host)->sock))
 					(*host) = file_downloading->using_hosts.erase((*host));
+                cout << "zapytanie o " << (*host)->portion << endl;
+
 			}
 			else
 			{
@@ -751,40 +750,48 @@ void* download_file(void* par)
 				find_thread((void*)&command_data);
 
 				file_downloading.avaiable_hosts = file->peers;
-				sleep(TIMEOUT_SEC_FIND_AGAIN);
+				if(file_downloading.avaiable_hosts.size() == 0)
+                                    sleep(TIMEOUT_SEC_FIND_AGAIN);
 			}
-			
+			cout << "jestem po petli finda" << endl;
 			while(file_downloading.using_hosts.size() < HOST_NUMER && file_downloading.avaiable_hosts.size() > 0)
 			{
+                cout << " BALLLLLLLLLLLLLLLLLLLLLBBBBBINKAAAAAAAAAAAAA! " << endl;
 				deque<Host>::iterator iterator = file_downloading.avaiable_hosts.begin();
-				file_downloading.using_hosts.push_back(*iterator);
-				file_downloading.avaiable_hosts.erase(iterator);
+                Host* tmp = &(*iterator);
 
-				Host* tmp = &file_downloading.using_hosts.back();
 
+				
 				if(tmp->connect_host_socket())
 				{
 					int intervals_count;
 					fragment_counter = get_next_fragments(down_msg.fragments, &file->missingBlocks, &intervals_count, START_FRAGMENT_COUNT, fragment_counter);
-					send_down_message(&down_msg, tmp->sock);
+					if(send_down_message(&down_msg, tmp->sock))
+                                        {
+                                            file_downloading.using_hosts.push_back(*iterator);
+                                            file_downloading.avaiable_hosts.erase(iterator);
+                                        }
 				}
 				else
-				{
-					file_downloading.using_hosts.pop_back();
-				}
+                                    file_downloading.avaiable_hosts.erase(iterator);
+
 			} 
 		} 
-
+cout << "a" << endl;
 		FD_ZERO(&descriptors);
-
+cout << "awwww" << endl;
 		it = file_downloading.using_hosts.begin();
+cout << "a2" << endl;
 		while(it != file_downloading.using_hosts.end())
 		{
+cout << it->sock << endl;
+cout << "a3" << endl;
 			FD_SET(it->sock, &descriptors);
-			++it;
+cout << " MIEJSCE 1" << endl;
+                        ++it;
 		}
 
-
+cout << "b" << endl;
 		if(!isValidResource(getResource(&header)))
 		{
 			write_progress_of_download(&file, true);
@@ -794,27 +801,28 @@ void* download_file(void* par)
 
 		if(select(65536, &descriptors, (fd_set *) NULL, (fd_set *) NULL, &timeout) < 0 )
 		{
+cout << " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa " << endl;
 			close_hosts_sockets(&file_downloading.using_hosts);
-			return NULL;
+			file_downloading.using_hosts.clear();
+			file_downloading.avaiable_hosts.clear();
+                        continue;
 		}
 
 		recive_any_fragment = false;
 		it = file_downloading.using_hosts.begin();
 		while(it != file_downloading.using_hosts.end())
 		{
-
 			if (FD_ISSET(it->sock, &descriptors))
 			{
-
 				if(recive_fragment(&it, &file_downloading, &fragment_counter))
-{
+                {
 					recive_any_fragment = true;
-}
+                }
 			}
 			if(it != file_downloading.using_hosts.end())
 				++it;
 		}
-
+//cout << "MIEJSCE 3" << endl;
 
 		double percent = ((double)(file_downloading.fragments - file->missingBlocks.size())/((double)file_downloading.fragments));
 		percent *= 100;
@@ -825,6 +833,7 @@ void* download_file(void* par)
 			info_message = (int)percent/5;
 			write_progress_of_download(&file, false);
 		}
+		write_progress_of_download(&file, false);
 
 		
 		if(file->missingBlocks.size() == 0)
@@ -839,7 +848,7 @@ void* download_file(void* par)
 			close_hosts_sockets(&file_downloading.using_hosts);
 			file_downloading.using_hosts.clear();
 			file_downloading.avaiable_hosts.clear();
-
+//cout << "aw" << endl;
 		}
 	}
 
@@ -1097,7 +1106,7 @@ void* find_thread(void* par) {
 	time_t now = time(0);
 
 
-	while(time(0) - now < 2)
+	while(time(0) - now < 5)
 	{
 cout << "CZEKAM NA WIADOMOSC" << endl;
 		n = recvfrom(sock, header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);

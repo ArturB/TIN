@@ -42,7 +42,7 @@ class Host
 				perror("Opening stream socket");
 				return false;
 			}
-			
+
 			if (connect(sock, (sockaddr*)(&addr), addr_length) < 0)
 			{
 				perror("Connect error");

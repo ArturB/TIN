@@ -34,11 +34,11 @@ const int PORT = 35787;
 const int FIND_PORT = 35788;
 
 //Liczbe maszyn od których pobieramy jednoczesnie jeden plik.
-const int HOST_NUMER = 10;
+const int HOST_NUMER = 1;
 //Startowa liczba fragmentów w zapytaniu DOWN.
-const int START_FRAGMENT_COUNT = 20;
+const int START_FRAGMENT_COUNT =  1024;
 //Czas oczekiwania na najbliższy fragment w procesie pobierania.
-const int TIMEOUT_SEC = 10;
+const int TIMEOUT_SEC = 3;
 //Czas oczekiwania na rozesłanie zapytania FIND w procesie pobierania z którym nie są skojarzone żadne maszyny.
 const int TIMEOUT_SEC_FIND_AGAIN = 2;
 //Współczynnik zwiększania liczności fragmentów w zapydaniu DOWN.
