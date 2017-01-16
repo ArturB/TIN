@@ -288,6 +288,7 @@ vector<Resource>::iterator openResource(ResourceHeader * header)
 	resource.id = newID;
 	resource.id->name = headerName;
 	resource.id->owner = ownerName;
+	resource.is_downloading = false;
 	for (long i = 1; i <= ((long)(resource.id->size / 1024)); i++)
 		resource.missingBlocks.push_back(i);
 
@@ -1072,11 +1073,6 @@ string returnFilePath(const char * cfg_path, const char *filename)
 	configFile.getline(directorypath, 400);
 	configFile.close();
 	string fName(filename);
-	if(!stat(directorypath,&info))
-	{
-		perror("Directory path given in congiuration file is invalid.\n");
-		return "";
-	}
 	string filePath = string(directorypath) + "/" +  fName;
 	if (!stat(filePath.c_str(), &info))
 	{
