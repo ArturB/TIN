@@ -17,6 +17,10 @@
 //sciezka do pliku konfiguracyjnego okreslajacego katalog, do ktorego zapisywane beda sciagniete pliki
 const char* configFilePath = "./p2p.config";
 
+/*
+	struktura opakujaca std::mutex. Pozwala na przechowywanie go w deque.
+	Przechowuje nazwe i size pliku, ktoremu odpowiada mutex.
+*/
 struct mutex_wrapper : std::mutex
 {
 	mutex_wrapper() = default;
