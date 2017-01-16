@@ -607,8 +607,6 @@ bool saveFileFragment(FileID *id, FileFragment *fragment){
 		unlockMetaDataMutex();
 		return true;	
 	}
-	
-	//res->missingBlocks.erase(blockToDelete);
 	string resFilePathName = res->filePathName;
 	uint64_t resSize = res->id->size;
 	unlockMetaDataMutex();
@@ -628,13 +626,13 @@ bool saveFileFragment(FileID *id, FileFragment *fragment){
 		amountToWrite = (resSize-(fragment->number-1)*1024)%1025;
 	file.write((char*)fragment->byteArray,amountToWrite);
 	file.close();
-        
-        lockMetaDataMutex();
-        
-        res->missingBlocks.erase(blockToDelete);
-        
+
+	lockMetaDataMutex();
+		
+	res->missingBlocks.erase(blockToDelete);
+
         unlockMetaDataMutex();
-	
+
 	return true;
 };
 
