@@ -831,6 +831,7 @@ FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 	toReturn->owner = ownerId;
 	toReturn->size = stringToT<uint64_t>(parts.at(2));
 	toReturn->time = stringToT<time_t>(parts.at(3));
+	delete[] ownerId;
 	return toReturn;
 }
 /*
@@ -849,6 +850,7 @@ string ser2FileID(FileID *id, char dividerLeft, char dividerRight){
 	parts.push_back(tToString<uint64_t>(size));
 	parts.push_back(tToString<time_t>(time));
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
+	delete[] name;
 	return toReturn;
 }
 /*
@@ -891,7 +893,6 @@ string ser2Host(Host *host, char dividerLeft, char dividerRight){
 	parts.push_back(tToString(addr_length));
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
-
 }
 
 /*
@@ -937,6 +938,7 @@ deque<Host> *des2dequeHost(string build, char dividerLeft, char dividerRight){
 	for(string part : parts){
 		h = des2Host(part,dividerLeft,dividerRight);
 		toReturn->push_back(*h);
+		delete h;
 	}
 	return toReturn;
 }
