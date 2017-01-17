@@ -26,6 +26,7 @@
 #include <sstream>
 #include <vector>
 #include <deque>
+#include <list>
 
 using namespace std;
 
@@ -51,7 +52,7 @@ const int TCP_ONE_TIME_CONNECTION = 5;
 const int TIMEOUT_FIND = 2;
 
 //Możliwe typy wiadomości.
-enum MsgType {UP_MSG, HAS_MSG, DEL_MSG, FORCE_DEL_MSG, FIND_MSG, DOWN_MSG, CANT_MSG, OWN_MSG, DONT_MSG};
+enum MsgType {UP_MSG, HAS_MSG, DEL_MSG, FORCE_DEL_MSG, FIND_MSG, DOWN_MSG, OWN_MSG, DONT_MSG};
 
 
 #endif

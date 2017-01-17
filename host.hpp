@@ -45,7 +45,6 @@ class Host
 
 			if (connect(sock, (sockaddr*)(&addr), addr_length) < 0)
 			{
-				perror("Connect error");
 				return false;
 			}
 

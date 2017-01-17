@@ -44,10 +44,10 @@ public:
 
 
 bool deleteFile(FileID* id);
-vector<Resource>::iterator openResource(ResourceHeader *header);
+list<Resource>::iterator openResource(ResourceHeader *header);
 vector<FileID*> myFindInStorage(ResourceHeader *header);
-vector<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *isNotEmpty);
-std::vector<Resource> getMetaData();
+list<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *isNotEmpty);
+std::list<Resource> getMetaData();
 void printBits(size_t const size, void const * const ptr);
 void copyBits(void const * const ptrSource,void const * const ptrDest,size_t const size);
 void printHost(Host *h);
@@ -61,7 +61,7 @@ void unlockMetaDataMutex();
 uint64_t get_id();
 void printHeader(ResourceHeader* header);
 uint64_t bytesToLong(const char* bytes);
-std::vector<Resource> metaData;
+std::list<Resource> metaData;
 pthread_mutex_t metaDataMutex;
 pthread_mutex_t fileMutexDequeMutex;
 string returnFilePath(const char * cfg_path, const char *filename);
@@ -82,10 +82,10 @@ string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight);
 bool serializeMetaData();
 bool deserializeMetaData();
 list<FileID*> getUnlinked();
-bool fileIsDownloading(vector<Resource>::iterator it);
-bool setFileIsDownloading(vector<Resource>::iterator it);
+bool fileIsDownloading(list<Resource>::iterator it);
+bool setFileIsDownloading(list<Resource>::iterator it);
 
-bool fileIsDownloading(vector<Resource>::iterator it)
+bool fileIsDownloading(list<Resource>::iterator it)
 {
 	lockMetaDataMutex();
 	bool result = it->is_downloading;
@@ -93,7 +93,7 @@ bool fileIsDownloading(vector<Resource>::iterator it)
 	return result;
 }
 
-bool setFileIsDownloading(vector<Resource>::iterator it)
+bool setFileIsDownloading(list<Resource>::iterator it)
 {
 	lockMetaDataMutex();
 	it->is_downloading = true;
@@ -105,18 +105,18 @@ bool setFileIsDownloading(vector<Resource>::iterator it)
 /*	Dodanie pliku do wezla.
 	pathName - sciezka do pliku na dysku
 	filename - nazwa, pod jaka plik bedzie udostepniony jako zasob
-	Funkcja tworzy nowy zasob, umieszcza go w vector<Resource> i zwraca do niego iterator.
+	Funkcja tworzy nowy zasob, umieszcza go w list<Resource> i zwraca do niego iterator.
 	Jesli istnieje już zasob o tej samej nazwie i rozmiarze lub udostepniajacy plik spod tej samej lokalizacji,
 	operacja dodania nie udaje sie i zwracany jest iterator do tego zasobu.
 	Jesli sciezka do pliku jest nieprawidlowa - zwracany jest iterator::end()
 */
-vector<Resource>::iterator addFile(string pathName, string fileName)
+list<Resource>::iterator addFile(string pathName, string fileName)
 {
 	string path = pathName;
-	vector<Resource>::iterator it;
+	list<Resource>::iterator it;
 
 	lockMetaDataMutex();
-	for(it = metaData.begin(); it<metaData.end(); it++){
+	for(it = metaData.begin(); it != metaData.end(); it++){
 		if(it->filePathName == path){
 			unlockMetaDataMutex();
 			return it;
@@ -135,7 +135,7 @@ vector<Resource>::iterator addFile(string pathName, string fileName)
 	lockMetaDataMutex();
 
 	//sprawdzenie, czy nie ma resourcu o takej samej nazwie i size
-	for(it = metaData.begin(); it<metaData.end(); it++){
+	for(it = metaData.begin(); it != metaData.end(); it++){
 		if(!strcmp(it->id->name,fileName.c_str()) && it->id->size == uSize){
 			unlockMetaDataMutex();
 			return it;
@@ -193,7 +193,7 @@ bool deleteFile(FileID * id)
 {
 	struct stat info;
 	lockMetaDataMutex();
-	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();it++){
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
 		if(strcmp(it->id->name,id->name)==0 && id->size == it->id->size)
 		{
 			if (!stat((it->filePathName).c_str(), &info))
@@ -237,9 +237,9 @@ FileID * isFileInStorage(ResourceHeader * header)
 	return __null;
 }
 
-std::vector<Resource> getMetaData(){
+std::list<Resource> getMetaData(){
 	lockMetaDataMutex();
-	vector<Resource> toReturn = metaData;
+	list<Resource> toReturn = metaData;
 	unlockMetaDataMutex();
 	return toReturn;
 }
@@ -263,11 +263,11 @@ bool changeOwner(FileID * id, const char * newOwner, time_t addTime)
 	(zasob o takiej samej nazwie i rozmiarze, jak podaje obiket struktury).
 	Jesli taki zasob nie istnieje w bazie, jest on tworzony.
 */
-vector<Resource>::iterator openResource(ResourceHeader * header)
+list<Resource>::iterator openResource(ResourceHeader * header)
 {
 	pthread_mutex_lock(&metaDataMutex);
 	
-	for(vector<Resource>::iterator it = metaData.begin(); it!=metaData.end();it++){
+	for(list<Resource>::iterator it = metaData.begin(); it!=metaData.end();it++){
 		if(strcmp(it->id->name,header->name)==0 && it->id->size == header->size.longNum){
 			pthread_mutex_unlock(&metaDataMutex);
 			return it;
@@ -299,17 +299,17 @@ vector<Resource>::iterator openResource(ResourceHeader * header)
 	resource.filePathName = "";
 	pthread_mutex_lock(&metaDataMutex);
 	metaData.push_back(resource);
-	vector<Resource>::iterator resourceIt = metaData.end();
+	list<Resource>::iterator resourceIt = metaData.end();
 	resourceIt--;
 	pthread_mutex_unlock(&metaDataMutex);
 	return resourceIt;
 }
 
-vector<Resource>::iterator getResource(ResourceHeader * header)
+list<Resource>::iterator getResource(ResourceHeader * header)
 {
 	pthread_mutex_lock(&metaDataMutex);
 
-	for(vector<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
 		if(strcmp(it->id->name,header->name)==0 && it->id->size == header->size.longNum){
 			pthread_mutex_unlock(&metaDataMutex);
 			return it;
@@ -319,7 +319,7 @@ vector<Resource>::iterator getResource(ResourceHeader * header)
 	return metaData.end();
 }
 
-bool isValidResource(vector<Resource>::iterator resource)
+bool isValidResource(list<Resource>::iterator resource)
 {
 	pthread_mutex_lock(&metaDataMutex);
 
@@ -343,7 +343,7 @@ FileID deleteFile(string pathName)
 	
 	lockMetaDataMutex();
 	
-	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();it++){
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
 		if(it->filePathName == pathName)
 		{	
 			toReturn.name = it->id->name;
@@ -382,7 +382,7 @@ list<FileID*> getUnlinked()
 	list<FileID*> result;
 	lockMetaDataMutex();
 	struct stat info;
-	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();it++){
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
 		printFileID(it->id);
 		if( it->missingBlocks.empty() && (stat(it->filePathName.c_str(), &info) != 0))
 		{	
@@ -435,12 +435,12 @@ vector<FileID*> myFindInStorage(ResourceHeader *header){
 	return vector;
 }
 
-vector<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *isNotEmpty){
-	vector<Resource>::iterator toReturn;
+list<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *isNotEmpty){
+	list<Resource>::iterator toReturn;
 	char *headerName = strdup(header->name);
 
 	lockMetaDataMutex();
-	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();it++){
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
 		if(strcmp(it->id->name,headerName)==0 && it->id->size == header->size.longNum){
 
 			unlockMetaDataMutex();
@@ -532,8 +532,8 @@ FileFragment * getFileFragment(FileID *id, long number){
 	ff->number = number;
 	
 	lockMetaDataMutex();
-	vector<Resource>::iterator res;
-	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();++it){
+	list<Resource>::iterator res;
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();++it){
 		if(it->id->size == id->size && strcmp(it->id->name,id->name)==0)
 		{	res = it;
 			for(long l : it->missingBlocks){
@@ -578,7 +578,7 @@ FileFragment * getFileFragment(FileID *id, long number){
 	Zwraca false jezeli zapis sie nie powiodl, plik nie istnial w pamieci badz w metaDanych.
 */
 bool saveFileFragment(FileID *id, FileFragment *fragment){
-	vector<Resource>::iterator res;
+	list<Resource>::iterator res;
 	vector<long>::iterator blockToDelete;
 	bool isMissing = false;
 	char* fileName = strdup(id->name);
@@ -586,7 +586,7 @@ bool saveFileFragment(FileID *id, FileFragment *fragment){
 	
 	lockMetaDataMutex();
 	
-	for(vector<Resource>::iterator it = metaData.begin(); it<metaData.end();++it){
+	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();++it){
 		if(strcmp(it->id->name,fileName)==0 && it->id->size==fileSize){
 			res = it;
 			for(vector<long>::iterator lit = res->missingBlocks.begin(); lit<res->missingBlocks.end();lit++)
@@ -996,7 +996,7 @@ string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight){
 */
 bool serializeMetaData(){
 	lockMetaDataMutex();
-	vector<Resource> container = metaData;
+	list<Resource> container = metaData;
 	unlockMetaDataMutex();
 	vector<string> lines;
 	for(Resource r : container)
@@ -1012,12 +1012,12 @@ bool serializeMetaData(){
 }
 
 /*
-	Otwiera plik z metaData _metaData.txt i deserializuje go w vector<Resource>
+	Otwiera plik z metaData _metaData.txt i deserializuje go w list<Resource>
 	bedacy metadanymi. 
 	Zwraca true jezeli udalo jej sie odnalezc odpowiedni plik _metaData.txt
 */
 bool deserializeMetaData(){
-	vector<Resource> container;
+	list<Resource> container;
 	ifstream file("_metaData.txt");
 	if(!file.good())
 		return false;
