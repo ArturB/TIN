@@ -73,7 +73,7 @@ pthread_mutex_t cmtx;
 
 //Komunikaty
 const char* welcome = 
-	"Welcome in Pompous AAP File Transfer Protocol v1.0!\nRemember: your computer is your friend.\nPlease type a command now.\n";
+	"Welcome in Pompous AAP File Transfer Protocol v1.0!\nRemember: your computer is your friend.\n\n";
 const char* prompt = ">> ";
 const char* errMsg = "command error"; 
 const char* threadFailed = "Creating command thread failed!\n>> ";
@@ -91,15 +91,6 @@ uint64_t id;
 /***************************
 	    PROCEDURY
  ***************************/
-
-//Metoda wypisująca identyfikator.
-void printFileID(FileID f) {
-	if(f.name)
-		cout<<"Name: "<<f.name<<", ";
-	if(f.size)
-		cout<<"Size: "<<f.size;
-	cout<<". "<<endl;
-}
 
 //Bezpieczne wypisywanie na stdout z relizacją wzajemnego wykluczania.
 void safe_cout(string str) {
@@ -122,7 +113,7 @@ void main_init() {
 	initiateMutexes();
 	id = get_id();
 	//Tu jest deserializacja
-	std::cout << "Loading metadata:" << deserializeMetaData() << std::endl;
+	safe_cout("Loading metadata:" + to_string(deserializeMetaData()) + "\n");
 
 	pthread_t receiverThreadUDP;
 	if(pthread_create(&receiverThreadUDP, NULL, receiver_thread_UDP, NULL)) 
@@ -145,7 +136,7 @@ void main_destroy() {
 	pthread_mutex_destroy(&termtx);
 	pthread_mutex_destroy(&cmtx);
 	destroyMutexes();
-	std::cout << "Save metadata:" << serializeMetaData() << std::endl;
+	safe_cout("Loading metadata:" + to_string(serializeMetaData()) + "\n");
 }
 
 
@@ -297,7 +288,6 @@ void* response_down_tcp(void* par)
 	socklen_t length;
 	struct sockaddr_in clientaddr;
 	length = sizeof(clientaddr);
-cout<<"przed rec_bytes"<<endl;
 	rec_bytes = recvfrom(msgsock, &down_msg, sizeof(down_msg), 0, (struct sockaddr *) &clientaddr,  &length);
 	if (rec_bytes < sizeof(down_msg))
 	{
@@ -344,7 +334,7 @@ cout<<"przed rec_bytes"<<endl;
 					(sockaddr *)&clientaddr, sizeof(&clientaddr)) < 0)
 				{
 					delete file_fragment;
-					close(msgsock);cout<<"cokolwiek 1\n";
+					close(msgsock);
 					return NULL;		
 				}
 				delete file_fragment;
@@ -787,7 +777,6 @@ void* download_file(void* par)
 			file_downloading.using_hosts.clear();
 			file_downloading.avaiable_hosts.clear();
                         continue;
-                        //return NULL;
 		}
 
 		recive_any_fragment = false;
@@ -1024,9 +1013,8 @@ void send_response(NetMsg *data, int port)
 //procedura wołana przez komendę find
 void find_action() {
 	pthread_t findThread;
-	if(
-		pthread_create(&findThread, NULL, find_thread, (void*)&cmdata)
-	) { // błąd przy tworzeniu wątku
+	if(pthread_create(&findThread, NULL, find_thread, (void*)&cmdata))
+	{
 		safe_cout(threadFailed);
 	}
 }
@@ -1064,8 +1052,8 @@ void* find_thread(void* par) {
 
 	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO,(struct timeval *)&tv,sizeof(struct timeval));
 	int optval = 1;
-	setsockopt(sock, SOL_SOCKET, SO_REUSEPORT,&optval,sizeof(optval));		
-	
+	setsockopt(sock, SOL_SOCKET, SO_REUSEPORT,&optval,sizeof(optval));
+
 	server.sin_family= AF_INET;
 	server.sin_addr.s_addr = htonl(INADDR_ANY);
 	server.sin_port = htons(FIND_PORT);
@@ -1080,7 +1068,8 @@ void* find_thread(void* par) {
 	safe_cout("Searching...\n>> ");
 
 	pthread_t find_msg_sender;
-	if(pthread_create(&find_msg_sender, NULL, find_msg_sender_thread, &parT)) { // błąd przy tworzeniu wątku
+	if(pthread_create(&find_msg_sender, NULL, find_msg_sender_thread, &parT)) // błąd przy tworzeniu wątku
+	{ 
 		safe_cout(threadFailed);
 		return NULL;
 	}
@@ -1090,7 +1079,6 @@ void* find_thread(void* par) {
 	while(time(0) - now < TIMEOUT_FIND)
 	{
 		n = recvfrom(sock, header, MIN_MSG_SIZE, 0, (struct sockaddr *) &clientaddr,  &length);
-cout << "ODEBRALEM size " << n << endl;
 		if(errno == EAGAIN || errno == EWOULDBLOCK)	//timeout
 		{
 			errno = 0;
@@ -1160,6 +1148,8 @@ cout << "ODEBRALEM size " << n << endl;
 					netMsg.setReceiver(h);
 					send_response(&netMsg);					
 				}
+				safe_cout("OWNERS CONFLICT. RESOURCE DELETED!\n>>Name: " + string((*resourceIt).id->name) + "; Owner:" 
+							+ to_string(bytesToLong((*resourceIt).id->owner)) + "; Size:" + to_string((*resourceIt).id->size) + "\n>>");
 				deleteFile((*resourceIt).id);
 			}
 		}
@@ -1177,10 +1167,8 @@ cout << "ODEBRALEM size " << n << endl;
 	{
 		safe_cout("Results:\n>> ");
 		for(FileID *fid : found) {
-			printFileID(*fid);
+				safe_cout("Name: " + string(fid->name) + ", size: " + to_string(fid->size) + "\n>> ");
 		}
-		safe_cout("\n>> ");
-
 	}
 }
 
@@ -1192,7 +1180,6 @@ void* find_msg_sender_thread(void *par)
 {
 	struct CommandData parT;
 	parT.ids = ((struct CommandData*)par)->ids;
-	cout<<"FileIDs: "<<parT.ids.size<<endl;
 	for(unsigned i = 0; i < parT.ids.size; ++i) {
 		NetMsg netMsg;
 		netMsg.setFileId(&parT.ids.ids[i]);
@@ -1214,7 +1201,6 @@ void* up_msg_reaction(void* par)
 	myFid = isFileInStorage(&(netMsg->header));
 	if(myFid!=NULL)// MAMY TEN ZASOB
 	{
-		printHeader(&netMsg->header);
 		netMsg->setFileId(myFid);
 		netMsg->header.type = HAS_MSG;                                                                                                           
 		send_response(netMsg);
@@ -1250,7 +1236,7 @@ void* has_msg_reaction(void* par)
 			}
 			else if(netMsg->header.time.ttime == myFid->time)
 			{
-				safe_cout("A conflict of adding the same resource by different users\n>> ");
+				safe_cout("A conflict of adding the same resource by different users. Resource deleted\n>> ");
 				netMsg->header.type = FORCE_DEL_MSG;
 				send_response(netMsg);
 				deleteFile(myFid);
@@ -1279,10 +1265,12 @@ void* del_msg_reaction(void* par)
 		uint64_t recOwner = bytesToLong(netMsg->header.owner);
 		if(myOwner == recOwner)
 		{
+			safe_cout("RESOURCE DELETED!\n>>Name: " + string(myFid->name) + "; Owner:" + to_string(bytesToLong(myFid->owner)) + "; Size:" + to_string(myFid->size) + "\n>>");
 			deleteFile(myFid);
 		}
 		else if(netMsg->header.time.ttime < myFid->time)
 		{
+			safe_cout("RESOURCE DELETED!\n>>Name: " + string(myFid->name) + "; Owner:" + to_string(bytesToLong(myFid->owner)) + "; Size:" + to_string(myFid->size) + "\n>>");
 			deleteFile(myFid);
 		}
 	}
@@ -1300,6 +1288,7 @@ void* force_del_msg_reaction(void* par)
 	myFid = isFileInStorage(&(netMsg->header));
 	if(myFid!=NULL)	// mamy ten zasob
 	{
+		safe_cout("RESOURCE DELETED!\n>>Name: " + string(myFid->name) + "; Owner:" + to_string(bytesToLong(myFid->owner)) + "; Size:" + to_string(myFid->size) + "\n>>");
 		deleteFile(myFid);
 	}
 	delete netMsg;
@@ -1358,10 +1347,13 @@ void check_files_validations()
 	list<FileID*> fileList = getFileIds();
 	NetMsg netMsg;
 	netMsg.header.type = OWN_MSG;
+	if(!fileList.empty())
+		safe_cout(">>Resources in storage:\n");
 	for(FileID* fid : fileList)
 	{
 		if(bytesToLong(fid->owner) != id)
 		{
+			safe_cout("Name: " + string(fid->name) + "; Owner:" + to_string(bytesToLong(fid->owner)) + "; Size:" + to_string(fid->size) + "\n");
 			netMsg.setFileId(fid);
 			send_broadcast(&(netMsg.header));
 		}
@@ -1369,8 +1361,13 @@ void check_files_validations()
 
 	fileList = getUnlinked();
 	netMsg.header.type = DEL_MSG;
+	if(!fileList.empty())
+	{
+		safe_cout(">>Resources with invalid path, deleted:\n");
+	}
 	for(FileID* fid : fileList)
 	{
+		safe_cout("Name: " + string(fid->name) + "; Owner:" + to_string(bytesToLong(fid->owner)) + "; Size:" + to_string(fid->size) + "\n");
 		if(bytesToLong(fid->owner) == id)
 		{
 			netMsg.setFileId(fid);

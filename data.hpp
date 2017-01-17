@@ -48,10 +48,6 @@ list<Resource>::iterator openResource(ResourceHeader *header);
 vector<FileID*> myFindInStorage(ResourceHeader *header);
 list<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *isNotEmpty);
 std::list<Resource> getMetaData();
-void printBits(size_t const size, void const * const ptr);
-void copyBits(void const * const ptrSource,void const * const ptrDest,size_t const size);
-void printHost(Host *h);
-void printFileID(FileID *id);
 FileFragment * getFileFragment(FileID *id, long number);
 bool saveFileFragment(FileID *id, FileFragment *fragment);
 bool initiateMutexes();
@@ -59,7 +55,6 @@ bool destroyMutexes();
 void lockMetaDataMutex();
 void unlockMetaDataMutex();
 uint64_t get_id();
-void printHeader(ResourceHeader* header);
 uint64_t bytesToLong(const char* bytes);
 std::list<Resource> metaData;
 pthread_mutex_t metaDataMutex;
@@ -198,8 +193,6 @@ bool deleteFile(FileID * id)
 		{
 			if (!stat((it->filePathName).c_str(), &info))
 			{
-				cout << "Resource deleted! name: " +  string(it->id->name)  +  "; size: "  +  to_string(it->id->size) << endl;
-				cout << flush;
 				if( remove((it->filePathName).c_str()) != 0 )
 	    				perror( "Error while deleting physical file" );
 			}
@@ -356,9 +349,8 @@ FileID deleteFile(string pathName)
 				struct stat info;
 				if (!stat((it->filePathName).c_str(), &info))
 				{
-					cout << "Resource deleted! name: " << it->id->name << "; size: " << to_string(it->id->size) << endl;
 					if( remove((it->filePathName).c_str()) != 0 )
-	    					perror( "Error while deleting physical file" );
+	    					perror("Error while deleting physical file. " );
 				}
 			}
 			metaData.erase(it);
@@ -383,7 +375,6 @@ list<FileID*> getUnlinked()
 	lockMetaDataMutex();
 	struct stat info;
 	for(list<Resource>::iterator it = metaData.begin(); it != metaData.end();it++){
-		printFileID(it->id);
 		if( it->missingBlocks.empty() && (stat(it->filePathName.c_str(), &info) != 0))
 		{	
 			result.push_front(it->id);
@@ -451,67 +442,6 @@ list<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *is
 	unlockMetaDataMutex();
 	*isNotEmpty = false;
 	return toReturn;
-}
-
-
-void printHost(Host *h){
-	if(h!=__null){
-		cout<<h->sock<<" "<<h->asked_fragment<<" "<<h->get_fragment<<" "<<h->portion<<" ";
-		cout<<h->time_of_start<<" "<<h->addr.sin_family<<" "<<h->addr.sin_port<<" ";
-		cout<<h->addr.sin_addr.s_addr<<" "<<h->addr.sin_zero<<endl;
-	}
-}
-void printBits(size_t const size, void const * const ptr){
-    unsigned char *b = (unsigned char*) ptr;
-    unsigned char byte;
-    int i, j;
-
-    for (i=size-1;i>=0;i--)
-    {
-        for (j=7;j>=0;j--)
-        {
-            byte = (b[i] >> j) & 1;
-            printf("%u", byte);
-        }
-		printf("|");
-    }
-    puts("");
-}
-void copyBits(void const * const ptrSource,void const * const ptrDest,size_t const size){
-	unsigned char *bD = (unsigned char*) ptrDest;
-	unsigned char *bS = (unsigned char*) ptrSource;
-	unsigned char byte;
-	unsigned char byteIn;
-	for(int i=size-1;i>=0;i--){
-		byteIn=0;		
-		for (int j=7;j>=0;j--)
-        {
-            byte = (bS[i] >> j) & 1;
-			
-			if(byte == 1)
-				{
-				byteIn=byteIn<<1;
-				byteIn=byteIn+1;
-				}
-			else
-				byteIn=byteIn<<1;
-			
-        }
-		
-		bD[i] = byteIn;
-	}
-}
-
-void printFileID(FileID *id){
-	if(id!=__null){
-		cout<<"name: "<<id->name<<" owner:"<< bytesToLong(id->owner)<<" size:"<< id->size;
-	
-		tm *ptm = localtime(&(id->time));
-		char buffer[33];
-		strftime(buffer,32,"%a, %d.%m.%Y %H:%M:%S", ptm);
-		buffer[32] = '\0';
-		cout<<" time:"<<buffer<<endl;
-	}
 }
 
 /*
@@ -1044,20 +974,6 @@ uint64_t bytesToLong(const char* bytes)
 	memcpy(&byteLong, bytes, 6);
 	return byteLong.number;
 }
-
-
-
-
-void printHeader(ResourceHeader* header)
-{
-	std::cout << "Header" << std::endl;
-	std::cout << "Name: " << header->name << std::endl;
-	std::cout << "Size: " << header->size.longNum << std::endl;
-	std::cout << "Id: " << bytesToLong(header->owner) << std::endl;
-	std::cout << "Time: " << header->time.ttime << std::endl;
-	std::cout << "MsgType: " << header->type << std::endl;
-}
-
 
 /*
 	Funkcja zwraca w postaci string'a wygenerowana sciezke do pliku o nazwie filename i tworzy tam pusty plik.
