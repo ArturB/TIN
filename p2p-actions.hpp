@@ -136,7 +136,7 @@ void main_destroy() {
 	pthread_mutex_destroy(&termtx);
 	pthread_mutex_destroy(&cmtx);
 	destroyMutexes();
-	safe_cout("Loading metadata:" + to_string(serializeMetaData()) + "\n");
+	safe_cout("Saving metadata:" + to_string(serializeMetaData()) + "\n");
 }
 
 
@@ -1351,9 +1351,10 @@ void check_files_validations()
 		safe_cout(">>Resources in storage:\n");
 	for(FileID* fid : fileList)
 	{
+		
+		safe_cout("Name: " + string(fid->name) + "; Owner:" + to_string(bytesToLong(fid->owner)) + "; Size:" + to_string(fid->size) + "\n");
 		if(bytesToLong(fid->owner) != id)
 		{
-			safe_cout("Name: " + string(fid->name) + "; Owner:" + to_string(bytesToLong(fid->owner)) + "; Size:" + to_string(fid->size) + "\n");
 			netMsg.setFileId(fid);
 			send_broadcast(&(netMsg.header));
 		}
