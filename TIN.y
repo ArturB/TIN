@@ -118,6 +118,7 @@ FindInst:
 		cmdata.fileName = "";
 		cmdata.filePath = "";
 		cmdata.ids = $4;
+		cmdata.writing = true;
 		pthread_mutex_unlock(&cmtx);
 	}
 	;
@@ -137,6 +138,7 @@ FindHead:
 		  cmdata.find_one = true;
 		  cmdata.find_all = false;
 		  cmdata.find_first = false;
+		  cmdata.writing = true;
 		  pthread_mutex_unlock(&cmtx);
 	  }
 	| ALL { 
@@ -144,6 +146,7 @@ FindHead:
 		  cmdata.find_one = false;
 		  cmdata.find_all = true;
 		  cmdata.find_first = false;
+		  cmdata.writing = true;
 		  pthread_mutex_unlock(&cmtx);
 	}
 	| FIRST NATURAL { 
@@ -152,6 +155,7 @@ FindHead:
 		  cmdata.find_all = false;
 		  cmdata.find_first = true;
 		  cmdata.find_first_count = $2;
+	 	  cmdata.writing = true;
 		  pthread_mutex_unlock(&cmtx);
 	}
 	;
@@ -235,8 +239,9 @@ BoolExpr:
 %%
 
 int main(int argv, char** argc) {
-	main_init();
 	safe_cout(welcome);
+	main_init();
+	safe_cout("\nPlease type a command now.\n");
 	while(1) {
 		safe_cout(prompt);
 		yyparse();

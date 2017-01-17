@@ -28,6 +28,7 @@ struct CommandData {
 	bool find_all;
 	bool find_first;
 	unsigned int find_first_count;
+	bool writing;
 };
 
 struct CommandData cmdata;
@@ -619,6 +620,7 @@ void* download_thread(void* par)
 		command_data.ids.size = 1;
 		command_data.ids.ids = new FileID;
 		command_data.ids.ids[0] = fileid_from_header(&header);
+		command_data.writing = false;
 		find_thread((void*)&command_data);
 	}
 	else if(fileIsDownloading(file))
@@ -722,6 +724,7 @@ void* download_file(void* par)
 			command_data.ids.size = 1;
 			command_data.ids.ids = new FileID[1];
 			command_data.ids.ids[0] = fileid_from_header(&header);
+			command_data.writing = false;
 			while(file_downloading.using_hosts.size() == 0 && file_downloading.avaiable_hosts.size() == 0)
 			{
 				find_thread((void*)&command_data);
@@ -1041,8 +1044,11 @@ void* find_thread(void* par) {
 	sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP );
 	if (sock == -1) 
 	{
-		perror("Opening stream socket");
-		safe_cout("Unsuccessful find operation. Network problem\n>> ");
+		if(parT.writing)
+		{
+			perror("Opening stream socket");
+			safe_cout("Unsuccessful find operation. Network problem\n>> ");
+		}
 		return NULL;
 	}
 
@@ -1060,17 +1066,22 @@ void* find_thread(void* par) {
 	
 	if (bind(sock, (struct sockaddr *) &server, sizeof server) == -1)
 	{
-		perror("Binding stream socket\n>> ");
-		safe_cout("Unsuccessful find operation. Network problem\n>> ");
+		if(parT.writing)
+		{
+			perror("Binding stream socket\n>> ");
+			safe_cout("Unsuccessful find operation. Network problem\n>> ");
+		}
 		return NULL;
 	}
 
-	safe_cout("Searching...\n>> ");
+	if(parT.writing)
+		safe_cout("Searching...\n>> ");
 
 	pthread_t find_msg_sender;
 	if(pthread_create(&find_msg_sender, NULL, find_msg_sender_thread, &parT)) // błąd przy tworzeniu wątku
-	{ 
-		safe_cout(threadFailed);
+	{
+		if(parT.writing) 
+			safe_cout(threadFailed);
 		return NULL;
 	}
 	time_t now = time(0);
@@ -1086,7 +1097,8 @@ void* find_thread(void* par) {
 		}
 		if (n != MIN_MSG_SIZE)
 		{
-			perror("ERROR in recvfrom");	
+			if(parT.writing)
+				perror("ERROR in recvfrom");	
 			return NULL;
 		}
 		if(header->type != HAS_MSG)	//zly komunikat
@@ -1148,7 +1160,8 @@ void* find_thread(void* par) {
 					netMsg.setReceiver(h);
 					send_response(&netMsg);					
 				}
-				safe_cout("OWNERS CONFLICT. RESOURCE DELETED!\n>>Name: " + string((*resourceIt).id->name) + "; Owner:" 
+				if(parT.writing)
+					safe_cout("OWNERS CONFLICT. RESOURCE DELETED!\n>>Name: " + string((*resourceIt).id->name) + "; Owner:" 
 							+ to_string(bytesToLong((*resourceIt).id->owner)) + "; Size:" + to_string((*resourceIt).id->size) + "\n>>");
 				deleteFile((*resourceIt).id);
 			}
@@ -1159,15 +1172,18 @@ void* find_thread(void* par) {
 		}
 	}
 	close(sock);
-	if(found.empty())
+	if(parT.writing)
 	{
-		safe_cout("No results!\n>> ");
-	}
-	else									//wypisanie wynikow wyszukiwania
-	{
-		safe_cout("Results:\n>> ");
-		for(FileID *fid : found) {
-				safe_cout("Name: " + string(fid->name) + ", size: " + to_string(fid->size) + "\n>> ");
+		if(found.empty())
+		{
+			safe_cout("No results!\n>> ");
+		}
+		else									//wypisanie wynikow wyszukiwania
+		{
+			safe_cout("Results:\n>> ");
+			for(FileID *fid : found) {
+					safe_cout("Name: " + string(fid->name) + ", size: " + to_string(fid->size) + "\n>> ");
+			}
 		}
 	}
 }
