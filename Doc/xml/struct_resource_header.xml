@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_resource_header" kind="struct" language="C++" prot="public">
+    <compoundname>ResourceHeader</compoundname>
+    <includes refid="structs_8h" local="no">structs.h</includes>
+    <innerclass refid="union_resource_header_1_1size__union" prot="public">ResourceHeader::size_union</innerclass>
+    <innerclass refid="union_resource_header_1_1time__union" prot="public">ResourceHeader::time_union</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_resource_header_1ae4f6155945247b61338b5ed4d255ba88" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char ResourceHeader::name[256]</definition>
+        <argsstring>[256]</argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="26" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_header_1a6e8b98537d9d68b9a4a39faa76a1124d" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_resource_header_1_1size__union" kindref="compound">ResourceHeader::size_union</ref></type>
+        <definition>union ResourceHeader::size_union  ResourceHeader::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="32" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_header_1a57eefdce019e7e6dba892ca5ecd55437" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_resource_header_1_1time__union" kindref="compound">ResourceHeader::time_union</ref></type>
+        <definition>union ResourceHeader::time_union  ResourceHeader::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_header_1afa8be38e2b9e1d64f8575d8b2b3d5985" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char ResourceHeader::owner[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>owner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="39" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_header_1a08d95428e54c8d8a90a5b68547a3d4c1" prot="public" static="no" mutable="no">
+        <type><ref refid="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561b" kindref="member">MsgType</ref></type>
+        <definition>MsgType ResourceHeader::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="40" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Struktura reprezentująca nagłówek komunikatu protokołu AAP. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="38">
+        <label>ResourceHeader::size_union</label>
+        <link refid="union_resource_header_1_1size__union"/>
+      </node>
+      <node id="36">
+        <label>ResourceHeader</label>
+        <link refid="struct_resource_header"/>
+        <childnode refid="37" relation="usage">
+          <edgelabel>time</edgelabel>
+        </childnode>
+        <childnode refid="38" relation="usage">
+          <edgelabel>size</edgelabel>
+        </childnode>
+      </node>
+      <node id="37">
+        <label>ResourceHeader::time_union</label>
+        <link refid="union_resource_header_1_1time__union"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="25" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="25" bodyend="41"/>
+    <listofallmembers>
+      <member refid="struct_resource_header_1ae4f6155945247b61338b5ed4d255ba88" prot="public" virt="non-virtual"><scope>ResourceHeader</scope><name>name</name></member>
+      <member refid="struct_resource_header_1afa8be38e2b9e1d64f8575d8b2b3d5985" prot="public" virt="non-virtual"><scope>ResourceHeader</scope><name>owner</name></member>
+      <member refid="struct_resource_header_1a6e8b98537d9d68b9a4a39faa76a1124d" prot="public" virt="non-virtual"><scope>ResourceHeader</scope><name>size</name></member>
+      <member refid="struct_resource_header_1a57eefdce019e7e6dba892ca5ecd55437" prot="public" virt="non-virtual"><scope>ResourceHeader</scope><name>time</name></member>
+      <member refid="struct_resource_header_1a08d95428e54c8d8a90a5b68547a3d4c1" prot="public" virt="non-virtual"><scope>ResourceHeader</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

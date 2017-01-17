@@ -1,3 +1,8 @@
+/**
+  * \file data.hpp
+  * Funkcje i procedury zarządzające plikami na dysku. Serializacja i deserializacja zasobów. 
+  */
+
 #ifndef DATA_H
 #define DATA_H
 
@@ -14,12 +19,21 @@
 #include "filedownload.hpp"
 
 
+<<<<<<< Updated upstream
 //sciezka do pliku konfiguracyjnego okreslajacego katalog, do ktorego zapisywane beda sciagniete pliki
 const char* configFilePath = "./p2p.config";
 
 /*
 	struktura opakujaca std::mutex. Pozwala na przechowywanie go w deque.
 	Przechowuje nazwe i size pliku, ktoremu odpowiada mutex.
+=======
+///Ściezka do pliku konfiguracyjnego okreslajacego katalog, do ktorego zapisywane beda sciagniete pliki
+const char* configFilePath = "./p2p.config";
+
+/**
+Struktura opakujaca std::mutex, pozwala na przechowywanie go w deque.
+Przechowuje nazwe i size pliku, do którego dostęp kontroluje mutex. 
+>>>>>>> Stashed changes
 */
 struct mutex_wrapper : std::mutex
 {
@@ -42,6 +56,11 @@ public:
 };
 
 
+///lista zasobów posiadanych lokalnie. 
+std::list<Resource> metaData;
+///Mutex synchronizujący dostęp do metadanych. 
+pthread_mutex_t metaDataMutex;
+pthread_mutex_t fileMutexDequeMutex;
 
 bool deleteFile(FileID* id);
 list<Resource>::iterator openResource(ResourceHeader *header);
@@ -56,9 +75,12 @@ void lockMetaDataMutex();
 void unlockMetaDataMutex();
 uint64_t get_id();
 uint64_t bytesToLong(const char* bytes);
+<<<<<<< Updated upstream
 std::list<Resource> metaData;
 pthread_mutex_t metaDataMutex;
 pthread_mutex_t fileMutexDequeMutex;
+=======
+>>>>>>> Stashed changes
 string returnFilePath(const char * cfg_path, const char *filename);
 vector<string> putToParts(string s, char dividerLeft, char dividerRight);
 string buildFromParts(vector<string> parts,char dividerLeft, char dividerRight);
@@ -80,6 +102,10 @@ list<FileID*> getUnlinked();
 bool fileIsDownloading(list<Resource>::iterator it);
 bool setFileIsDownloading(list<Resource>::iterator it);
 
+<<<<<<< Updated upstream
+=======
+///Zwraca true gdy zasób wskazywany przez iterator jest aktualnie pobierany na dysk. 
+>>>>>>> Stashed changes
 bool fileIsDownloading(list<Resource>::iterator it)
 {
 	lockMetaDataMutex();
@@ -88,6 +114,10 @@ bool fileIsDownloading(list<Resource>::iterator it)
 	return result;
 }
 
+<<<<<<< Updated upstream
+=======
+///Ustawia flagę wskazującą na aktualne pobieranie zasobu. 
+>>>>>>> Stashed changes
 bool setFileIsDownloading(list<Resource>::iterator it)
 {
 	lockMetaDataMutex();
@@ -95,12 +125,19 @@ bool setFileIsDownloading(list<Resource>::iterator it)
 	unlockMetaDataMutex();
 }
 
+<<<<<<< Updated upstream
 
 
 /*	Dodanie pliku do wezla.
 	pathName - sciezka do pliku na dysku
 	filename - nazwa, pod jaka plik bedzie udostepniony jako zasob
 	Funkcja tworzy nowy zasob, umieszcza go w list<Resource> i zwraca do niego iterator.
+=======
+/**	Dodanie dodajen nowy zasób do rejestru zasobów lokalnych hosta. 
+	\param pathName - sciezka do pliku na dysku
+	\param filename - nazwa, pod jaka plik bedzie udostepniony jako zasob
+	\return Iterator do nowo utworzonego zasobu. 
+>>>>>>> Stashed changes
 	Jesli istnieje już zasob o tej samej nazwie i rozmiarze lub udostepniajacy plik spod tej samej lokalizacji,
 	operacja dodania nie udaje sie i zwracany jest iterator do tego zasobu.
 	Jesli sciezka do pliku jest nieprawidlowa - zwracany jest iterator::end()
@@ -163,9 +200,14 @@ list<Resource>::iterator addFile(string pathName, string fileName)
 }
 
 
+<<<<<<< Updated upstream
 /*
 	Funkcja zwraca liste wszystkich wskazan do struktur FileID zwiazanych
 	z zasobami Resource, wsytepujacymi w bazie wezla (zarowno tych, ktorych jestesmy wlascicielami jak i nie)
+=======
+/**
+	Lista ID wszystkich plików posiadanych lokalnie przez hosta. 
+>>>>>>> Stashed changes
 */
 list<FileID*> getFileIds()
 {
@@ -179,10 +221,17 @@ list<FileID*> getFileIds()
 }
 
 
+<<<<<<< Updated upstream
 /*
 	Funkcja na podstawie przekazanego wskazania na strukture FileID usuwa zwiazany z nia zasob.
 	Usuwa takze plik na dysku, zwiazany z danym zasobem. Zwraca true w przypadku zakonczenia
 	operacji usuniecie zasobu.
+=======
+/**
+	Usuń posiadany lokalnie zasób. 
+	Usuwa takze plik na dysku, zwiazany z danym zasobem. Zwraca true w przypadku zakonczenia operacji usuniecia zasobu.
+	\return true w przypadku powodzenia operacji, false w przypadku błędu. 
+>>>>>>> Stashed changes
 */
 bool deleteFile(FileID * id)
 {
@@ -208,11 +257,18 @@ bool deleteFile(FileID * id)
 	return false;
 }
 
+<<<<<<< Updated upstream
 /*
 	Na podstawie przekazanego adresu struktury ResourceHeader funkcja zwraca
 	adres struktury FileID, ktora ma zgodne pola name i size z tym, co znajduje sie 
 	w strukturze ResourceHeader. Jesli w bazie zasobow nie ma odpowiadajacego obiektu,
 	funkjca zwraca null.
+=======
+/**
+    ZwróćID posiadanego lokalnie zasobu. 
+	\param header Nagłówek komunikatu dotyczącego pliku którego szukamy. 
+	\return Adres struktury FileID, związanej z szukanym plikiem. Jesli w bazie zasobow nie ma odpowiadajacego obiektu,	funkjca zwraca null.
+>>>>>>> Stashed changes
 */
 FileID * isFileInStorage(ResourceHeader * header)
 {
@@ -230,6 +286,10 @@ FileID * isFileInStorage(ResourceHeader * header)
 	return __null;
 }
 
+<<<<<<< Updated upstream
+=======
+///Zwraca listę zasobów posiadanych lokalnie - czyli metadane. 
+>>>>>>> Stashed changes
 std::list<Resource> getMetaData(){
 	lockMetaDataMutex();
 	list<Resource> toReturn = metaData;
@@ -237,8 +297,17 @@ std::list<Resource> getMetaData(){
 	return toReturn;
 }
 
+<<<<<<< Updated upstream
 /*
 	zmiana wlasciciela zasobu i czasu dodania zasobu, zwiazanego ze struktura FileID pod adresem id
+=======
+/**
+	Zmień parametry zasobu.
+	\param id Zasób do modyfikacji
+	\param newOwner Nowy właściciel pliku
+	\param addTime Nowy czas dodania pliku do sieci. 
+	\return true w razie powodzenia, false w przeciwnym przypadku. 
+>>>>>>> Stashed changes
 	
 */
 bool changeOwner(FileID * id, const char * newOwner, time_t addTime)
@@ -250,11 +319,19 @@ bool changeOwner(FileID * id, const char * newOwner, time_t addTime)
 }
 
 
+<<<<<<< Updated upstream
 /*
 	Funkcja zwraca iterator, ktory wskazuje na obiekt Reosurce, ktory mozna
 	zidentyfikowac po strukturze ResourceHeader spod adresu przekazanego jako argument funkcji
 	(zasob o takiej samej nazwie i rozmiarze, jak podaje obiket struktury).
 	Jesli taki zasob nie istnieje w bazie, jest on tworzony.
+=======
+/**
+    Utwórz zasób lokalny. 
+	
+	\param header Nagłówek komunikatu AAP zawierający dane o zasobie do utworzenia.
+	\return iterator do utworzonego zasobu
+>>>>>>> Stashed changes
 */
 list<Resource>::iterator openResource(ResourceHeader * header)
 {
@@ -298,6 +375,12 @@ list<Resource>::iterator openResource(ResourceHeader * header)
 	return resourceIt;
 }
 
+<<<<<<< Updated upstream
+=======
+/**
+  * Zwróć lokalny zasób zgodny z otrzymanym pakietem AAP.
+  */
+>>>>>>> Stashed changes
 list<Resource>::iterator getResource(ResourceHeader * header)
 {
 	pthread_mutex_lock(&metaDataMutex);
@@ -312,6 +395,10 @@ list<Resource>::iterator getResource(ResourceHeader * header)
 	return metaData.end();
 }
 
+<<<<<<< Updated upstream
+=======
+///Kontrola poprawności zapisu informacji do pliku metadanych. 
+>>>>>>> Stashed changes
 bool isValidResource(list<Resource>::iterator resource)
 {
 	pthread_mutex_lock(&metaDataMutex);
@@ -323,12 +410,19 @@ bool isValidResource(list<Resource>::iterator resource)
 }
 
 
+<<<<<<< Updated upstream
 /*
 	Usuniecie zasobu zwiazanego z plikiem spod lokalizacji podanej w argumencie wywolania.
 	Jesli nie jestesmy wlascicielami zasobu - plik zostaje usuniety z dysku, w przeciwnym
 	wypadku nie jest. Funkcja zwraca strukture FileID zawierajaca informacje o usunietym
 	zasobie. Jesli w bazie nie ma zasobu zwiazanego ze wskazywanym plikiem - pole name
 	w strukturze FileID rowne jest null.
+=======
+/**
+	Usuniecie zasobu zwiazanego z plikiem spod lokalizacji podanej w argumencie wywolania.
+	Plik zostaje usuniety z dysku tylko jeśli jesteśmy właścicielami zasobu. 
+	\return Informacje o usunietym zasobie. Jesli w bazie nie ma zasobu zwiazanego ze wskazywanym plikiem return null. 
+>>>>>>> Stashed changes
 */
 FileID deleteFile(string pathName)
 {							
@@ -364,10 +458,17 @@ FileID deleteFile(string pathName)
 	return toReturn;
 }
 
+<<<<<<< Updated upstream
 /*
 	Funkcja zwraca liste adresow obiektow struktur FileID, zwiazanych
 	z zasobami, ktorych lokalizacja na dysku jest bledna (plik przeniesiony
 	lub usuniety). Usuwa tez zwiazane obiekty Resource.
+=======
+/**
+	Walidacja adresów fizycznych plików.
+	W razie zapisania w metadanych nieistniejącej ścieżki, zasób jest usuwany z rejestru.
+	\return Lista niepoprawnych zasobów
+>>>>>>> Stashed changes
 */
 list<FileID*> getUnlinked()
 {
@@ -386,11 +487,16 @@ list<FileID*> getUnlinked()
 	return result;
 }
 
+<<<<<<< Updated upstream
 /*
 	Funkcja zwraca wektor adresów struktur FileID zwiazanych z zasobami, 
 	ktore mamy w calosci (sciagniety caly plik lub nasz plik),
 	a ktore pasuja do struktury ResourceHeader pod adresem przekazanym do funkcji
 	(pasujace pola name i size).
+=======
+/**
+	Zwraca listę posiadanych zupełnie zasobów (tzn. pobranych już w 100%).
+>>>>>>> Stashed changes
 */
 vector<FileID*> myFindInStorage(ResourceHeader *header){
 	vector<FileID*> vector;
@@ -444,6 +550,7 @@ list<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *is
 	return toReturn;
 }
 
+<<<<<<< Updated upstream
 /*
 	Zwraca szukany FileFragment.
 	FileID okresla, z ktorego pliku pochodzi fragment,
@@ -451,6 +558,14 @@ list<Resource>::iterator openResourceByIterator(ResourceHeader * header,bool *is
 	
 	Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci,
 	to jego pozycja jest kasowana w metaDanych.
+=======
+/**
+	Zwraca pojedyczny blok pliku. 
+	\param FileID z ktorego pliku pochodzi fragment,
+	\param number Indeks fragmentu w ramach pliku. 
+	
+	Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci, to jego pozycja jest kasowana w metaDanych.
+>>>>>>> Stashed changes
 	Jezeli nie udalo sie odnalezc pliku badz fragmentu w nim, zwraca null.
 	
 */
@@ -498,6 +613,7 @@ FileFragment * getFileFragment(FileID *id, long number){
 	file.close();
 	return ff;
 }
+<<<<<<< Updated upstream
 /*
 	Zapisuje fragment FileFragment fragment pliku okreslonego przez FileID id do pamieci.
 	Wymagane jest, aby plik istnial w metadanych, oraz jako plik w pamieci - inaczej zwracane jest false.
@@ -506,6 +622,17 @@ FileFragment * getFileFragment(FileID *id, long number){
 	to jego pozycja jest kasowana w metaDanych. 
 	
 	Zwraca false jezeli zapis sie nie powiodl, plik nie istnial w pamieci badz w metaDanych.
+=======
+/**
+	Zapisuje fragment fragment pliku do pamieci.
+	Wymagane jest, aby plik istnial w metadanych, oraz jako plik w pamieci - inaczej zwracane jest false.
+	
+	Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci, to jego pozycja jest kasowana w metaDanych. 
+	
+	\param id identyfikator pliku do zapisu
+	\param fragment Blok pliku do zapisu
+	\return false jezeli zapis sie nie powiodl, plik nie istnial w pamieci badz w metaDanych.
+>>>>>>> Stashed changes
 */
 bool saveFileFragment(FileID *id, FileFragment *fragment){
 	list<Resource>::iterator res;
@@ -562,11 +689,19 @@ bool saveFileFragment(FileID *id, FileFragment *fragment){
 	res->missingBlocks.erase(blockToDelete);
 
         unlockMetaDataMutex();
+<<<<<<< Updated upstream
 
 	return true;
 };
 
 /*
+=======
+
+	return true;
+};
+
+/**
+>>>>>>> Stashed changes
 	Inicjuje dwa mutexy uzywane przy dostepie do metaDanych oraz listyMutexow dla plikow.
 */
 bool initiateMutexes(){
@@ -580,7 +715,11 @@ bool initiateMutexes(){
 	}
 	
 }
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Zwalnia dwa mutexy uzywane przy dostepie do metaDanych oraz listyMutexow dla plikow.
 */
 bool destroyMutexes(){
@@ -588,24 +727,38 @@ bool destroyMutexes(){
 	pthread_mutex_destroy(&fileMutexDequeMutex);
 	return true;
 }
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Lock na mutexie dostepu do metaDanych
 */
 void lockMetaDataMutex(){
 	pthread_mutex_lock(&metaDataMutex);	
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Unlock na mutexie dostepu do metaDanych
 */
 void unlockMetaDataMutex(){
 	pthread_mutex_unlock(&metaDataMutex);	
 }
 
+<<<<<<< Updated upstream
 /*
 	Funkcja zwraca id wezla na podstawie adresu MAC karty sieciowej.
 	Preferowana jest karta ethernetowa, jesli takiej nie ma - pobierany
 	jest adres MAC pierwszej karty sieciowej z listy.
+=======
+/**
+	Zwróć id wezla na podstawie adresu MAC karty sieciowej.
+	Preferowana jest karta ethernetowa, jesli takiej nie ma - pobierany	jest adres MAC pierwszej karty sieciowej z listy.
+>>>>>>> Stashed changes
 */
 uint64_t get_id()
 {
@@ -656,8 +809,13 @@ uint64_t get_id()
 	}
 	return id;
 }
+<<<<<<< Updated upstream
 /*
 	Template. Konertuje proste typy zmiennych jak liczby do stringa.
+=======
+/**
+	Konwersja typów prostych na string. 
+>>>>>>> Stashed changes
 */
 template <typename T> inline std::string tToString(const T& t){
 	std::stringstream ss;
@@ -665,8 +823,13 @@ template <typename T> inline std::string tToString(const T& t){
 	return ss.str();
 }
 
+<<<<<<< Updated upstream
 /*
 	Template. Konertuje stringi na proste typy zmiennych jak liczby.
+=======
+/**
+	Konwersja stringa na typy proste. 
+>>>>>>> Stashed changes
 */
 template <typename T> inline T stringToT(std::string s){
 	std::istringstream stream(s);
@@ -674,11 +837,18 @@ template <typename T> inline T stringToT(std::string s){
 	stream >> t;
 	return t;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja przyjmujaca zserializowanego stringa. 
 	Rozpakowuje go na czesci i zwraca w postaci vectora.
 	Części moga skladac sie z większej ilosci czesci.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Podział stringa na fragmenty. 
+	\param dividerLeft Delimiter z początku fragmentu
+	\param dividerRight Delimiter na końcu fragmentu
+>>>>>>> Stashed changes
 */
 vector<string> putToParts(string s, char dividerLeft, char dividerRight){
 
@@ -705,10 +875,18 @@ vector<string> putToParts(string s, char dividerLeft, char dividerRight){
 	
 	return parts;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja przyjmujaca czesci z bedace stringai z vectora stringow.
 	opakowuje je w jeden zserializowany string.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Konkatenacja wektora stringów.
+	\param dividerLeft Delimiter na początku każdego stringa
+	\param dividerRight Delimiter na końcu każdego stringa
+	\return String będący efektem konkatenacji
+>>>>>>> Stashed changes
 */
 string buildFromParts(vector<string> parts,char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -718,10 +896,15 @@ string buildFromParts(vector<string> parts,char dividerLeft, char dividerRight){
 	}
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja ta zamienia zserializowany string na obiekt typu Resource,
 	do ktorego zwraca wskaznik.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Deserializacja stringa do obiektu Resource.
+>>>>>>> Stashed changes
 */
 Resource *des2Resource(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
@@ -734,9 +917,14 @@ Resource *des2Resource(string build, char dividerLeft, char dividerRight){
 
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Serializuje obiekt typu Resource do postaci stringa.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Serializacja obiektu typu Resource do stringa.
+>>>>>>> Stashed changes
 */
 string ser2Resource(Resource *r, char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -751,10 +939,15 @@ string ser2Resource(Resource *r, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja ta zamienia zserializowany string na obiekt typu FileID,
 	do ktorego zwraca wskaznik.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Deserializacja stringa do obiektu typu FileID. 
+>>>>>>> Stashed changes
 */
 FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
@@ -768,9 +961,14 @@ FileID *des2FileID(string build, char dividerLeft, char dividerRight){
 	toReturn->time = stringToT<time_t>(parts.at(3));
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Serializuje obiekt typu FileID do postaci stringa.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Serializacja obiektu typu FileID do stringa. 
+>>>>>>> Stashed changes
 */
 string ser2FileID(FileID *id, char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -786,10 +984,15 @@ string ser2FileID(FileID *id, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja ta zamienia zserializowany string na obiekt typu FileID,
 	do ktorego zwraca wskaznik.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Deserializacja stringa do obiektu typu Host. 
+>>>>>>> Stashed changes
 */
 Host *des2Host(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
@@ -803,9 +1006,14 @@ Host *des2Host(string build, char dividerLeft, char dividerRight){
 	toReturn->addr_length = stringToT<socklen_t>(parts.at(6));
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Serializuje obiekt typu Host do postaci stringa.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Serializacja obiektu typu Host do stringa.  
+>>>>>>> Stashed changes
 */
 string ser2Host(Host *host, char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -829,9 +1037,14 @@ string ser2Host(Host *host, char dividerLeft, char dividerRight){
 
 }
 
+<<<<<<< Updated upstream
 /*
 	Funkcja ta zamienia zserializowany string na obiekt typu sockaddr_in.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Deserializacja stringa na obiekt typu sockaddr_in.
+>>>>>>> Stashed changes
 */
 sockaddr_in des2SockAddr_in(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
@@ -843,9 +1056,14 @@ sockaddr_in des2SockAddr_in(string build, char dividerLeft, char dividerRight){
 	memcpy(toReturn.sin_zero,&zero,sizeof(toReturn.sin_zero));
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Serializuje obiekt typu sockaddr_in do postaci stringa.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Serializacja obkiektu typu sockaddr_in na stringa. 
+>>>>>>> Stashed changes
 */
 string ser2SockAddr_in(sockaddr_in sa, char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -861,9 +1079,14 @@ string ser2SockAddr_in(sockaddr_in sa, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja ta zamienia zserializowany string na obiekt typu deque<Host>.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Deserializacja stringa do kolejki hostów. 
+>>>>>>> Stashed changes
 */
 deque<Host> *des2dequeHost(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
@@ -875,9 +1098,14 @@ deque<Host> *des2dequeHost(string build, char dividerLeft, char dividerRight){
 	}
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Serializuje obiekt typu deque<Host> do postaci stringa.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Serializacja kolejki hostów do stringa. 
+>>>>>>> Stashed changes
 */
 string ser2dequeHost(deque<Host> *d, char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -890,9 +1118,14 @@ string ser2dequeHost(deque<Host> *d, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Funkcja ta zamienia zserializowany string na obiekt typu vector<long>.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Deserializacja wektora liczb do stringa.
+>>>>>>> Stashed changes
 */
 vector<long> des2vectorLong(string build, char dividerLeft, char dividerRight){
 	vector<string> parts = putToParts(build,dividerLeft,dividerRight);
@@ -904,9 +1137,14 @@ vector<long> des2vectorLong(string build, char dividerLeft, char dividerRight){
 	}
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Serializuje obiekt typu vector<long> do postaci stringa.
 	dividerLeft i dividerRight odpowiadaja za oddzielanie czesci.
+=======
+/**
+	Serializacja wektora liczb do stringa. 
+>>>>>>> Stashed changes
 */
 string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight){
 	string toReturn="";
@@ -919,10 +1157,15 @@ string ser2vectorLong(vector<long> vl, char dividerLeft, char dividerRight){
 	toReturn = buildFromParts(parts,dividerLeft,dividerRight);
 	return toReturn;
 }
+<<<<<<< Updated upstream
 /*
 	Zapisuje cala zserializowana metadate do pliku "_metaData.txt" w sciezce programu.
 	Jako dividerLeft i dividerRight uzywa odpowiednio '<' i '>'
 	Zwraca true jezeli utworzenie pliku sie powiodlo, false w przeciwnym przypadku.
+=======
+/**
+	Serializacja metadanych i zapis do pliku "_metaData.txt". 
+>>>>>>> Stashed changes
 */
 bool serializeMetaData(){
 	lockMetaDataMutex();
@@ -941,10 +1184,15 @@ bool serializeMetaData(){
 	return true;
 }
 
+<<<<<<< Updated upstream
 /*
 	Otwiera plik z metaData _metaData.txt i deserializuje go w list<Resource>
 	bedacy metadanymi. 
 	Zwraca true jezeli udalo jej sie odnalezc odpowiedni plik _metaData.txt
+=======
+/**
+	Otwiera plik "_metaData.txt" i deserializuje zawartośc do list<Resource>. 
+>>>>>>> Stashed changes
 */
 bool deserializeMetaData(){
 	list<Resource> container;
@@ -962,8 +1210,13 @@ bool deserializeMetaData(){
 	return true;
 }
 
+<<<<<<< Updated upstream
 /*
 	Pomocnicza funkcja, konwertujaca liczbe zakodowana w 6 bajtach na uint64_t
+=======
+/**
+	Konwersja ciągu bajtów na uint64_t. 
+>>>>>>> Stashed changes
 */
 uint64_t bytesToLong(const char* bytes)
 {
@@ -975,11 +1228,19 @@ uint64_t bytesToLong(const char* bytes)
 	return byteLong.number;
 }
 
+<<<<<<< Updated upstream
 /*
 	Funkcja zwraca w postaci string'a wygenerowana sciezke do pliku o nazwie filename i tworzy tam pusty plik.
 	cfg_path to sciezka do pliku konfiguracyjnego, w ktorym znajdziemy lokalizacje katalogu, w ktorym znalezc ma sie plik.
 	Funkcja zwraca pusty string, jesli nie mozna otworzyc pliku konfiguracyjnego, podana tam sciezka jest nieprawidlowa lub
 	nie mozna utworzyc nowego, pustego pliku.
+=======
+/**
+	Utwórz nowy plik na dysku.
+	\param cfg_path Ściezka do pliku konfiguracyjnego, w ktorym znajdziemy lokalizacje katalogu, w ktorym znalezc ma sie plik.
+	\param filename Nazwa pliku do utworzenia 
+	\return Pełna ścieżka do utworzonego pliku lub pusty string w razie niepowodzenia. 
+>>>>>>> Stashed changes
 */
 string returnFilePath(const char * cfg_path, const char *filename)
 {

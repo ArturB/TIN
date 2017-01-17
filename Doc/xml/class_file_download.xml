@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_file_download" kind="class" language="C++" prot="public">
+    <compoundname>FileDownload</compoundname>
+    <includes refid="filedownload_8hpp" local="no">filedownload.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_file_download_1adccee334e43fd701df3008bbe05b4f66" prot="public" static="no" mutable="no">
+        <type>list&lt; <ref refid="struct_resource" kindref="compound">Resource</ref> &gt;::iterator *</type>
+        <definition>list&lt;Resource&gt;::iterator* FileDownload::file</definition>
+        <argsstring></argsstring>
+        <name>file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="15" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_file_download_1a736a97ebf918ef00290647ff4130c812" prot="public" static="no" mutable="no">
+        <type>deque&lt; <ref refid="class_host" kindref="compound">Host</ref> &gt;</type>
+        <definition>deque&lt;Host&gt; FileDownload::avaiable_hosts</definition>
+        <argsstring></argsstring>
+        <name>avaiable_hosts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="16" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_file_download_1a9d25179c487004061e43b61b8a28bbdc" prot="public" static="no" mutable="no">
+        <type>deque&lt; <ref refid="class_host" kindref="compound">Host</ref> &gt;</type>
+        <definition>deque&lt;Host&gt; FileDownload::using_hosts</definition>
+        <argsstring></argsstring>
+        <name>using_hosts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="17" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_file_download_1a8be7e0b8fd09708d62161555022e3dfa" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int FileDownload::fragments</definition>
+        <argsstring></argsstring>
+        <name>fragments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="18" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_file_download_1a677e4aad623828830e6b9f7ca3423230" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FileDownload::FileDownload</definition>
+        <argsstring>(list&lt; Resource &gt;::iterator *param)</argsstring>
+        <name>FileDownload</name>
+        <param>
+          <type>list&lt; <ref refid="struct_resource" kindref="compound">Resource</ref> &gt;::iterator *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+<para>Konstruktor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>iterator po fragmentach pliku do pobrania </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="24" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_download_1a2ca59a43163f426d72206b04e213d202" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int FileDownload::speed_in_hosts</definition>
+        <argsstring>(double speed)</argsstring>
+        <name>speed_in_hosts</name>
+        <param>
+          <type>double</type>
+          <declname>speed</declname>
+        </param>
+        <briefdescription>
+<para>Zwraca ranking hosta wg prędkości pobierania. Plik pobieramy od 5 najszybszych hostów. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="33" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="33" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Klasa reprezentująca aktualnie pobierany w systemie plik. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" line="13" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/filedownload.hpp" bodystart="12" bodyend="41"/>
+    <listofallmembers>
+      <member refid="class_file_download_1a736a97ebf918ef00290647ff4130c812" prot="public" virt="non-virtual"><scope>FileDownload</scope><name>avaiable_hosts</name></member>
+      <member refid="class_file_download_1adccee334e43fd701df3008bbe05b4f66" prot="public" virt="non-virtual"><scope>FileDownload</scope><name>file</name></member>
+      <member refid="class_file_download_1a677e4aad623828830e6b9f7ca3423230" prot="public" virt="non-virtual"><scope>FileDownload</scope><name>FileDownload</name></member>
+      <member refid="class_file_download_1a8be7e0b8fd09708d62161555022e3dfa" prot="public" virt="non-virtual"><scope>FileDownload</scope><name>fragments</name></member>
+      <member refid="class_file_download_1a2ca59a43163f426d72206b04e213d202" prot="public" virt="non-virtual"><scope>FileDownload</scope><name>speed_in_hosts</name></member>
+      <member refid="class_file_download_1a9d25179c487004061e43b61b8a28bbdc" prot="public" virt="non-virtual"><scope>FileDownload</scope><name>using_hosts</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

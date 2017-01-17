@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_command_data" kind="struct" language="C++" prot="public">
+    <compoundname>CommandData</compoundname>
+    <includes refid="p2p-actions_8hpp" local="no">p2p-actions.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_command_data_1a0f164d6a25ada5b4854cb4f76aee1f80" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string CommandData::filePath</definition>
+        <argsstring></argsstring>
+        <name>filePath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="19" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1af693007755253da138fb9d51adee0299" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string CommandData::fileName</definition>
+        <argsstring></argsstring>
+        <name>fileName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="20" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1a2cd8713eb54bb4d205d043f7e6c3a76f" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t CommandData::fileSize</definition>
+        <argsstring></argsstring>
+        <name>fileSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="21" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1a14ab6eb51be84b33f8fadf8f6ab2a5d0" prot="public" static="no" mutable="no">
+        <type><ref refid="structs_8h_1a32d1770e140d577d976b0503a585c1b9" kindref="member">FileIDs</ref></type>
+        <definition>FileIDs CommandData::ids</definition>
+        <argsstring></argsstring>
+        <name>ids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="22" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1a53721454d8f6360468bfc3f20c953a4a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CommandData::find_one</definition>
+        <argsstring></argsstring>
+        <name>find_one</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="23" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1a9b0358461811b55d9ce6a659ad54f1c4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CommandData::find_all</definition>
+        <argsstring></argsstring>
+        <name>find_all</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="24" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1aa8e2a04ab71232af809a46a9f5e59393" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CommandData::find_first</definition>
+        <argsstring></argsstring>
+        <name>find_first</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="25" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1a99b36cc5d20aa4e33daa531770aad46b" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CommandData::find_first_count</definition>
+        <argsstring></argsstring>
+        <name>find_first_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="26" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_command_data_1ad07f4fe6025dbdc6953462e7b6fd66ac" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CommandData::writing</definition>
+        <argsstring></argsstring>
+        <name>writing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="27" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Zawartość ostatnio wpisanej przez użytkownika komendy. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>FileIDsStruct</label>
+        <link refid="struct_file_i_ds_struct"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ids</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>CommandData</label>
+        <link refid="struct_command_data"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ids</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>FileIDStruct</label>
+        <link refid="struct_file_i_d_struct"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" line="18" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp" bodystart="18" bodyend="28"/>
+    <listofallmembers>
+      <member refid="struct_command_data_1af693007755253da138fb9d51adee0299" prot="public" virt="non-virtual"><scope>CommandData</scope><name>fileName</name></member>
+      <member refid="struct_command_data_1a0f164d6a25ada5b4854cb4f76aee1f80" prot="public" virt="non-virtual"><scope>CommandData</scope><name>filePath</name></member>
+      <member refid="struct_command_data_1a2cd8713eb54bb4d205d043f7e6c3a76f" prot="public" virt="non-virtual"><scope>CommandData</scope><name>fileSize</name></member>
+      <member refid="struct_command_data_1a9b0358461811b55d9ce6a659ad54f1c4" prot="public" virt="non-virtual"><scope>CommandData</scope><name>find_all</name></member>
+      <member refid="struct_command_data_1aa8e2a04ab71232af809a46a9f5e59393" prot="public" virt="non-virtual"><scope>CommandData</scope><name>find_first</name></member>
+      <member refid="struct_command_data_1a99b36cc5d20aa4e33daa531770aad46b" prot="public" virt="non-virtual"><scope>CommandData</scope><name>find_first_count</name></member>
+      <member refid="struct_command_data_1a53721454d8f6360468bfc3f20c953a4a" prot="public" virt="non-virtual"><scope>CommandData</scope><name>find_one</name></member>
+      <member refid="struct_command_data_1a14ab6eb51be84b33f8fadf8f6ab2a5d0" prot="public" virt="non-virtual"><scope>CommandData</scope><name>ids</name></member>
+      <member refid="struct_command_data_1ad07f4fe6025dbdc6953462e7b6fd66ac" prot="public" virt="non-virtual"><scope>CommandData</scope><name>writing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

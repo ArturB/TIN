@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="union_resource_header_1_1size__union" kind="union" language="C++" prot="public">
+    <compoundname>ResourceHeader::size_union</compoundname>
+    <includes refid="structs_8h" local="no">structs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union_resource_header_1_1size__union_1ad06db549170ffff10ee6b2048c905885" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char ResourceHeader::size_union::byteNum[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>byteNum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="30" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_resource_header_1_1size__union_1a99f8678c0f12e21929c8227c124f4826" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t ResourceHeader::size_union::longNum</definition>
+        <argsstring></argsstring>
+        <name>longNum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="31" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Rozmiar danych w postaci zmiennej C++ lub binarnej. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="29" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="28" bodyend="32"/>
+    <listofallmembers>
+      <member refid="union_resource_header_1_1size__union_1ad06db549170ffff10ee6b2048c905885" prot="public" virt="non-virtual"><scope>ResourceHeader::size_union</scope><name>byteNum</name></member>
+      <member refid="union_resource_header_1_1size__union_1a99f8678c0f12e21929c8227c124f4826" prot="public" virt="non-virtual"><scope>ResourceHeader::size_union</scope><name>longNum</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

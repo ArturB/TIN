@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_1b7a9a7bbe7b707b36ee6fb91fe1c968" kind="dir">
+    <compoundname>C:/Users/Artur/Downloads/TIN-master</compoundname>
+    <innerfile refid="data_8hpp">data.hpp</innerfile>
+    <innerfile refid="filedownload_8hpp">filedownload.hpp</innerfile>
+    <innerfile refid="host_8hpp">host.hpp</innerfile>
+    <innerfile refid="netmsg_8hpp">netmsg.hpp</innerfile>
+    <innerfile refid="p2p-actions_8hpp">p2p-actions.hpp</innerfile>
+    <innerfile refid="params_8h">params.h</innerfile>
+    <innerfile refid="resource_8h">resource.h</innerfile>
+    <innerfile refid="structs_8h">structs.h</innerfile>
+    <innerfile refid="_t_i_n_8tab_8c">TIN.tab.c</innerfile>
+    <innerfile refid="_t_i_n_8tab_8h">TIN.tab.h</innerfile>
+    <innerfile refid="_t_i_n_8yy_8c">TIN.yy.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Artur/Downloads/TIN-master/"/>
+  </compounddef>
+</doxygen>

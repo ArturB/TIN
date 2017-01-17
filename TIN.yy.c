@@ -1,3 +1,5 @@
+/** \file TIN.yy.h Code for a Flex lexer, made by GNU Flex 2.6.  */
+
 #line 2 "TIN.yy.c"
 
 #line 4 "TIN.yy.c"

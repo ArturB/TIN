@@ -1,0 +1,757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AAP File Transfer Protocol: Dokumentacja pliku C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logoTIN.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">AAP File Transfer Protocol
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Projekt na Techniki Intenetowe 2016Z. Wydział Elektroniki i Technik Informacyjnych Politechniki Warszawskiej.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('p2p-actions_8hpp.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#func-members">Funkcje</a> &#124;
+<a href="#var-members">Zmienne</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku p2p-actions.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Obsługa komend interpretera, w tym sieciowa logika aplikacji.  
+<a href="#details">Więcej...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="data_8hpp_source.html">data.hpp</a>&quot;</code><br />
+</div>
+<p><a href="p2p-actions_8hpp_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_command_data.html">CommandData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zawartość ostatnio wpisanej przez użytkownika komendy.  <a href="struct_command_data.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:a2ab9b7ae6d89824d769f8e708c7d2d18"><td class="memItemLeft" align="right" valign="top"><a id="a2ab9b7ae6d89824d769f8e708c7d2d18"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a2ab9b7ae6d89824d769f8e708c7d2d18">upload_action</a> ()</td></tr>
+<tr class="memdesc:a2ab9b7ae6d89824d769f8e708c7d2d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uruchom wątek obsługi komendy UPLOAD. <br /></td></tr>
+<tr class="separator:a2ab9b7ae6d89824d769f8e708c7d2d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17e17b29a14595d5a96b1be404f2b681"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a17e17b29a14595d5a96b1be404f2b681">upload_thread</a> (void *par)</td></tr>
+<tr class="memdesc:a17e17b29a14595d5a96b1be404f2b681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ciało watku obslugujacego operacje dodania zasobu.  <a href="#a17e17b29a14595d5a96b1be404f2b681">Więcej...</a><br /></td></tr>
+<tr class="separator:a17e17b29a14595d5a96b1be404f2b681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaf15af2407566d045f9bb49f9820fea"><td class="memItemLeft" align="right" valign="top"><a id="adaf15af2407566d045f9bb49f9820fea"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#adaf15af2407566d045f9bb49f9820fea">delete_action</a> ()</td></tr>
+<tr class="memdesc:adaf15af2407566d045f9bb49f9820fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uruchom wątek obsługi komendy DELETE. <br /></td></tr>
+<tr class="separator:adaf15af2407566d045f9bb49f9820fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed04fd72ed52702501ba802909032a9"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a6ed04fd72ed52702501ba802909032a9">delete_thread</a> (void *par)</td></tr>
+<tr class="memdesc:a6ed04fd72ed52702501ba802909032a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku obslugujacego operacje usuniecia zasobu.  <a href="#a6ed04fd72ed52702501ba802909032a9">Więcej...</a><br /></td></tr>
+<tr class="separator:a6ed04fd72ed52702501ba802909032a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b786fe1ab7191fc9e2b8b3466c8bb4"><td class="memItemLeft" align="right" valign="top"><a id="a24b786fe1ab7191fc9e2b8b3466c8bb4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a24b786fe1ab7191fc9e2b8b3466c8bb4">find_action</a> ()</td></tr>
+<tr class="memdesc:a24b786fe1ab7191fc9e2b8b3466c8bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uruchom wątek obslugi komendy FIND. <br /></td></tr>
+<tr class="separator:a24b786fe1ab7191fc9e2b8b3466c8bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31f2b8df5ad44703613e9c316246db1e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a31f2b8df5ad44703613e9c316246db1e">find_thread</a> (void *par)</td></tr>
+<tr class="memdesc:a31f2b8df5ad44703613e9c316246db1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procedura wątku obsługi komendy find.  <a href="#a31f2b8df5ad44703613e9c316246db1e">Więcej...</a><br /></td></tr>
+<tr class="separator:a31f2b8df5ad44703613e9c316246db1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9192463ba13611e37fa2963c7a243f5"><td class="memItemLeft" align="right" valign="top"><a id="ab9192463ba13611e37fa2963c7a243f5"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#ab9192463ba13611e37fa2963c7a243f5">find_msg_sender_thread</a> (void *par)</td></tr>
+<tr class="memdesc:ab9192463ba13611e37fa2963c7a243f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku obsługi komendy FIND. <br /></td></tr>
+<tr class="separator:ab9192463ba13611e37fa2963c7a243f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95307f4fda47e905140d90ccb7bd2d19"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a95307f4fda47e905140d90ccb7bd2d19">download_thread</a> (void *par)</td></tr>
+<tr class="memdesc:a95307f4fda47e905140d90ccb7bd2d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ciało wątku pobierającego.  <a href="#a95307f4fda47e905140d90ccb7bd2d19">Więcej...</a><br /></td></tr>
+<tr class="separator:a95307f4fda47e905140d90ccb7bd2d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c06e9d9cdd58eebcb9166955e375a8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a02c06e9d9cdd58eebcb9166955e375a8">download_file</a> (void *par)</td></tr>
+<tr class="memdesc:a02c06e9d9cdd58eebcb9166955e375a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja odpowiadająca za pobieranie zasobu.  <a href="#a02c06e9d9cdd58eebcb9166955e375a8">Więcej...</a><br /></td></tr>
+<tr class="separator:a02c06e9d9cdd58eebcb9166955e375a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4ec4d6650d05f4a0e17dc2b2d182b8"><td class="memItemLeft" align="right" valign="top"><a id="a4d4ec4d6650d05f4a0e17dc2b2d182b8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a4d4ec4d6650d05f4a0e17dc2b2d182b8">download_action</a> ()</td></tr>
+<tr class="memdesc:a4d4ec4d6650d05f4a0e17dc2b2d182b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uruchom wątek obsługi komendy DOWNLOAD. <br /></td></tr>
+<tr class="separator:a4d4ec4d6650d05f4a0e17dc2b2d182b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb59e02c4b2ff6de53498f2e3e710dc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#abb59e02c4b2ff6de53498f2e3e710dc4">check_files_validations</a> ()</td></tr>
+<tr class="memdesc:abb59e02c4b2ff6de53498f2e3e710dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsługa sytuacji niespójnych informacji o wlaścicielach zasobów.  <a href="#abb59e02c4b2ff6de53498f2e3e710dc4">Więcej...</a><br /></td></tr>
+<tr class="separator:abb59e02c4b2ff6de53498f2e3e710dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d004393a1ee3d47f4b077fbbbd6d1e"><td class="memItemLeft" align="right" valign="top"><a id="aa4d004393a1ee3d47f4b077fbbbd6d1e"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#aa4d004393a1ee3d47f4b077fbbbd6d1e">receiver_thread_UDP</a> (void *par)</td></tr>
+<tr class="memdesc:aa4d004393a1ee3d47f4b077fbbbd6d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procedura wątku nasłuchującego komunikatów rozgłoszeniowych od innych węzłów sieci. <br /></td></tr>
+<tr class="separator:aa4d004393a1ee3d47f4b077fbbbd6d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedb6b3c7ba36ba8a25ea0380aaa898ae"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#aedb6b3c7ba36ba8a25ea0380aaa898ae">receiver_thread_TCP</a> (void *par)</td></tr>
+<tr class="memdesc:aedb6b3c7ba36ba8a25ea0380aaa898ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wątek nasłuchujący na próby połączenia TCP w celu pobrania od nas danych.  <a href="#aedb6b3c7ba36ba8a25ea0380aaa898ae">Więcej...</a><br /></td></tr>
+<tr class="separator:aedb6b3c7ba36ba8a25ea0380aaa898ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac59d846ee6ddec953a5afbd75c973ece"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#ac59d846ee6ddec953a5afbd75c973ece">up_msg_reaction</a> (void *par)</td></tr>
+<tr class="memdesc:ac59d846ee6ddec953a5afbd75c973ece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku, uruchamianego pod wplywem otrzymania komunikatu UP_MSG.  <a href="#ac59d846ee6ddec953a5afbd75c973ece">Więcej...</a><br /></td></tr>
+<tr class="separator:ac59d846ee6ddec953a5afbd75c973ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a221f1f68fc1576746fef07bc0b620217"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a221f1f68fc1576746fef07bc0b620217">has_msg_reaction</a> (void *par)</td></tr>
+<tr class="memdesc:a221f1f68fc1576746fef07bc0b620217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku, uruchamianego pod wplywem otrzymania komunikatu HAS_MSG.  <a href="#a221f1f68fc1576746fef07bc0b620217">Więcej...</a><br /></td></tr>
+<tr class="separator:a221f1f68fc1576746fef07bc0b620217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af75026c0f1826128fd1fece887e8f350"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#af75026c0f1826128fd1fece887e8f350">del_msg_reaction</a> (void *par)</td></tr>
+<tr class="memdesc:af75026c0f1826128fd1fece887e8f350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku, uruchamianego pod wplywem otrzymania komunikatu DEL_MSG.  <a href="#af75026c0f1826128fd1fece887e8f350">Więcej...</a><br /></td></tr>
+<tr class="separator:af75026c0f1826128fd1fece887e8f350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f0119ca71f68088a44ceda9f4e58ef"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a65f0119ca71f68088a44ceda9f4e58ef">force_del_msg_reaction</a> (void *par)</td></tr>
+<tr class="memdesc:a65f0119ca71f68088a44ceda9f4e58ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FORCE_DEL_MSG lub DONT_MSG.  <a href="#a65f0119ca71f68088a44ceda9f4e58ef">Więcej...</a><br /></td></tr>
+<tr class="separator:a65f0119ca71f68088a44ceda9f4e58ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a697d21a3e3ff4e102ca680bab0c7baca"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a697d21a3e3ff4e102ca680bab0c7baca">find_msg_reaction</a> (void *par)</td></tr>
+<tr class="memdesc:a697d21a3e3ff4e102ca680bab0c7baca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FIND_MSG.  <a href="#a697d21a3e3ff4e102ca680bab0c7baca">Więcej...</a><br /></td></tr>
+<tr class="separator:a697d21a3e3ff4e102ca680bab0c7baca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e9bd3fb9982491e864396e5de65b3b8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a2e9bd3fb9982491e864396e5de65b3b8">own_msg_reaction</a> (void *par)</td></tr>
+<tr class="memdesc:a2e9bd3fb9982491e864396e5de65b3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cialo watku, uruchamianego pod wplywem otrzymania komunikatu OWN_MSG.  <a href="#a2e9bd3fb9982491e864396e5de65b3b8">Więcej...</a><br /></td></tr>
+<tr class="separator:a2e9bd3fb9982491e864396e5de65b3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d35cc15f836ee6ccf7f1172bb92c6b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a72d35cc15f836ee6ccf7f1172bb92c6b">response_down_tcp</a> (void *par)</td></tr>
+<tr class="memdesc:a72d35cc15f836ee6ccf7f1172bb92c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ciało wątku obsługującego zapytanie DOWN.  <a href="#a72d35cc15f836ee6ccf7f1172bb92c6b">Więcej...</a><br /></td></tr>
+<tr class="separator:a72d35cc15f836ee6ccf7f1172bb92c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc87808a48c4da216aedbbcd5e1bf1e"><td class="memItemLeft" align="right" valign="top"><a id="abcc87808a48c4da216aedbbcd5e1bf1e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#abcc87808a48c4da216aedbbcd5e1bf1e">send_broadcast</a> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header)</td></tr>
+<tr class="memdesc:abcc87808a48c4da216aedbbcd5e1bf1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyslanie na adres rozgłoszeniowy wskazanej struktury <a class="el" href="struct_resource_header.html" title="Struktura reprezentująca nagłówek komunikatu protokołu AAP. ">ResourceHeader</a>. <br /></td></tr>
+<tr class="separator:abcc87808a48c4da216aedbbcd5e1bf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2394b9d513a272b51997b85cfd6e8da0"><td class="memItemLeft" align="right" valign="top"><a id="a2394b9d513a272b51997b85cfd6e8da0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a2394b9d513a272b51997b85cfd6e8da0">send_response</a> (<a class="el" href="class_net_msg.html">NetMsg</a> *data, int port)</td></tr>
+<tr class="memdesc:a2394b9d513a272b51997b85cfd6e8da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyslanie wiadomosci, ktorej tresc i adres odbiorcy zapisane sa w obiekcie <a class="el" href="class_net_msg.html" title="Klasa reprezentująca komunikat protokołu AAP. ">NetMsg</a>. <br /></td></tr>
+<tr class="separator:a2394b9d513a272b51997b85cfd6e8da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60cb601cfa9c5453e8f69a268664f5f0"><td class="memItemLeft" align="right" valign="top"><a id="a60cb601cfa9c5453e8f69a268664f5f0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>recive_fragment</b> (deque&lt; <a class="el" href="class_host.html">Host</a> &gt;::iterator it, <a class="el" href="class_file_download.html">FileDownload</a> file_downloading)</td></tr>
+<tr class="separator:a60cb601cfa9c5453e8f69a268664f5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaee5fea624effb5c8b9eaa789c173af9"><td class="memItemLeft" align="right" valign="top"><a id="aaee5fea624effb5c8b9eaa789c173af9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#aaee5fea624effb5c8b9eaa789c173af9">close_hosts_sockets</a> (deque&lt; <a class="el" href="class_host.html">Host</a> &gt; *collection)</td></tr>
+<tr class="memdesc:aaee5fea624effb5c8b9eaa789c173af9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja zamykająca połączenia z maszynami z zadanej listy hostów. <br /></td></tr>
+<tr class="separator:aaee5fea624effb5c8b9eaa789c173af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ec486b12fb09a1f30013437b3e9ef0"><td class="memItemLeft" align="right" valign="top"><a id="a32ec486b12fb09a1f30013437b3e9ef0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>write_progress_of_download</b> (list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator *file)</td></tr>
+<tr class="separator:a32ec486b12fb09a1f30013437b3e9ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a9bfaef3861c921ac186d5e991bbe22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a7a9bfaef3861c921ac186d5e991bbe22">get_next_fragments</a> (<a class="el" href="struct_interval.html">Interval</a> *result, vector&lt; long &gt; *input, int *intervals_count, int portion, int from)</td></tr>
+<tr class="memdesc:a7a9bfaef3861c921ac186d5e991bbe22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać.  <a href="#a7a9bfaef3861c921ac186d5e991bbe22">Więcej...</a><br /></td></tr>
+<tr class="separator:a7a9bfaef3861c921ac186d5e991bbe22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffeb79fb01e324c14f5820b33789c50"><td class="memItemLeft" align="right" valign="top"><a id="adffeb79fb01e324c14f5820b33789c50"></a>
+struct <a class="el" href="struct_file_i_d_struct.html">FileIDStruct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#adffeb79fb01e324c14f5820b33789c50">fileid_from_header</a> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header)</td></tr>
+<tr class="memdesc:adffeb79fb01e324c14f5820b33789c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza tworząca strukturę FileID z nagłówka wiadomości. <br /></td></tr>
+<tr class="separator:adffeb79fb01e324c14f5820b33789c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affba638d3f46b649f54d033ffebe6708"><td class="memItemLeft" align="right" valign="top"><a id="affba638d3f46b649f54d033ffebe6708"></a>
+<a class="el" href="struct_resource_header.html">ResourceHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#affba638d3f46b649f54d033ffebe6708">header_from_command_data</a> (<a class="el" href="struct_command_data.html">CommandData</a> *data)</td></tr>
+<tr class="memdesc:affba638d3f46b649f54d033ffebe6708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generator nagłówka wiadomości do wysłania z danych w <a class="el" href="struct_command_data.html" title="Zawartość ostatnio wpisanej przez użytkownika komendy. ">CommandData</a>. <br /></td></tr>
+<tr class="separator:affba638d3f46b649f54d033ffebe6708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf39b6e3b4fb8b7779dcd0aef415ffc"><td class="memItemLeft" align="right" valign="top"><a id="a6bf39b6e3b4fb8b7779dcd0aef415ffc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a6bf39b6e3b4fb8b7779dcd0aef415ffc">run_downloadings</a> ()</td></tr>
+<tr class="memdesc:a6bf39b6e3b4fb8b7779dcd0aef415ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja uruchamiająca procesy pobierania niedokończone podczas ostatniego działania aplikacji. <br /></td></tr>
+<tr class="separator:a6bf39b6e3b4fb8b7779dcd0aef415ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d9b1e1aab1a6dd1f4785f9d9bd4ebfe"><td class="memItemLeft" align="right" valign="top"><a id="a5d9b1e1aab1a6dd1f4785f9d9bd4ebfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a5d9b1e1aab1a6dd1f4785f9d9bd4ebfe">safe_cout</a> (string str)</td></tr>
+<tr class="memdesc:a5d9b1e1aab1a6dd1f4785f9d9bd4ebfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bezpieczne wypisywanie na stdout z relizacją wzajemnego wykluczania. <br /></td></tr>
+<tr class="separator:a5d9b1e1aab1a6dd1f4785f9d9bd4ebfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b8da71bf10f209b0dfa41f04551c4fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a0b8da71bf10f209b0dfa41f04551c4fc">main_init</a> ()</td></tr>
+<tr class="memdesc:a0b8da71bf10f209b0dfa41f04551c4fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procedura wołana bezpośrednio po uruchomieniu programu.  <a href="#a0b8da71bf10f209b0dfa41f04551c4fc">Więcej...</a><br /></td></tr>
+<tr class="separator:a0b8da71bf10f209b0dfa41f04551c4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9790d30a8205752222da4571a3b243"><td class="memItemLeft" align="right" valign="top"><a id="abf9790d30a8205752222da4571a3b243"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#abf9790d30a8205752222da4571a3b243">main_destroy</a> ()</td></tr>
+<tr class="memdesc:abf9790d30a8205752222da4571a3b243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrukcja muteksów i innych zasobów wymagających zwolnienia. <br /></td></tr>
+<tr class="separator:abf9790d30a8205752222da4571a3b243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2400942dd94b34b1ba3409c4830ca292"><td class="memItemLeft" align="right" valign="top"><a id="a2400942dd94b34b1ba3409c4830ca292"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a2400942dd94b34b1ba3409c4830ca292">send_down_message</a> (<a class="el" href="struct_down_msg.html">DownMsg</a> *down_msg, int socket_tcp)</td></tr>
+<tr class="memdesc:a2400942dd94b34b1ba3409c4830ca292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyślij wiadomość DOWN. <br /></td></tr>
+<tr class="separator:a2400942dd94b34b1ba3409c4830ca292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7bf772208926a302dbc6fdc69b1dfc0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#ad7bf772208926a302dbc6fdc69b1dfc0">recive_fragment</a> (deque&lt; <a class="el" href="class_host.html">Host</a> &gt;::iterator *host, <a class="el" href="class_file_download.html">FileDownload</a> *file_downloading, int *fragment_counter)</td></tr>
+<tr class="memdesc:ad7bf772208926a302dbc6fdc69b1dfc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja zajmująca się odbiorem pojedyńczego fragmentu zasobu.  <a href="#ad7bf772208926a302dbc6fdc69b1dfc0">Więcej...</a><br /></td></tr>
+<tr class="separator:ad7bf772208926a302dbc6fdc69b1dfc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae70bf79d3db0750038204fef41520545"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#ae70bf79d3db0750038204fef41520545">write_progress_of_download</a> (list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator *file, bool break_downloading)</td></tr>
+<tr class="memdesc:ae70bf79d3db0750038204fef41520545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetla komunikat o postępie pobierania.  <a href="#ae70bf79d3db0750038204fef41520545">Więcej...</a><br /></td></tr>
+<tr class="separator:ae70bf79d3db0750038204fef41520545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a574d479a5acf27645c25800202c2fac9"><td class="memItemLeft" align="right" valign="top"><a id="a574d479a5acf27645c25800202c2fac9"></a>
+<a class="el" href="struct_resource_header.html">ResourceHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a574d479a5acf27645c25800202c2fac9">header_from_id</a> (<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *file, <a class="el" href="params_8h.html#a2ea0bb09adcce7f655e8f8ee8d30561b">MsgType</a> type)</td></tr>
+<tr class="memdesc:a574d479a5acf27645c25800202c2fac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generator nagłówka wiadomości do wysłania z danych w FileID. <br /></td></tr>
+<tr class="separator:a574d479a5acf27645c25800202c2fac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Zmienne</h2></td></tr>
+<tr class="memitem:ad947d52b8870c3081e69adc0cdf5a518"><td class="memItemLeft" align="right" valign="top"><a id="ad947d52b8870c3081e69adc0cdf5a518"></a>
+struct <a class="el" href="struct_command_data.html">CommandData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#ad947d52b8870c3081e69adc0cdf5a518">cmdata</a></td></tr>
+<tr class="memdesc:ad947d52b8870c3081e69adc0cdf5a518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmienna globalna do której interpreter zapisuje zawartość ostatnio wpisanej komendy. <br /></td></tr>
+<tr class="separator:ad947d52b8870c3081e69adc0cdf5a518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a762a9fd65391371e2d3211e74db61e9b"><td class="memItemLeft" align="right" valign="top"><a id="a762a9fd65391371e2d3211e74db61e9b"></a>
+pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a762a9fd65391371e2d3211e74db61e9b">termtx</a></td></tr>
+<tr class="memdesc:a762a9fd65391371e2d3211e74db61e9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex chroniący dostęp do stdout. <br /></td></tr>
+<tr class="separator:a762a9fd65391371e2d3211e74db61e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a684bce3cb0f8da566840509d50481068"><td class="memItemLeft" align="right" valign="top"><a id="a684bce3cb0f8da566840509d50481068"></a>
+pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a684bce3cb0f8da566840509d50481068">cmtx</a></td></tr>
+<tr class="memdesc:a684bce3cb0f8da566840509d50481068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex chroniący dostęp do cmdata. <br /></td></tr>
+<tr class="separator:a684bce3cb0f8da566840509d50481068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97554b6c78c83007858cbb8e88a78b61"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a97554b6c78c83007858cbb8e88a78b61">welcome</a></td></tr>
+<tr class="memdesc:a97554b6c78c83007858cbb8e88a78b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat powitalny.  <a href="#a97554b6c78c83007858cbb8e88a78b61">Więcej...</a><br /></td></tr>
+<tr class="separator:a97554b6c78c83007858cbb8e88a78b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0a0d2a5f917da7806df3849670f95c"><td class="memItemLeft" align="right" valign="top"><a id="a5c0a0d2a5f917da7806df3849670f95c"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a5c0a0d2a5f917da7806df3849670f95c">prompt</a> = &quot;&gt;&gt; &quot;</td></tr>
+<tr class="memdesc:a5c0a0d2a5f917da7806df3849670f95c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Znak zachęty. <br /></td></tr>
+<tr class="separator:a5c0a0d2a5f917da7806df3849670f95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accf4a9f1a7a43f110d590e364d8c40f5"><td class="memItemLeft" align="right" valign="top"><a id="accf4a9f1a7a43f110d590e364d8c40f5"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#accf4a9f1a7a43f110d590e364d8c40f5">errMsg</a> = &quot;command error&quot;</td></tr>
+<tr class="memdesc:accf4a9f1a7a43f110d590e364d8c40f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat o błedzie parsowania komendy. <br /></td></tr>
+<tr class="separator:accf4a9f1a7a43f110d590e364d8c40f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fe55dfbf09256d5ecccba3673a29a5c"><td class="memItemLeft" align="right" valign="top"><a id="a1fe55dfbf09256d5ecccba3673a29a5c"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a1fe55dfbf09256d5ecccba3673a29a5c">threadFailed</a> = &quot;Creating command thread failed!\n&gt;&gt; &quot;</td></tr>
+<tr class="memdesc:a1fe55dfbf09256d5ecccba3673a29a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat o błędzie podczas tworzenia wątku obsługi komendy. <br /></td></tr>
+<tr class="separator:a1fe55dfbf09256d5ecccba3673a29a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4dec26d5c73404e97c0cb97b8b25b23"><td class="memItemLeft" align="right" valign="top"><a id="aa4dec26d5c73404e97c0cb97b8b25b23"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#aa4dec26d5c73404e97c0cb97b8b25b23">receiverFailed</a> = &quot;Creating receiver thread failed!\n&gt;&gt; &quot;</td></tr>
+<tr class="memdesc:aa4dec26d5c73404e97c0cb97b8b25b23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat o błędzie tworzenia wątku odbiorczego UDP. <br /></td></tr>
+<tr class="separator:aa4dec26d5c73404e97c0cb97b8b25b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a734452668d00adefa24acabc599d88bd"><td class="memItemLeft" align="right" valign="top"><a id="a734452668d00adefa24acabc599d88bd"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#a734452668d00adefa24acabc599d88bd">tcpThreadFailed</a> = &quot;Creating data-changing thread failed!\n&gt;&gt; &quot;</td></tr>
+<tr class="memdesc:a734452668d00adefa24acabc599d88bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat o błędzie tworzenia wątku odbiorczego TCP. <br /></td></tr>
+<tr class="separator:a734452668d00adefa24acabc599d88bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add88aad349701a93666701c817c05de7"><td class="memItemLeft" align="right" valign="top"><a id="add88aad349701a93666701c817c05de7"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="p2p-actions_8hpp.html#add88aad349701a93666701c817c05de7">downloadThreadFailed</a> = &quot;Creating download thread failed!\n&gt;&gt; &quot;</td></tr>
+<tr class="memdesc:add88aad349701a93666701c817c05de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Komunikat o błędzie tworzenia wątku obsłgi komendy DOWNLOAD. <br /></td></tr>
+<tr class="separator:add88aad349701a93666701c817c05de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e290573ef1be67b92a2c745e3b00d1d"><td class="memItemLeft" align="right" valign="top"><a id="a7e290573ef1be67b92a2c745e3b00d1d"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:a7e290573ef1be67b92a2c745e3b00d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Obsługa komend interpretera, w tym sieciowa logika aplikacji. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji</h2>
+<a id="abb59e02c4b2ff6de53498f2e3e710dc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb59e02c4b2ff6de53498f2e3e710dc4">&#9670;&nbsp;</a></span>check_files_validations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void check_files_validations </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obsługa sytuacji niespójnych informacji o wlaścicielach zasobów. </p>
+<p>Funkcja dla każdego zasobu, ktorego nie jest wlascicielem sprawdza, czy wlasciceil nie usunal tego zasobu (wysyla broadcast z informacja o zasobie i komunikatem OWN_MSG) Usuwa takze zasoby, ktorych powiazane pliki sa uszkodzone lub usuniete. Jesli wezel byl wlascicielem tych zasobow, rozsyla wiadomosc o ich usunieciu. </p>
+
+</div>
+</div>
+<a id="af75026c0f1826128fd1fece887e8f350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75026c0f1826128fd1fece887e8f350">&#9670;&nbsp;</a></span>del_msg_reaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * del_msg_reaction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku, uruchamianego pod wplywem otrzymania komunikatu DEL_MSG. </p>
+<p>Funkcja natychmiast usuwa zasob, o ktorym otrzymala informacje, jesli go posiada i spelniony jest ktorys z warunkow: a)informacje o wlascicielach sa zgodne b)czas dodania zasobu przez wlasciciela uzyskany z wiadomosci jest wczesniejszy niz zapisany w lokalnym wezle </p>
+
+</div>
+</div>
+<a id="a6ed04fd72ed52702501ba802909032a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ed04fd72ed52702501ba802909032a9">&#9670;&nbsp;</a></span>delete_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * delete_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku obslugujacego operacje usuniecia zasobu. </p>
+<p>W przypadku udanego usuniecia zasobu, ktorego bylismy wlascicielami, rozsyla o tym fakcie informace wraz z danymi usunietego zasobu. </p>
+
+</div>
+</div>
+<a id="a02c06e9d9cdd58eebcb9166955e375a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02c06e9d9cdd58eebcb9166955e375a8">&#9670;&nbsp;</a></span>download_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * download_file </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja odpowiadająca za pobieranie zasobu. </p>
+<p>Rozsyła zapytania o zasoby do pierwszych HOST_NUMER dostępnych maszyn, następnie w pętli czego na odbiór fragmentu po czym go zapisuje. Po upłynięciu time-outu w czekaniu na fragment czyści liste dostępnych maszyn i wyszukuj je od nowa. W przypadku gdy nie ma żadnych dostępnych maszyn, w pętli czeka i rozsyła zapytanie FIND. Gdy są dostępne maszyny od których nie pobieramy, rozpoczyna pobieranie.</p>
+<p>Co około 10% pobierania wypisuje o tym informacje. </p>
+
+</div>
+</div>
+<a id="a95307f4fda47e905140d90ccb7bd2d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95307f4fda47e905140d90ccb7bd2d19">&#9670;&nbsp;</a></span>download_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * download_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ciało wątku pobierającego. </p>
+<p>Próbuje znaleść zasób w sieci, jeżeli mu to się uda rozpoczyna pobieranie zasobu. </p>
+
+</div>
+</div>
+<a id="a697d21a3e3ff4e102ca680bab0c7baca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a697d21a3e3ff4e102ca680bab0c7baca">&#9670;&nbsp;</a></span>find_msg_reaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * find_msg_reaction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FIND_MSG. </p>
+<p>Fukcja wyszukuje zasoby, ktore pasuja do przyslanych kryteriow wyszukiwania, a ktore mamy sciagniete w calosci. Wysyla informacje o tych zasobach wraz z wiadomoscia HAS_MSG do wezla, od ktorego otrzymalismy komunikat FIND_MSG na port, na ktorym nasłuchuje wątek wyszukiwania zasobow. </p>
+
+</div>
+</div>
+<a id="a31f2b8df5ad44703613e9c316246db1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31f2b8df5ad44703613e9c316246db1e">&#9670;&nbsp;</a></span>find_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * find_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procedura wątku obsługi komendy find. </p>
+<p>Funkcja przez okreslony czas zbiera informacje HAS_MSG na temat zasobow, (lub wyszukuje okreslona liczba zasobow), tworzy struktury, ktore umozliwia pobranie tych zasobow i przypisuje do nich liste peerow, od ktorych zasob mozna sciagnac. Rozwiazuje tez konflikty wlascicieli, jesli je stwierdzi. </p>
+
+</div>
+</div>
+<a id="a65f0119ca71f68088a44ceda9f4e58ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65f0119ca71f68088a44ceda9f4e58ef">&#9670;&nbsp;</a></span>force_del_msg_reaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * force_del_msg_reaction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FORCE_DEL_MSG lub DONT_MSG. </p>
+<p>Funkcja natychmiast usuwa zasob, o ktorym otrzymala informacje, jesli go posiada. </p>
+
+</div>
+</div>
+<a id="a7a9bfaef3861c921ac186d5e991bbe22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a9bfaef3861c921ac186d5e991bbe22">&#9670;&nbsp;</a></span>get_next_fragments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_next_fragments </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_interval.html">Interval</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; long &gt; *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>intervals_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>portion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>- parametr wynikowy, lista przedziałów o które mamy spytać. </td></tr>
+    <tr><td class="paramname">intervals_count</td><td>- parametr wynikowy, liczba przedziałów. </td></tr>
+    <tr><td class="paramname">input</td><td>- lista brakujących bloków. </td></tr>
+    <tr><td class="paramname">portion</td><td>- liczba fragmentów o które zapytamy. </td></tr>
+    <tr><td class="paramname">from</td><td>- ostatni fragment o który zapytaliśmy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Numer ostatniego fragmentu o który zapytamy. </dd></dl>
+
+</div>
+</div>
+<a id="a221f1f68fc1576746fef07bc0b620217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a221f1f68fc1576746fef07bc0b620217">&#9670;&nbsp;</a></span>has_msg_reaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * has_msg_reaction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku, uruchamianego pod wplywem otrzymania komunikatu HAS_MSG. </p>
+<p>Jesli z informacji o zasobie wynika, ze mamy do niego przypisanego wlasciciela pasozytniczego - nastepuje zmiana wlasciciela. W razie konfliktow wlascicieli i rownosci czasow dodania - rozsylane jest zadanie natychmiastowego usuniecia zasobu - FORCE_DEL </p>
+
+</div>
+</div>
+<a id="a0b8da71bf10f209b0dfa41f04551c4fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b8da71bf10f209b0dfa41f04551c4fc">&#9670;&nbsp;</a></span>main_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void main_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procedura wołana bezpośrednio po uruchomieniu programu. </p>
+<p>Inicjuje mutexy, pobiera ID obecnego klienta, deserializuje metadane tworzy wątki nasłuchując, sprawdza poprawność danych oraz uruchamia przerwane procesy pobierania. </p>
+
+</div>
+</div>
+<a id="a2e9bd3fb9982491e864396e5de65b3b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e9bd3fb9982491e864396e5de65b3b8">&#9670;&nbsp;</a></span>own_msg_reaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * own_msg_reaction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku, uruchamianego pod wplywem otrzymania komunikatu OWN_MSG. </p>
+<p>Funkcja sprawdza, czy mamy zasob, o ktorym informacje otrzymalismy. Jesli nie, a bylismy jego wlascicielem, odsylamy do wezla, ktory przyslal nam wiadomosc OWN_MSG komunikat DONT_MSG. </p>
+
+</div>
+</div>
+<a id="aedb6b3c7ba36ba8a25ea0380aaa898ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedb6b3c7ba36ba8a25ea0380aaa898ae">&#9670;&nbsp;</a></span>receiver_thread_TCP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * receiver_thread_TCP </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wątek nasłuchujący na próby połączenia TCP w celu pobrania od nas danych. </p>
+<p>W przypadku nawiązania uruchamia wątek obsługujący dane połączenie. </p>
+
+</div>
+</div>
+<a id="ad7bf772208926a302dbc6fdc69b1dfc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7bf772208926a302dbc6fdc69b1dfc0">&#9670;&nbsp;</a></span>recive_fragment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool recive_fragment </td>
+          <td>(</td>
+          <td class="paramtype">deque&lt; <a class="el" href="class_host.html">Host</a> &gt;::iterator *&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_file_download.html">FileDownload</a> *&#160;</td>
+          <td class="paramname"><em>file_downloading</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>fragment_counter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja zajmująca się odbiorem pojedyńczego fragmentu zasobu. </p>
+<p>W przypadku wystąpienia problemów z odbiorem, usuwa nadawce z listy maszyn od których pobieramy. W przypadku gdy był to ostatni pakiet na który czekaliśmy od danego nadawcy a) jeżeli był najwolniejszym dostawcą, usuwa go z listy maszyn od których pobieramy b) w. p. p. prosi go o następne fragmenty</p>
+<dl class="section return"><dt>Zwraca</dt><dd>true gdy udało się odebrać fragment, false w przeciwnym wypadku. </dd></dl>
+
+</div>
+</div>
+<a id="a72d35cc15f836ee6ccf7f1172bb92c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d35cc15f836ee6ccf7f1172bb92c6b">&#9670;&nbsp;</a></span>response_down_tcp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * response_down_tcp </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ciało wątku obsługującego zapytanie DOWN. </p>
+<p>Po odebraniu wiadomości sprawdza o jaki fragmenty jesteśmy pytani i odsyła je kolejno. W przypadku wystąpienia problemów i zakończenia transmisji wysyła fragment z numerem 0 co oznacza zakończenie transmisji. </p>
+
+</div>
+</div>
+<a id="ac59d846ee6ddec953a5afbd75c973ece"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59d846ee6ddec953a5afbd75c973ece">&#9670;&nbsp;</a></span>up_msg_reaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * up_msg_reaction </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cialo watku, uruchamianego pod wplywem otrzymania komunikatu UP_MSG. </p>
+<p>Jesli mamy zasob, o ktorym dostalismy inforamacje - odsylamy komunikat HAS_MSG czym powodujemy wywlaszczenie. </p>
+
+</div>
+</div>
+<a id="a17e17b29a14595d5a96b1be404f2b681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17e17b29a14595d5a96b1be404f2b681">&#9670;&nbsp;</a></span>upload_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * upload_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ciało watku obslugujacego operacje dodania zasobu. </p>
+<p>W przypadku udanego dodania rozsyla o tym fakcie informace wraz z danymi zasobu. </p>
+
+</div>
+</div>
+<a id="ae70bf79d3db0750038204fef41520545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae70bf79d3db0750038204fef41520545">&#9670;&nbsp;</a></span>write_progress_of_download()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_progress_of_download </td>
+          <td>(</td>
+          <td class="paramtype">list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>break_downloading</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wyświetla komunikat o postępie pobierania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">break_downloading</td><td>gdy true, wypisuje informacje o przerwaniu pobierania pliku. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja zmiennych</h2>
+<a id="a97554b6c78c83007858cbb8e88a78b61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97554b6c78c83007858cbb8e88a78b61">&#9670;&nbsp;</a></span>welcome</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* welcome</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wartość początkowa:</b><div class="fragment"><div class="line">= </div><div class="line">    <span class="stringliteral">&quot;Welcome in Pompous AAP File Transfer Protocol v1.0!\nRemember: your computer is your friend.\n\n&quot;</span></div></div><!-- fragment -->
+<p>Komunikat powitalny. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_450eddcfee19448261d49b2440c74ad1.html">Artur</a></li><li class="navelem"><a class="el" href="dir_0a41ef01bad04e11fd1e136d271b34db.html">Downloads</a></li><li class="navelem"><a class="el" href="dir_1b7a9a7bbe7b707b36ee6fb91fe1c968.html">TIN-master</a></li><li class="navelem"><a class="el" href="p2p-actions_8hpp.html">p2p-actions.hpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AAP File Transfer Protocol: Dokumentacja pliku C:/Users/Artur/Downloads/TIN-master/data.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logoTIN.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">AAP File Transfer Protocol
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Projekt na Techniki Intenetowe 2016Z. Wydział Elektroniki i Technik Informacyjnych Politechniki Warszawskiej.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('data_8hpp.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#func-members">Funkcje</a> &#124;
+<a href="#var-members">Zmienne</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku data.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Funkcje i procedury zarządzające plikami na dysku.  
+<a href="#details">Więcej...</a></p>
+<div class="textblock"><code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="resource_8h_source.html">resource.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="netmsg_8hpp_source.html">netmsg.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="filedownload_8hpp_source.html">filedownload.hpp</a>&quot;</code><br />
+</div>
+<p><a href="data_8hpp_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmutex__wrapper.html">mutex_wrapper</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struktura opakujaca std::mutex, pozwala na przechowywanie go w deque.  <a href="structmutex__wrapper.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:ad319bb1cb29b05901905d84f8c56f7ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#ad319bb1cb29b05901905d84f8c56f7ff">deleteFile</a> (<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *id)</td></tr>
+<tr class="memdesc:ad319bb1cb29b05901905d84f8c56f7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usuń posiadany lokalnie zasób.  <a href="#ad319bb1cb29b05901905d84f8c56f7ff">Więcej...</a><br /></td></tr>
+<tr class="separator:ad319bb1cb29b05901905d84f8c56f7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e45c183b7abaaffcfba8fb45595484b"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a2e45c183b7abaaffcfba8fb45595484b">openResource</a> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header)</td></tr>
+<tr class="memdesc:a2e45c183b7abaaffcfba8fb45595484b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utwórz zasób lokalny.  <a href="#a2e45c183b7abaaffcfba8fb45595484b">Więcej...</a><br /></td></tr>
+<tr class="separator:a2e45c183b7abaaffcfba8fb45595484b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c5ef7840fcccd527006388d6dd3a732"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a9c5ef7840fcccd527006388d6dd3a732">myFindInStorage</a> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header)</td></tr>
+<tr class="memdesc:a9c5ef7840fcccd527006388d6dd3a732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca listę posiadanych zupełnie zasobów (tzn.  <a href="#a9c5ef7840fcccd527006388d6dd3a732">Więcej...</a><br /></td></tr>
+<tr class="separator:a9c5ef7840fcccd527006388d6dd3a732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51820ea103c788c385174c9ad9185a26"><td class="memItemLeft" align="right" valign="top"><a id="a51820ea103c788c385174c9ad9185a26"></a>
+list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><b>openResourceByIterator</b> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header, bool *isNotEmpty)</td></tr>
+<tr class="separator:a51820ea103c788c385174c9ad9185a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3e05163d2c1bd8eb187195d8ac9c26"><td class="memItemLeft" align="right" valign="top"><a id="a3a3e05163d2c1bd8eb187195d8ac9c26"></a>
+std::list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a3a3e05163d2c1bd8eb187195d8ac9c26">getMetaData</a> ()</td></tr>
+<tr class="memdesc:a3a3e05163d2c1bd8eb187195d8ac9c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca listę zasobów posiadanych lokalnie - czyli metadane. <br /></td></tr>
+<tr class="separator:a3a3e05163d2c1bd8eb187195d8ac9c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f3ebb7cc672825f174046fea067d411"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_fragment.html">FileFragment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a7f3ebb7cc672825f174046fea067d411">getFileFragment</a> (<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *id, long number)</td></tr>
+<tr class="memdesc:a7f3ebb7cc672825f174046fea067d411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca pojedyczny blok pliku.  <a href="#a7f3ebb7cc672825f174046fea067d411">Więcej...</a><br /></td></tr>
+<tr class="separator:a7f3ebb7cc672825f174046fea067d411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe48d7a77b7a67d434c71d66fadb7af8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#abe48d7a77b7a67d434c71d66fadb7af8">saveFileFragment</a> (<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *id, <a class="el" href="struct_file_fragment.html">FileFragment</a> *fragment)</td></tr>
+<tr class="memdesc:abe48d7a77b7a67d434c71d66fadb7af8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zapisuje fragment fragment pliku do pamieci.  <a href="#abe48d7a77b7a67d434c71d66fadb7af8">Więcej...</a><br /></td></tr>
+<tr class="separator:abe48d7a77b7a67d434c71d66fadb7af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f9ce666365f27074a032061ed21b96e"><td class="memItemLeft" align="right" valign="top"><a id="a9f9ce666365f27074a032061ed21b96e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a9f9ce666365f27074a032061ed21b96e">initiateMutexes</a> ()</td></tr>
+<tr class="memdesc:a9f9ce666365f27074a032061ed21b96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicjuje dwa mutexy uzywane przy dostepie do metaDanych oraz listyMutexow dla plikow. <br /></td></tr>
+<tr class="separator:a9f9ce666365f27074a032061ed21b96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c612ff549082b179c5b61e43172944"><td class="memItemLeft" align="right" valign="top"><a id="a36c612ff549082b179c5b61e43172944"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a36c612ff549082b179c5b61e43172944">destroyMutexes</a> ()</td></tr>
+<tr class="memdesc:a36c612ff549082b179c5b61e43172944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwalnia dwa mutexy uzywane przy dostepie do metaDanych oraz listyMutexow dla plikow. <br /></td></tr>
+<tr class="separator:a36c612ff549082b179c5b61e43172944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a907cb8541be0266a9b471f343083f58a"><td class="memItemLeft" align="right" valign="top"><a id="a907cb8541be0266a9b471f343083f58a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a907cb8541be0266a9b471f343083f58a">lockMetaDataMutex</a> ()</td></tr>
+<tr class="memdesc:a907cb8541be0266a9b471f343083f58a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock na mutexie dostepu do metaDanych. <br /></td></tr>
+<tr class="separator:a907cb8541be0266a9b471f343083f58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae48b6e618b7e4da6be36e2ccdaf5834"><td class="memItemLeft" align="right" valign="top"><a id="aae48b6e618b7e4da6be36e2ccdaf5834"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#aae48b6e618b7e4da6be36e2ccdaf5834">unlockMetaDataMutex</a> ()</td></tr>
+<tr class="memdesc:aae48b6e618b7e4da6be36e2ccdaf5834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock na mutexie dostepu do metaDanych. <br /></td></tr>
+<tr class="separator:aae48b6e618b7e4da6be36e2ccdaf5834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f7a6c53de0e389a922c7613b641d83a"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a2f7a6c53de0e389a922c7613b641d83a">get_id</a> ()</td></tr>
+<tr class="memdesc:a2f7a6c53de0e389a922c7613b641d83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwróć id wezla na podstawie adresu MAC karty sieciowej.  <a href="#a2f7a6c53de0e389a922c7613b641d83a">Więcej...</a><br /></td></tr>
+<tr class="separator:a2f7a6c53de0e389a922c7613b641d83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3f7e723c2b26f5a0eee43b3cab4c1d"><td class="memItemLeft" align="right" valign="top"><a id="aab3f7e723c2b26f5a0eee43b3cab4c1d"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#aab3f7e723c2b26f5a0eee43b3cab4c1d">bytesToLong</a> (const char *bytes)</td></tr>
+<tr class="memdesc:aab3f7e723c2b26f5a0eee43b3cab4c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konwersja ciągu bajtów na uint64_t. <br /></td></tr>
+<tr class="separator:aab3f7e723c2b26f5a0eee43b3cab4c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b70bd6d6589844a997c437e031e5e1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a92b70bd6d6589844a997c437e031e5e1">returnFilePath</a> (const char *cfg_path, const char *filename)</td></tr>
+<tr class="memdesc:a92b70bd6d6589844a997c437e031e5e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utwórz nowy plik na dysku.  <a href="#a92b70bd6d6589844a997c437e031e5e1">Więcej...</a><br /></td></tr>
+<tr class="separator:a92b70bd6d6589844a997c437e031e5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd051a08305bfd78559100f1a96bd6a0"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#acd051a08305bfd78559100f1a96bd6a0">putToParts</a> (string s, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:acd051a08305bfd78559100f1a96bd6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Podział stringa na fragmenty.  <a href="#acd051a08305bfd78559100f1a96bd6a0">Więcej...</a><br /></td></tr>
+<tr class="separator:acd051a08305bfd78559100f1a96bd6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120af63c8003fb18da665f7e307584db"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a120af63c8003fb18da665f7e307584db">buildFromParts</a> (vector&lt; string &gt; parts, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a120af63c8003fb18da665f7e307584db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konkatenacja wektora stringów.  <a href="#a120af63c8003fb18da665f7e307584db">Więcej...</a><br /></td></tr>
+<tr class="separator:a120af63c8003fb18da665f7e307584db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b4deac4933aab644e32483d5192942"><td class="memItemLeft" align="right" valign="top"><a id="a58b4deac4933aab644e32483d5192942"></a>
+<a class="el" href="struct_resource.html">Resource</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a58b4deac4933aab644e32483d5192942">des2Resource</a> (string build, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a58b4deac4933aab644e32483d5192942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializacja stringa do obiektu <a class="el" href="struct_resource.html" title="Struktura reprezentująca zasób posiadany przez klienta lokalnie. ">Resource</a>. <br /></td></tr>
+<tr class="separator:a58b4deac4933aab644e32483d5192942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3461ef405c06f76bad7c84ea825bae8c"><td class="memItemLeft" align="right" valign="top"><a id="a3461ef405c06f76bad7c84ea825bae8c"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a3461ef405c06f76bad7c84ea825bae8c">ser2Resource</a> (<a class="el" href="struct_resource.html">Resource</a> *r, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a3461ef405c06f76bad7c84ea825bae8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja obiektu typu <a class="el" href="struct_resource.html" title="Struktura reprezentująca zasób posiadany przez klienta lokalnie. ">Resource</a> do stringa. <br /></td></tr>
+<tr class="separator:a3461ef405c06f76bad7c84ea825bae8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0329aa66b908f871aca1187d959d876"><td class="memItemLeft" align="right" valign="top"><a id="ae0329aa66b908f871aca1187d959d876"></a>
+<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#ae0329aa66b908f871aca1187d959d876">des2FileID</a> (string build, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:ae0329aa66b908f871aca1187d959d876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializacja stringa do obiektu typu FileID. <br /></td></tr>
+<tr class="separator:ae0329aa66b908f871aca1187d959d876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ab6b1a96da4bdb90b6fef803c460d2"><td class="memItemLeft" align="right" valign="top"><a id="a89ab6b1a96da4bdb90b6fef803c460d2"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a89ab6b1a96da4bdb90b6fef803c460d2">ser2FileID</a> (<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *id, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a89ab6b1a96da4bdb90b6fef803c460d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja obiektu typu FileID do stringa. <br /></td></tr>
+<tr class="separator:a89ab6b1a96da4bdb90b6fef803c460d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee4b603e62817650a4d537cc6b307536"><td class="memItemLeft" align="right" valign="top"><a id="aee4b603e62817650a4d537cc6b307536"></a>
+<a class="el" href="class_host.html">Host</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#aee4b603e62817650a4d537cc6b307536">des2Host</a> (string build, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:aee4b603e62817650a4d537cc6b307536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializacja stringa do obiektu typu <a class="el" href="class_host.html" title="Klasa reprezentująca hosta od którego można pobierać dane. ">Host</a>. <br /></td></tr>
+<tr class="separator:aee4b603e62817650a4d537cc6b307536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa57461540505d3f97b7f4e1d1347a1"><td class="memItemLeft" align="right" valign="top"><a id="a9fa57461540505d3f97b7f4e1d1347a1"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a9fa57461540505d3f97b7f4e1d1347a1">ser2Host</a> (<a class="el" href="class_host.html">Host</a> *host, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a9fa57461540505d3f97b7f4e1d1347a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja obiektu typu <a class="el" href="class_host.html" title="Klasa reprezentująca hosta od którego można pobierać dane. ">Host</a> do stringa. <br /></td></tr>
+<tr class="separator:a9fa57461540505d3f97b7f4e1d1347a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afccb319fe665a14274de06fb67fd7a0d"><td class="memItemLeft" align="right" valign="top"><a id="afccb319fe665a14274de06fb67fd7a0d"></a>
+sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#afccb319fe665a14274de06fb67fd7a0d">des2SockAddr_in</a> (string build, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:afccb319fe665a14274de06fb67fd7a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializacja stringa na obiekt typu sockaddr_in. <br /></td></tr>
+<tr class="separator:afccb319fe665a14274de06fb67fd7a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1940374549adff8f8fcf302b4c7cf88c"><td class="memItemLeft" align="right" valign="top"><a id="a1940374549adff8f8fcf302b4c7cf88c"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a1940374549adff8f8fcf302b4c7cf88c">ser2SockAddr_in</a> (sockaddr_in sa, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a1940374549adff8f8fcf302b4c7cf88c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja obkiektu typu sockaddr_in na stringa. <br /></td></tr>
+<tr class="separator:a1940374549adff8f8fcf302b4c7cf88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc93f029db8bd46036aa34db2c1f91c"><td class="memItemLeft" align="right" valign="top"><a id="a0bc93f029db8bd46036aa34db2c1f91c"></a>
+deque&lt; <a class="el" href="class_host.html">Host</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a0bc93f029db8bd46036aa34db2c1f91c">des2dequeHost</a> (string build, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a0bc93f029db8bd46036aa34db2c1f91c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializacja stringa do kolejki hostów. <br /></td></tr>
+<tr class="separator:a0bc93f029db8bd46036aa34db2c1f91c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115dc969b812309e2bb555fb239e65dd"><td class="memItemLeft" align="right" valign="top"><a id="a115dc969b812309e2bb555fb239e65dd"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a115dc969b812309e2bb555fb239e65dd">ser2dequeHost</a> (deque&lt; <a class="el" href="class_host.html">Host</a> &gt; *d, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a115dc969b812309e2bb555fb239e65dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja kolejki hostów do stringa. <br /></td></tr>
+<tr class="separator:a115dc969b812309e2bb555fb239e65dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a311e2d4ada7aa2a8e398c2b3aef0974d"><td class="memItemLeft" align="right" valign="top"><a id="a311e2d4ada7aa2a8e398c2b3aef0974d"></a>
+vector&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a311e2d4ada7aa2a8e398c2b3aef0974d">des2vectorLong</a> (string build, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:a311e2d4ada7aa2a8e398c2b3aef0974d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializacja wektora liczb do stringa. <br /></td></tr>
+<tr class="separator:a311e2d4ada7aa2a8e398c2b3aef0974d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0eaf7b063d50cd5cdd7729d1a1748de"><td class="memItemLeft" align="right" valign="top"><a id="ad0eaf7b063d50cd5cdd7729d1a1748de"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#ad0eaf7b063d50cd5cdd7729d1a1748de">ser2vectorLong</a> (vector&lt; long &gt; vl, char dividerLeft, char dividerRight)</td></tr>
+<tr class="memdesc:ad0eaf7b063d50cd5cdd7729d1a1748de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja wektora liczb do stringa. <br /></td></tr>
+<tr class="separator:ad0eaf7b063d50cd5cdd7729d1a1748de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a536b6d7add4d4fdca93c5de0f945c130"><td class="memItemLeft" align="right" valign="top"><a id="a536b6d7add4d4fdca93c5de0f945c130"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a536b6d7add4d4fdca93c5de0f945c130">serializeMetaData</a> ()</td></tr>
+<tr class="memdesc:a536b6d7add4d4fdca93c5de0f945c130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializacja metadanych i zapis do pliku "_metaData.txt". <br /></td></tr>
+<tr class="separator:a536b6d7add4d4fdca93c5de0f945c130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2357c582d35d9ae38dd79b66aec36ecf"><td class="memItemLeft" align="right" valign="top"><a id="a2357c582d35d9ae38dd79b66aec36ecf"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a2357c582d35d9ae38dd79b66aec36ecf">deserializeMetaData</a> ()</td></tr>
+<tr class="memdesc:a2357c582d35d9ae38dd79b66aec36ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Otwiera plik "_metaData.txt" i deserializuje zawartośc do list&lt;Resource&gt;. <br /></td></tr>
+<tr class="separator:a2357c582d35d9ae38dd79b66aec36ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89895ee5bc432ebf982721021ee5ed5e"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a89895ee5bc432ebf982721021ee5ed5e">getUnlinked</a> ()</td></tr>
+<tr class="memdesc:a89895ee5bc432ebf982721021ee5ed5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Walidacja adresów fizycznych plików.  <a href="#a89895ee5bc432ebf982721021ee5ed5e">Więcej...</a><br /></td></tr>
+<tr class="separator:a89895ee5bc432ebf982721021ee5ed5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8327ff30bca5f48ce70c85055a771eba"><td class="memItemLeft" align="right" valign="top"><a id="a8327ff30bca5f48ce70c85055a771eba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a8327ff30bca5f48ce70c85055a771eba">fileIsDownloading</a> (list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator it)</td></tr>
+<tr class="memdesc:a8327ff30bca5f48ce70c85055a771eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca true gdy zasób wskazywany przez iterator jest aktualnie pobierany na dysk. <br /></td></tr>
+<tr class="separator:a8327ff30bca5f48ce70c85055a771eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa5a4bf9a71ff69aaa670b097b3c2c7"><td class="memItemLeft" align="right" valign="top"><a id="a9fa5a4bf9a71ff69aaa670b097b3c2c7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a9fa5a4bf9a71ff69aaa670b097b3c2c7">setFileIsDownloading</a> (list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator it)</td></tr>
+<tr class="memdesc:a9fa5a4bf9a71ff69aaa670b097b3c2c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawia flagę wskazującą na aktualne pobieranie zasobu. <br /></td></tr>
+<tr class="separator:a9fa5a4bf9a71ff69aaa670b097b3c2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60695726d9d0486ddd7a54bafb820795"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a60695726d9d0486ddd7a54bafb820795">addFile</a> (string pathName, string fileName)</td></tr>
+<tr class="memdesc:a60695726d9d0486ddd7a54bafb820795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dodanie dodajen nowy zasób do rejestru zasobów lokalnych hosta.  <a href="#a60695726d9d0486ddd7a54bafb820795">Więcej...</a><br /></td></tr>
+<tr class="separator:a60695726d9d0486ddd7a54bafb820795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa012024561c41d22fcccb80d2803ff89"><td class="memItemLeft" align="right" valign="top"><a id="aa012024561c41d22fcccb80d2803ff89"></a>
+list&lt; <a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#aa012024561c41d22fcccb80d2803ff89">getFileIds</a> ()</td></tr>
+<tr class="memdesc:aa012024561c41d22fcccb80d2803ff89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista ID wszystkich plików posiadanych lokalnie przez hosta. <br /></td></tr>
+<tr class="separator:aa012024561c41d22fcccb80d2803ff89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af41ac35f7bec745690a4038c692e23d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#af41ac35f7bec745690a4038c692e23d3">isFileInStorage</a> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header)</td></tr>
+<tr class="memdesc:af41ac35f7bec745690a4038c692e23d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZwróćID posiadanego lokalnie zasobu.  <a href="#af41ac35f7bec745690a4038c692e23d3">Więcej...</a><br /></td></tr>
+<tr class="separator:af41ac35f7bec745690a4038c692e23d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b4f2daae819d8fcf5a5bb22b5b7c61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#ad6b4f2daae819d8fcf5a5bb22b5b7c61">changeOwner</a> (<a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *id, const char *newOwner, time_t addTime)</td></tr>
+<tr class="memdesc:ad6b4f2daae819d8fcf5a5bb22b5b7c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmień parametry zasobu.  <a href="#ad6b4f2daae819d8fcf5a5bb22b5b7c61">Więcej...</a><br /></td></tr>
+<tr class="separator:ad6b4f2daae819d8fcf5a5bb22b5b7c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e1b6b4fca272a8a0340787753cc7341"><td class="memItemLeft" align="right" valign="top"><a id="a1e1b6b4fca272a8a0340787753cc7341"></a>
+list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a1e1b6b4fca272a8a0340787753cc7341">getResource</a> (<a class="el" href="struct_resource_header.html">ResourceHeader</a> *header)</td></tr>
+<tr class="memdesc:a1e1b6b4fca272a8a0340787753cc7341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwróć lokalny zasób zgodny z otrzymanym pakietem AAP. <br /></td></tr>
+<tr class="separator:a1e1b6b4fca272a8a0340787753cc7341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e15afd1548a312e4890df78251debb"><td class="memItemLeft" align="right" valign="top"><a id="a16e15afd1548a312e4890df78251debb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a16e15afd1548a312e4890df78251debb">isValidResource</a> (list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator resource)</td></tr>
+<tr class="memdesc:a16e15afd1548a312e4890df78251debb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kontrola poprawności zapisu informacji do pliku metadanych. <br /></td></tr>
+<tr class="separator:a16e15afd1548a312e4890df78251debb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a51ee3448b2234054e6be110f2826fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a8a51ee3448b2234054e6be110f2826fe">deleteFile</a> (string pathName)</td></tr>
+<tr class="memdesc:a8a51ee3448b2234054e6be110f2826fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usuniecie zasobu zwiazanego z plikiem spod lokalizacji podanej w argumencie wywolania.  <a href="#a8a51ee3448b2234054e6be110f2826fe">Więcej...</a><br /></td></tr>
+<tr class="separator:a8a51ee3448b2234054e6be110f2826fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af57bbb5571f66cb39a0099f935dce874"><td class="memTemplParams" colspan="2"><a id="af57bbb5571f66cb39a0099f935dce874"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:af57bbb5571f66cb39a0099f935dce874"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="data_8hpp.html#af57bbb5571f66cb39a0099f935dce874">tToString</a> (const T &amp;t)</td></tr>
+<tr class="memdesc:af57bbb5571f66cb39a0099f935dce874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konwersja typów prostych na string. <br /></td></tr>
+<tr class="separator:af57bbb5571f66cb39a0099f935dce874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c646b83c0ce7c2c75dde5b3280f14b"><td class="memTemplParams" colspan="2"><a id="af7c646b83c0ce7c2c75dde5b3280f14b"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:af7c646b83c0ce7c2c75dde5b3280f14b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="data_8hpp.html#af7c646b83c0ce7c2c75dde5b3280f14b">stringToT</a> (std::string s)</td></tr>
+<tr class="memdesc:af7c646b83c0ce7c2c75dde5b3280f14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konwersja stringa na typy proste. <br /></td></tr>
+<tr class="separator:af7c646b83c0ce7c2c75dde5b3280f14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Zmienne</h2></td></tr>
+<tr class="memitem:ad7e306ad4d8cfef5a438cc0863e169d7"><td class="memItemLeft" align="right" valign="top"><a id="ad7e306ad4d8cfef5a438cc0863e169d7"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#ad7e306ad4d8cfef5a438cc0863e169d7">configFilePath</a> = &quot;./p2p.config&quot;</td></tr>
+<tr class="memdesc:ad7e306ad4d8cfef5a438cc0863e169d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ściezka do pliku konfiguracyjnego okreslajacego katalog, do ktorego zapisywane beda sciagniete pliki. <br /></td></tr>
+<tr class="separator:ad7e306ad4d8cfef5a438cc0863e169d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a800b1bcc5d94702e777ac049989c7478"><td class="memItemLeft" align="right" valign="top"><a id="a800b1bcc5d94702e777ac049989c7478"></a>
+std::list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a800b1bcc5d94702e777ac049989c7478">metaData</a></td></tr>
+<tr class="memdesc:a800b1bcc5d94702e777ac049989c7478"><td class="mdescLeft">&#160;</td><td class="mdescRight">lista zasobów posiadanych lokalnie. <br /></td></tr>
+<tr class="separator:a800b1bcc5d94702e777ac049989c7478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ceea8598edaeadd59688a44c4f9aca0"><td class="memItemLeft" align="right" valign="top"><a id="a7ceea8598edaeadd59688a44c4f9aca0"></a>
+pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8hpp.html#a7ceea8598edaeadd59688a44c4f9aca0">metaDataMutex</a></td></tr>
+<tr class="memdesc:a7ceea8598edaeadd59688a44c4f9aca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex synchronizujący dostęp do metadanych. <br /></td></tr>
+<tr class="separator:a7ceea8598edaeadd59688a44c4f9aca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a172ea8b9f4edd0d37a2d8aabb7c85fc5"><td class="memItemLeft" align="right" valign="top"><a id="a172ea8b9f4edd0d37a2d8aabb7c85fc5"></a>
+pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><b>fileMutexDequeMutex</b></td></tr>
+<tr class="separator:a172ea8b9f4edd0d37a2d8aabb7c85fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Funkcje i procedury zarządzające plikami na dysku. </p>
+<p>Serializacja i deserializacja zasobów. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji</h2>
+<a id="a60695726d9d0486ddd7a54bafb820795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60695726d9d0486ddd7a54bafb820795">&#9670;&nbsp;</a></span>addFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt;<a class="el" href="struct_resource.html">Resource</a>&gt;::iterator addFile </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pathName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dodanie dodajen nowy zasób do rejestru zasobów lokalnych hosta. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathName</td><td>- sciezka do pliku na dysku </td></tr>
+    <tr><td class="paramname">filename</td><td>- nazwa, pod jaka plik bedzie udostepniony jako zasob </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Iterator do nowo utworzonego zasobu. Jesli istnieje już zasob o tej samej nazwie i rozmiarze lub udostepniajacy plik spod tej samej lokalizacji, operacja dodania nie udaje sie i zwracany jest iterator do tego zasobu. Jesli sciezka do pliku jest nieprawidlowa - zwracany jest iterator::end() </dd></dl>
+
+</div>
+</div>
+<a id="a120af63c8003fb18da665f7e307584db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120af63c8003fb18da665f7e307584db">&#9670;&nbsp;</a></span>buildFromParts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string buildFromParts </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>parts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>dividerLeft</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>dividerRight</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Konkatenacja wektora stringów. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dividerLeft</td><td>Delimiter na początku każdego stringa </td></tr>
+    <tr><td class="paramname">dividerRight</td><td>Delimiter na końcu każdego stringa </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>String będący efektem konkatenacji </dd></dl>
+
+</div>
+</div>
+<a id="ad6b4f2daae819d8fcf5a5bb22b5b7c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b4f2daae819d8fcf5a5bb22b5b7c61">&#9670;&nbsp;</a></span>changeOwner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool changeOwner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>newOwner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">time_t&#160;</td>
+          <td class="paramname"><em>addTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zmień parametry zasobu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Zasób do modyfikacji </td></tr>
+    <tr><td class="paramname">newOwner</td><td>Nowy właściciel pliku </td></tr>
+    <tr><td class="paramname">addTime</td><td>Nowy czas dodania pliku do sieci. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>true w razie powodzenia, false w przeciwnym przypadku. </dd></dl>
+
+</div>
+</div>
+<a id="ad319bb1cb29b05901905d84f8c56f7ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad319bb1cb29b05901905d84f8c56f7ff">&#9670;&nbsp;</a></span>deleteFile() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool deleteFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Usuń posiadany lokalnie zasób. </p>
+<p>Usuwa takze plik na dysku, zwiazany z danym zasobem. Zwraca true w przypadku zakonczenia operacji usuniecia zasobu. </p><dl class="section return"><dt>Zwraca</dt><dd>true w przypadku powodzenia operacji, false w przypadku błędu. </dd></dl>
+
+</div>
+</div>
+<a id="a8a51ee3448b2234054e6be110f2826fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a51ee3448b2234054e6be110f2826fe">&#9670;&nbsp;</a></span>deleteFile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> deleteFile </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pathName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Usuniecie zasobu zwiazanego z plikiem spod lokalizacji podanej w argumencie wywolania. </p>
+<p>Plik zostaje usuniety z dysku tylko jeśli jesteśmy właścicielami zasobu. </p><dl class="section return"><dt>Zwraca</dt><dd>Informacje o usunietym zasobie. Jesli w bazie nie ma zasobu zwiazanego ze wskazywanym plikiem return null. </dd></dl>
+
+</div>
+</div>
+<a id="a2f7a6c53de0e389a922c7613b641d83a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f7a6c53de0e389a922c7613b641d83a">&#9670;&nbsp;</a></span>get_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t get_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zwróć id wezla na podstawie adresu MAC karty sieciowej. </p>
+<p>Preferowana jest karta ethernetowa, jesli takiej nie ma - pobierany jest adres MAC pierwszej karty sieciowej z listy. </p>
+
+</div>
+</div>
+<a id="a7f3ebb7cc672825f174046fea067d411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f3ebb7cc672825f174046fea067d411">&#9670;&nbsp;</a></span>getFileFragment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_file_fragment.html">FileFragment</a> * getFileFragment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>number</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zwraca pojedyczny blok pliku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">FileID</td><td>z ktorego pliku pochodzi fragment, </td></tr>
+    <tr><td class="paramname">number</td><td>Indeks fragmentu w ramach pliku.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci, to jego pozycja jest kasowana w metaDanych. Jezeli nie udalo sie odnalezc pliku badz fragmentu w nim, zwraca null. </p>
+
+</div>
+</div>
+<a id="a89895ee5bc432ebf982721021ee5ed5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89895ee5bc432ebf982721021ee5ed5e">&#9670;&nbsp;</a></span>getUnlinked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; <a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> * &gt; getUnlinked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Walidacja adresów fizycznych plików. </p>
+<p>W razie zapisania w metadanych nieistniejącej ścieżki, zasób jest usuwany z rejestru. </p><dl class="section return"><dt>Zwraca</dt><dd>Lista niepoprawnych zasobów </dd></dl>
+
+</div>
+</div>
+<a id="af41ac35f7bec745690a4038c692e23d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41ac35f7bec745690a4038c692e23d3">&#9670;&nbsp;</a></span>isFileInStorage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a>* isFileInStorage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_resource_header.html">ResourceHeader</a> *&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ZwróćID posiadanego lokalnie zasobu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>Nagłówek komunikatu dotyczącego pliku którego szukamy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Adres struktury FileID, związanej z szukanym plikiem. Jesli w bazie zasobow nie ma odpowiadajacego obiektu, funkjca zwraca null. </dd></dl>
+
+</div>
+</div>
+<a id="a9c5ef7840fcccd527006388d6dd3a732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c5ef7840fcccd527006388d6dd3a732">&#9670;&nbsp;</a></span>myFindInStorage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> * &gt; myFindInStorage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_resource_header.html">ResourceHeader</a> *&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zwraca listę posiadanych zupełnie zasobów (tzn. </p>
+<p>pobranych już w 100%). </p>
+
+</div>
+</div>
+<a id="a2e45c183b7abaaffcfba8fb45595484b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e45c183b7abaaffcfba8fb45595484b">&#9670;&nbsp;</a></span>openResource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; <a class="el" href="struct_resource.html">Resource</a> &gt;::iterator openResource </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_resource_header.html">ResourceHeader</a> *&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Utwórz zasób lokalny. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>Nagłówek komunikatu AAP zawierający dane o zasobie do utworzenia. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>iterator do utworzonego zasobu </dd></dl>
+
+</div>
+</div>
+<a id="acd051a08305bfd78559100f1a96bd6a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd051a08305bfd78559100f1a96bd6a0">&#9670;&nbsp;</a></span>putToParts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; string &gt; putToParts </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>dividerLeft</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>dividerRight</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Podział stringa na fragmenty. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dividerLeft</td><td>Delimiter z początku fragmentu </td></tr>
+    <tr><td class="paramname">dividerRight</td><td>Delimiter na końcu fragmentu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a92b70bd6d6589844a997c437e031e5e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92b70bd6d6589844a997c437e031e5e1">&#9670;&nbsp;</a></span>returnFilePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string returnFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>cfg_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Utwórz nowy plik na dysku. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg_path</td><td>Ściezka do pliku konfiguracyjnego, w ktorym znajdziemy lokalizacje katalogu, w ktorym znalezc ma sie plik. </td></tr>
+    <tr><td class="paramname">filename</td><td>Nazwa pliku do utworzenia </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Pełna ścieżka do utworzonego pliku lub pusty string w razie niepowodzenia. </dd></dl>
+
+</div>
+</div>
+<a id="abe48d7a77b7a67d434c71d66fadb7af8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe48d7a77b7a67d434c71d66fadb7af8">&#9670;&nbsp;</a></span>saveFileFragment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool saveFileFragment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs_8h.html#ad2196a018ba2b7686a1088e9b0feacd3">FileID</a> *&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_file_fragment.html">FileFragment</a> *&#160;</td>
+          <td class="paramname"><em>fragment</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zapisuje fragment fragment pliku do pamieci. </p>
+<p>Wymagane jest, aby plik istnial w metadanych, oraz jako plik w pamieci - inaczej zwracane jest false.</p>
+<p>Jezeli pozycja pliku znajduje sie w metaDanych, ale nie istnieje jako plik w pamieci, to jego pozycja jest kasowana w metaDanych.</p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>identyfikator pliku do zapisu </td></tr>
+    <tr><td class="paramname">fragment</td><td>Blok pliku do zapisu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>false jezeli zapis sie nie powiodl, plik nie istnial w pamieci badz w metaDanych. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_450eddcfee19448261d49b2440c74ad1.html">Artur</a></li><li class="navelem"><a class="el" href="dir_0a41ef01bad04e11fd1e136d271b34db.html">Downloads</a></li><li class="navelem"><a class="el" href="dir_1b7a9a7bbe7b707b36ee6fb91fe1c968.html">TIN-master</a></li><li class="navelem"><a class="el" href="data_8hpp.html">data.hpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

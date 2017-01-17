@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AAP File Transfer Protocol: Plik źródłowy C:/Users/Artur/Downloads/TIN-master/params.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logoTIN.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">AAP File Transfer Protocol
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Projekt na Techniki Intenetowe 2016Z. Wydział Elektroniki i Technik Informacyjnych Politechniki Warszawskiej.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('params_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">params.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="params_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef PARAMS_H</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define PARAMS_H</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sys/types.h&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;netdb.h&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;dirent.h&gt;</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="params_8h.html#a11717c934f77ad5167dac5d28562d85a">   31</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#a11717c934f77ad5167dac5d28562d85a">PORT</a> = 35787;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> FIND_PORT = 35788;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="params_8h.html#acb2e2f20f8ff6363fe6b3a60cc394c5b">   35</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#acb2e2f20f8ff6363fe6b3a60cc394c5b">HOST_NUMER</a> = 1;</div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="params_8h.html#ae270d91a9c5dc96eb46c8b6ed4743748">   37</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#ae270d91a9c5dc96eb46c8b6ed4743748">START_FRAGMENT_COUNT</a> =  1024;</div><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="params_8h.html#a52bb08da926e5d4ae68bf2c2064d14ff">   39</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#a52bb08da926e5d4ae68bf2c2064d14ff">TIMEOUT_SEC</a> = 3;</div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="params_8h.html#a88e62f2cab00c86b2412f4e6c83a0e97">   41</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#a88e62f2cab00c86b2412f4e6c83a0e97">TIMEOUT_SEC_FIND_AGAIN</a> = 2;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="params_8h.html#a3242a27e0a9ad18c15cc649e18c1921f">   43</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="params_8h.html#a3242a27e0a9ad18c15cc649e18c1921f">GROW_PORTION</a> = 1.2;</div><div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="params_8h.html#a49b72f05314ee5d1d520b417eebf41d1">   45</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#a49b72f05314ee5d1d520b417eebf41d1">TOP_HOSTS</a> = 3;</div><div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="params_8h.html#ab15ce9f15bb1f848cb0abfd574d821fb">   47</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#ab15ce9f15bb1f848cb0abfd574d821fb">TCP_ONE_TIME_CONNECTION</a> = 5;</div><div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="params_8h.html#a1e32f61f5ac8d270bad6b3303b873295">   49</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="params_8h.html#a1e32f61f5ac8d270bad6b3303b873295">TIMEOUT_FIND</a> = 2;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="params_8h.html#a2ea0bb09adcce7f655e8f8ee8d30561b">   52</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="params_8h.html#a2ea0bb09adcce7f655e8f8ee8d30561b">MsgType</a> {UP_MSG, HAS_MSG, DEL_MSG, FORCE_DEL_MSG, FIND_MSG, DOWN_MSG, OWN_MSG, DONT_MSG};</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="params_8h_html_a52bb08da926e5d4ae68bf2c2064d14ff"><div class="ttname"><a href="params_8h.html#a52bb08da926e5d4ae68bf2c2064d14ff">TIMEOUT_SEC</a></div><div class="ttdeci">const int TIMEOUT_SEC</div><div class="ttdoc">Czas oczekiwania na najbliższy fragment w procesie pobierania. </div><div class="ttdef"><b>Definition:</b> params.h:39</div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="params_8h_html_a1e32f61f5ac8d270bad6b3303b873295"><div class="ttname"><a href="params_8h.html#a1e32f61f5ac8d270bad6b3303b873295">TIMEOUT_FIND</a></div><div class="ttdeci">const int TIMEOUT_FIND</div><div class="ttdoc">Czas oczekiwania na odpowiedzi w polecniu FIND. </div><div class="ttdef"><b>Definition:</b> params.h:49</div></div>
+<div class="ttc" id="params_8h_html_a2ea0bb09adcce7f655e8f8ee8d30561b"><div class="ttname"><a href="params_8h.html#a2ea0bb09adcce7f655e8f8ee8d30561b">MsgType</a></div><div class="ttdeci">MsgType</div><div class="ttdoc">Możliwe typy wiadomości. </div><div class="ttdef"><b>Definition:</b> params.h:52</div></div>
+<div class="ttc" id="params_8h_html_ab15ce9f15bb1f848cb0abfd574d821fb"><div class="ttname"><a href="params_8h.html#ab15ce9f15bb1f848cb0abfd574d821fb">TCP_ONE_TIME_CONNECTION</a></div><div class="ttdeci">const int TCP_ONE_TIME_CONNECTION</div><div class="ttdoc">Liczba kolejkowanych połączeń na accept. </div><div class="ttdef"><b>Definition:</b> params.h:47</div></div>
+<div class="ttc" id="params_8h_html_a88e62f2cab00c86b2412f4e6c83a0e97"><div class="ttname"><a href="params_8h.html#a88e62f2cab00c86b2412f4e6c83a0e97">TIMEOUT_SEC_FIND_AGAIN</a></div><div class="ttdeci">const int TIMEOUT_SEC_FIND_AGAIN</div><div class="ttdoc">Czas oczekiwania na rozesłanie zapytania FIND w procesie pobierania z którym nie są skojarzone żadne ...</div><div class="ttdef"><b>Definition:</b> params.h:41</div></div>
+<div class="ttc" id="params_8h_html_acb2e2f20f8ff6363fe6b3a60cc394c5b"><div class="ttname"><a href="params_8h.html#acb2e2f20f8ff6363fe6b3a60cc394c5b">HOST_NUMER</a></div><div class="ttdeci">const int HOST_NUMER</div><div class="ttdoc">Liczbe maszyn od których pobieramy jednoczesnie jeden plik. </div><div class="ttdef"><b>Definition:</b> params.h:35</div></div>
+<div class="ttc" id="params_8h_html_ae270d91a9c5dc96eb46c8b6ed4743748"><div class="ttname"><a href="params_8h.html#ae270d91a9c5dc96eb46c8b6ed4743748">START_FRAGMENT_COUNT</a></div><div class="ttdeci">const int START_FRAGMENT_COUNT</div><div class="ttdoc">Startowa liczba fragmentów w zapytaniu DOWN. </div><div class="ttdef"><b>Definition:</b> params.h:37</div></div>
+<div class="ttc" id="params_8h_html_a11717c934f77ad5167dac5d28562d85a"><div class="ttname"><a href="params_8h.html#a11717c934f77ad5167dac5d28562d85a">PORT</a></div><div class="ttdeci">const int PORT</div><div class="ttdoc">Porty używane w programie. </div><div class="ttdef"><b>Definition:</b> params.h:31</div></div>
+<div class="ttc" id="params_8h_html_a3242a27e0a9ad18c15cc649e18c1921f"><div class="ttname"><a href="params_8h.html#a3242a27e0a9ad18c15cc649e18c1921f">GROW_PORTION</a></div><div class="ttdeci">const double GROW_PORTION</div><div class="ttdoc">Współczynnik zwiększania liczności fragmentów w zapydaniu DOWN. </div><div class="ttdef"><b>Definition:</b> params.h:43</div></div>
+<div class="ttc" id="params_8h_html_a49b72f05314ee5d1d520b417eebf41d1"><div class="ttname"><a href="params_8h.html#a49b72f05314ee5d1d520b417eebf41d1">TOP_HOSTS</a></div><div class="ttdeci">const int TOP_HOSTS</div><div class="ttdoc">Liczba najlepszych maszyn, którym zwiększamy liczbe fragmentów w najbliższych zapytaniach DOWN...</div><div class="ttdef"><b>Definition:</b> params.h:45</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_450eddcfee19448261d49b2440c74ad1.html">Artur</a></li><li class="navelem"><a class="el" href="dir_0a41ef01bad04e11fd1e136d271b34db.html">Downloads</a></li><li class="navelem"><a class="el" href="dir_1b7a9a7bbe7b707b36ee6fb91fe1c968.html">TIN-master</a></li><li class="navelem"><a class="el" href="params_8h.html">params.h</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

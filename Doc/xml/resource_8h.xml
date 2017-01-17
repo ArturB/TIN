@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="resource_8h" kind="file" language="C++">
+    <compoundname>resource.h</compoundname>
+    <includes refid="host_8hpp" local="yes">host.hpp</includes>
+    <includedby refid="data_8hpp" local="yes">C:/Users/Artur/Downloads/TIN-master/data.hpp</includedby>
+    <includedby refid="filedownload_8hpp" local="yes">C:/Users/Artur/Downloads/TIN-master/filedownload.hpp</includedby>
+    <incdepgraph>
+      <node id="172">
+        <label>list</label>
+      </node>
+      <node id="163">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="166">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="159">
+        <label>structs.h</label>
+        <link refid="structs_8h"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+      </node>
+      <node id="157">
+        <label>C:/Users/Artur/Downloads/TIN-master/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>string</label>
+      </node>
+      <node id="171">
+        <label>fstream</label>
+      </node>
+      <node id="164">
+        <label>netdb.h</label>
+      </node>
+      <node id="169">
+        <label>pthread.h</label>
+      </node>
+      <node id="161">
+        <label>sys/types.h</label>
+      </node>
+      <node id="168">
+        <label>unistd.h</label>
+      </node>
+      <node id="176">
+        <label>vector</label>
+      </node>
+      <node id="175">
+        <label>sstream</label>
+      </node>
+      <node id="170">
+        <label>iostream</label>
+      </node>
+      <node id="177">
+        <label>deque</label>
+      </node>
+      <node id="160">
+        <label>params.h</label>
+        <link refid="params_8h"/>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+      </node>
+      <node id="162">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="173">
+        <label>set</label>
+      </node>
+      <node id="165">
+        <label>stdio.h</label>
+      </node>
+      <node id="158">
+        <label>host.hpp</label>
+        <link refid="host_8hpp"/>
+        <childnode refid="159" relation="include">
+        </childnode>
+      </node>
+      <node id="174">
+        <label>dirent.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="178">
+        <label>C:/Users/Artur/Downloads/TIN-master/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>C:/Users/Artur/Downloads/TIN-master/filedownload.hpp</label>
+        <link refid="filedownload_8hpp"/>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="179">
+        <label>C:/Users/Artur/Downloads/TIN-master/data.hpp</label>
+        <link refid="data_8hpp"/>
+        <childnode refid="180" relation="include">
+        </childnode>
+      </node>
+      <node id="180">
+        <label>C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp</label>
+        <link refid="p2p-actions_8hpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_resource" prot="public">Resource</innerclass>
+    <briefdescription>
+<para>Struktura reprezentująca zasób posiadany przez klienta lokalnie. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>RESOURCE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESOURCE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="host_8hpp" kindref="compound">host.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="struct_resource" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_resource" kindref="compound">Resource</ref><sp/>{</highlight></codeline>
+<codeline lineno="13" refid="struct_resource_1a6d7e5386dab132c6ff3bf268c896da46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_file_i_d_struct" kindref="compound">FileID</ref>*<sp/><ref refid="struct_resource_1a6d7e5386dab132c6ff3bf268c896da46" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="15" refid="struct_resource_1af00e53812e6a2dfc58dcba70effa49d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="struct_resource_1af00e53812e6a2dfc58dcba70effa49d8" kindref="member">filePathName</ref>;</highlight></codeline>
+<codeline lineno="17" refid="struct_resource_1a12f6231e35a6ca1b9b628dd506dc0215" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>deque&lt;Host&gt;<sp/><ref refid="struct_resource_1a12f6231e35a6ca1b9b628dd506dc0215" kindref="member">peers</ref>;</highlight></codeline>
+<codeline lineno="19" refid="struct_resource_1ab27d632de3aaa900460f7bf2b0a61e69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;long&gt;<sp/><ref refid="struct_resource_1ab27d632de3aaa900460f7bf2b0a61e69" kindref="member">missingBlocks</ref>;</highlight></codeline>
+<codeline lineno="21" refid="struct_resource_1a4459bb60f5d48fb4b77919e45a0d973a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="struct_resource_1a4459bb60f5d48fb4b77919e45a0d973a" kindref="member">is_downloading</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Artur/Downloads/TIN-master/resource.h"/>
+  </compounddef>
+</doxygen>

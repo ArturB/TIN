@@ -1,0 +1,812 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="_t_i_n_8tab_8h" kind="file" language="C++">
+    <compoundname>TIN.tab.h</compoundname>
+    <includedby refid="_t_i_n_8yy_8c" local="yes">C:/Users/Artur/Downloads/TIN-master/TIN.yy.c</includedby>
+    <innerclass refid="union_y_y_s_t_y_p_e" prot="public">YYSTYPE</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_t_i_n_8tab_8h_1a853b3bfad6d2b2ff693dce81182e0c2e" prot="public" static="no">
+        <name>YYDEBUG</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="37" column="10" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_t_i_n_8tab_8h_1a69ca0fbcc6d7aa5e8f47b11fc0048208" prot="public" static="no">
+        <name>YYTOKENTYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="45" column="10" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_t_i_n_8tab_8h_1a2e3dbf169c5ee24cf6af37c61cf3995d" prot="public" static="no">
+        <name>YYSTYPE_IS_TRIVIAL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="104" column="10" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_t_i_n_8tab_8h_1a4ccf5315e8f5c1cec48ec67ca1771e3a" prot="public" static="no">
+        <name>yystype</name>
+        <initializer><ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref> /* obsolescent; will be withdrawn */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="105" column="10" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_t_i_n_8tab_8h_1af0232d21120b2cfc5e5f82f0fbadab3c" prot="public" static="no">
+        <name>YYSTYPE_IS_DECLARED</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="106" column="10" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9" prot="public" static="no">
+        <name>yytokentype</name>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9aea81994cd8ebea76c3c4fc8d5fb486d4" prot="public">
+          <name>UPLOAD</name>
+          <initializer>= 258</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a0b84664ffa026b1a5f43c051cd6fe69f" prot="public">
+          <name>AS</name>
+          <initializer>= 259</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a67bc2ced260a8e43805d2480a785d312" prot="public">
+          <name>NAME</name>
+          <initializer>= 260</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a9d61e82a9a12752f10aece1b22183913" prot="public">
+          <name>DELETE</name>
+          <initializer>= 261</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8f189475707a2b69614aeb6c6904a6df" prot="public">
+          <name>FIND</name>
+          <initializer>= 262</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab1d5eac4b1dca480c8056eaea7663b7a" prot="public">
+          <name>ALL</name>
+          <initializer>= 263</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a6a7856cca1833641e731676636b193f1" prot="public">
+          <name>FIRST</name>
+          <initializer>= 264</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab13b96bf99a409e019f70dc1602532fd" prot="public">
+          <name>NEXT</name>
+          <initializer>= 265</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9af3898e158fb222d52e6ad04cb9219194" prot="public">
+          <name>DOWNLOAD</name>
+          <initializer>= 266</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a4aa71180778b711338785695df5d7c52" prot="public">
+          <name>SIZE</name>
+          <initializer>= 267</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9adce3f6fabb3ba828076711c23b81d1d7" prot="public">
+          <name>OWNER</name>
+          <initializer>= 268</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9afd663509c82fa82c5821a801229f54b1" prot="public">
+          <name>GUARD</name>
+          <initializer>= 269</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac17e9a74205ef9570969404dbcd89b67" prot="public">
+          <name>SIZE_UNIT</name>
+          <initializer>= 270</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a12f5476fa04803e6cc72f2198730d892" prot="public">
+          <name>GT</name>
+          <initializer>= 271</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a7303510947cbe9a41f9fed933a881e3c" prot="public">
+          <name>GTE</name>
+          <initializer>= 272</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a486aa221ceeeac475326e85d3d37f571" prot="public">
+          <name>LT</name>
+          <initializer>= 273</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9add4edd9fb0d6fad316ff9db560c4096d" prot="public">
+          <name>LTE</name>
+          <initializer>= 274</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a59a84258a4cb9025b567ee5139455029" prot="public">
+          <name>EQUAL</name>
+          <initializer>= 275</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a3a40d4da8c91f3dffe3780a95a92ef94" prot="public">
+          <name>NONEQ</name>
+          <initializer>= 276</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a1155ee5305ebe5bb9407faa9d395ae93" prot="public">
+          <name>MATCH</name>
+          <initializer>= 277</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a865555c9f2e0458a7078486aa1b3254f" prot="public">
+          <name>AND</name>
+          <initializer>= 278</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a96727447c0ad447987df1c6415aef074" prot="public">
+          <name>OR</name>
+          <initializer>= 279</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a0378ebc895849163b249d0b330257dd6" prot="public">
+          <name>NOT</name>
+          <initializer>= 280</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a7a725f13af144bdef532d0389ba75e0d" prot="public">
+          <name>ONE</name>
+          <initializer>= 281</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa7f492d725033c06576ac4ba21007297" prot="public">
+          <name>BYTE</name>
+          <initializer>= 282</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a977af103c44f10c4d662aee002de652e" prot="public">
+          <name>KILOBYTE</name>
+          <initializer>= 283</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9af424d391e75508e17be80d5cd7930bb1" prot="public">
+          <name>MEGABYTE</name>
+          <initializer>= 284</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac0dab06a4965d874e7380c280b43f1df" prot="public">
+          <name>GIGABYTE</name>
+          <initializer>= 285</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a7a10b5d68d31711288e1fe0fa17dbf4f" prot="public">
+          <name>EXIT</name>
+          <initializer>= 286</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9adc6f24fd6915a3f2786a1b7045406924" prot="public">
+          <name>END</name>
+          <initializer>= 287</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9adbf1dee1b8cd7ea3c82661943c7b74f4" prot="public">
+          <name>OTHER</name>
+          <initializer>= 288</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a3ab34dd50405af2d5a62627d572f7860" prot="public">
+          <name>CMD</name>
+          <initializer>= 289</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9a0425aaf673bebee34014367ea7c3deb1" prot="public">
+          <name>NATURAL</name>
+          <initializer>= 290</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad67a493278074cf714b262b33d84739c" prot="public">
+          <name>PATH</name>
+          <initializer>= 291</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8c_1a15c9f7bd2f0e9686df5d9df4f3314aa9acb3eae445f162782b1f569cb0023b33e" prot="public">
+          <name>FILENAME</name>
+          <initializer>= 292</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9aea81994cd8ebea76c3c4fc8d5fb486d4" prot="public">
+          <name>UPLOAD</name>
+          <initializer>= 258</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a0b84664ffa026b1a5f43c051cd6fe69f" prot="public">
+          <name>AS</name>
+          <initializer>= 259</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a67bc2ced260a8e43805d2480a785d312" prot="public">
+          <name>NAME</name>
+          <initializer>= 260</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a9d61e82a9a12752f10aece1b22183913" prot="public">
+          <name>DELETE</name>
+          <initializer>= 261</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a8f189475707a2b69614aeb6c6904a6df" prot="public">
+          <name>FIND</name>
+          <initializer>= 262</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab1d5eac4b1dca480c8056eaea7663b7a" prot="public">
+          <name>ALL</name>
+          <initializer>= 263</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a6a7856cca1833641e731676636b193f1" prot="public">
+          <name>FIRST</name>
+          <initializer>= 264</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ab13b96bf99a409e019f70dc1602532fd" prot="public">
+          <name>NEXT</name>
+          <initializer>= 265</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9af3898e158fb222d52e6ad04cb9219194" prot="public">
+          <name>DOWNLOAD</name>
+          <initializer>= 266</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a4aa71180778b711338785695df5d7c52" prot="public">
+          <name>SIZE</name>
+          <initializer>= 267</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9adce3f6fabb3ba828076711c23b81d1d7" prot="public">
+          <name>OWNER</name>
+          <initializer>= 268</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9afd663509c82fa82c5821a801229f54b1" prot="public">
+          <name>GUARD</name>
+          <initializer>= 269</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac17e9a74205ef9570969404dbcd89b67" prot="public">
+          <name>SIZE_UNIT</name>
+          <initializer>= 270</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a12f5476fa04803e6cc72f2198730d892" prot="public">
+          <name>GT</name>
+          <initializer>= 271</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a7303510947cbe9a41f9fed933a881e3c" prot="public">
+          <name>GTE</name>
+          <initializer>= 272</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a486aa221ceeeac475326e85d3d37f571" prot="public">
+          <name>LT</name>
+          <initializer>= 273</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9add4edd9fb0d6fad316ff9db560c4096d" prot="public">
+          <name>LTE</name>
+          <initializer>= 274</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a59a84258a4cb9025b567ee5139455029" prot="public">
+          <name>EQUAL</name>
+          <initializer>= 275</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a3a40d4da8c91f3dffe3780a95a92ef94" prot="public">
+          <name>NONEQ</name>
+          <initializer>= 276</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a1155ee5305ebe5bb9407faa9d395ae93" prot="public">
+          <name>MATCH</name>
+          <initializer>= 277</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a865555c9f2e0458a7078486aa1b3254f" prot="public">
+          <name>AND</name>
+          <initializer>= 278</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a96727447c0ad447987df1c6415aef074" prot="public">
+          <name>OR</name>
+          <initializer>= 279</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a0378ebc895849163b249d0b330257dd6" prot="public">
+          <name>NOT</name>
+          <initializer>= 280</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a7a725f13af144bdef532d0389ba75e0d" prot="public">
+          <name>ONE</name>
+          <initializer>= 281</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9aa7f492d725033c06576ac4ba21007297" prot="public">
+          <name>BYTE</name>
+          <initializer>= 282</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a977af103c44f10c4d662aee002de652e" prot="public">
+          <name>KILOBYTE</name>
+          <initializer>= 283</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9af424d391e75508e17be80d5cd7930bb1" prot="public">
+          <name>MEGABYTE</name>
+          <initializer>= 284</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ac0dab06a4965d874e7380c280b43f1df" prot="public">
+          <name>GIGABYTE</name>
+          <initializer>= 285</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a7a10b5d68d31711288e1fe0fa17dbf4f" prot="public">
+          <name>EXIT</name>
+          <initializer>= 286</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9adc6f24fd6915a3f2786a1b7045406924" prot="public">
+          <name>END</name>
+          <initializer>= 287</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9adbf1dee1b8cd7ea3c82661943c7b74f4" prot="public">
+          <name>OTHER</name>
+          <initializer>= 288</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a3ab34dd50405af2d5a62627d572f7860" prot="public">
+          <name>CMD</name>
+          <initializer>= 289</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9a0425aaf673bebee34014367ea7c3deb1" prot="public">
+          <name>NATURAL</name>
+          <initializer>= 290</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9ad67a493278074cf714b262b33d84739c" prot="public">
+          <name>PATH</name>
+          <initializer>= 291</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_t_i_n_8tab_8h_1a15c9f7bd2f0e9686df5d9df4f3314aa9acb3eae445f162782b1f569cb0023b33e" prot="public">
+          <name>FILENAME</name>
+          <initializer>= 292</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="48" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" bodystart="48" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_t_i_n_8tab_8h_1a09fb1f7c65e10ed0f0c1aa8ef7ce16b5" prot="public" static="no">
+        <type>union <ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref></type>
+        <definition>typedef union YYSTYPE  YYSTYPE</definition>
+        <argsstring></argsstring>
+        <name>YYSTYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="103" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_t_i_n_8tab_8h_1a539b86ee4bb46824a194f22eb69903d9" prot="public" static="no" mutable="no">
+        <type><ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref></type>
+        <definition>YYSTYPE yylval</definition>
+        <argsstring></argsstring>
+        <name>yylval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="109" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_t_i_n_8tab_8h_1acd8617a8f2ac0de8bc1cc032cf449e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int yyparse</definition>
+        <argsstring>()</argsstring>
+        <name>yyparse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h" line="121" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" bodystart="1196" bodyend="1908"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Code for a Bison parser, made by GNU Bison 2.7. </para>    </briefdescription>
+    <detaileddescription>
+<para>Headers for a Bison parser, made by GNU Bison 2.7.</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="3"><highlight class="comment">/*<sp/>Bison<sp/>interface<sp/>for<sp/>Yacc-like<sp/>parsers<sp/>in<sp/>C</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(C)<sp/>1984,<sp/>1989-1990,<sp/>2000-2012<sp/>Free<sp/>Software<sp/>Foundation,<sp/>Inc.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/><sp/><sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/><sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/><sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/><sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/><sp/><sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/><sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/><sp/><sp/>along<sp/>with<sp/>this<sp/>program.<sp/><sp/>If<sp/>not,<sp/>see<sp/>&lt;http://www.gnu.org/licenses/&gt;.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>As<sp/>a<sp/>special<sp/>exception,<sp/>you<sp/>may<sp/>create<sp/>a<sp/>larger<sp/>work<sp/>that<sp/>contains</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/><sp/><sp/>part<sp/>or<sp/>all<sp/>of<sp/>the<sp/>Bison<sp/>parser<sp/>skeleton<sp/>and<sp/>distribute<sp/>that<sp/>work</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/><sp/><sp/>under<sp/>terms<sp/>of<sp/>your<sp/>choice,<sp/>so<sp/>long<sp/>as<sp/>that<sp/>work<sp/>isn&apos;t<sp/>itself<sp/>a</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/><sp/>parser<sp/>generator<sp/>using<sp/>the<sp/>skeleton<sp/>or<sp/>a<sp/>modified<sp/>version<sp/>thereof</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/>as<sp/>a<sp/>parser<sp/>skeleton.<sp/><sp/>Alternatively,<sp/>if<sp/>you<sp/>modify<sp/>or<sp/>redistribute</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/>the<sp/>parser<sp/>skeleton<sp/>itself,<sp/>you<sp/>may<sp/>(at<sp/>your<sp/>option)<sp/>remove<sp/>this</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/>special<sp/>exception,<sp/>which<sp/>will<sp/>cause<sp/>the<sp/>skeleton<sp/>and<sp/>the<sp/>resulting</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/>Bison<sp/>output<sp/>files<sp/>to<sp/>be<sp/>licensed<sp/>under<sp/>the<sp/>GNU<sp/>General<sp/>Public</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/><sp/><sp/>License<sp/>without<sp/>this<sp/>special<sp/>exception.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/><sp/>This<sp/>special<sp/>exception<sp/>was<sp/>added<sp/>by<sp/>the<sp/>Free<sp/>Software<sp/>Foundation<sp/>in</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/>version<sp/>2.2<sp/>of<sp/>Bison.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>YY_YY_TIN_TAB_H_INCLUDED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YY_YY_TIN_TAB_H_INCLUDED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Enabling<sp/>traces.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>YYDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYDEBUG<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>YYDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yydebug;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Tokens.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>YYTOKENTYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYTOKENTYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Put<sp/>the<sp/>tokens<sp/>into<sp/>the<sp/>symbol<sp/>table,<sp/>so<sp/>that<sp/>GDB<sp/>and<sp/>other<sp/>debuggers</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>know<sp/>about<sp/>them.<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>yytokentype<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>UPLOAD<sp/>=<sp/>258,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>AS<sp/>=<sp/>259,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>NAME<sp/>=<sp/>260,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>DELETE<sp/>=<sp/>261,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>FIND<sp/>=<sp/>262,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>ALL<sp/>=<sp/>263,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>FIRST<sp/>=<sp/>264,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>NEXT<sp/>=<sp/>265,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>DOWNLOAD<sp/>=<sp/>266,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>SIZE<sp/>=<sp/>267,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>OWNER<sp/>=<sp/>268,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>GUARD<sp/>=<sp/>269,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>SIZE_UNIT<sp/>=<sp/>270,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>GT<sp/>=<sp/>271,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>GTE<sp/>=<sp/>272,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LT<sp/>=<sp/>273,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LTE<sp/>=<sp/>274,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>EQUAL<sp/>=<sp/>275,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>NONEQ<sp/>=<sp/>276,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>MATCH<sp/>=<sp/>277,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>AND<sp/>=<sp/>278,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>OR<sp/>=<sp/>279,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>NOT<sp/>=<sp/>280,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>ONE<sp/>=<sp/>281,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>BYTE<sp/>=<sp/>282,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>KILOBYTE<sp/>=<sp/>283,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>MEGABYTE<sp/>=<sp/>284,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>GIGABYTE<sp/>=<sp/>285,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>EXIT<sp/>=<sp/>286,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>END<sp/>=<sp/>287,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>OTHER<sp/>=<sp/>288,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>CMD<sp/>=<sp/>289,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>NATURAL<sp/>=<sp/>290,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>PATH<sp/>=<sp/>291,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>FILENAME<sp/>=<sp/>292</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!<sp/>defined<sp/>YYSTYPE<sp/>&amp;&amp;<sp/>!<sp/>defined<sp/>YYSTYPE_IS_DECLARED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Line<sp/>2058<sp/>of<sp/>yacc.c<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#line<sp/>31<sp/>&quot;TIN.y&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inatural;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ipath;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>iname;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_file_i_d_struct" kindref="compound">FileID</ref><sp/>id;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_file_i_ds_struct" kindref="compound">FileIDs</ref><sp/>ids;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Line<sp/>2058<sp/>of<sp/>yacc.c<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#line<sp/>103<sp/>&quot;TIN.tab.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYSTYPE_IS_TRIVIAL<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>yystype<sp/>YYSTYPE<sp/></highlight><highlight class="comment">/*<sp/>obsolescent;<sp/>will<sp/>be<sp/>withdrawn<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>YYSTYPE_IS_DECLARED<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref><sp/>yylval;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>YYPARSE_PARAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>__STDC__<sp/>||<sp/>defined<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yyparse<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*YYPARSE_PARAM);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yyparse<sp/>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>!<sp/>YYPARSE_PARAM<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>__STDC__<sp/>||<sp/>defined<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yyparse<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yyparse<sp/>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>!<sp/>YYPARSE_PARAM<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>!YY_YY_TIN_TAB_H_INCLUDED<sp/><sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.h"/>
+  </compounddef>
+</doxygen>

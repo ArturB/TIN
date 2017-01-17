@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_resource" kind="struct" language="C++" prot="public">
+    <compoundname>Resource</compoundname>
+    <includes refid="resource_8h" local="no">resource.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_resource_1a6d7e5386dab132c6ff3bf268c896da46" prot="public" static="no" mutable="no">
+        <type><ref refid="structs_8h_1ad2196a018ba2b7686a1088e9b0feacd3" kindref="member">FileID</ref> *</type>
+        <definition>FileID* Resource::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+<para>Identyfikator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/resource.h" line="13" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/resource.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_1af00e53812e6a2dfc58dcba70effa49d8" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Resource::filePathName</definition>
+        <argsstring></argsstring>
+        <name>filePathName</name>
+        <briefdescription>
+<para>Fizyczna scieżka. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/resource.h" line="15" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/resource.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_1a12f6231e35a6ca1b9b628dd506dc0215" prot="public" static="no" mutable="no">
+        <type>deque&lt; <ref refid="class_host" kindref="compound">Host</ref> &gt;</type>
+        <definition>deque&lt;Host&gt; Resource::peers</definition>
+        <argsstring></argsstring>
+        <name>peers</name>
+        <briefdescription>
+<para>Osoby, o których wiemy, że mają zasób. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/resource.h" line="17" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/resource.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_1ab27d632de3aaa900460f7bf2b0a61e69" prot="public" static="no" mutable="no">
+        <type>vector&lt; long &gt;</type>
+        <definition>vector&lt;long&gt; Resource::missingBlocks</definition>
+        <argsstring></argsstring>
+        <name>missingBlocks</name>
+        <briefdescription>
+<para>Brakujące fragmenty. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/resource.h" line="19" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/resource.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_resource_1a4459bb60f5d48fb4b77919e45a0d973a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Resource::is_downloading</definition>
+        <argsstring></argsstring>
+        <name>is_downloading</name>
+        <briefdescription>
+<para>Czy zasób jest obecnie pobierany. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/resource.h" line="21" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/resource.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Struktura reprezentująca zasób posiadany przez klienta lokalnie. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="34">
+        <label>FileIDStruct</label>
+        <link refid="struct_file_i_d_struct"/>
+      </node>
+      <node id="33">
+        <label>Resource</label>
+        <link refid="struct_resource"/>
+        <childnode refid="34" relation="usage">
+          <edgelabel>id</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Artur/Downloads/TIN-master/resource.h" line="11" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/resource.h" bodystart="11" bodyend="22"/>
+    <listofallmembers>
+      <member refid="struct_resource_1af00e53812e6a2dfc58dcba70effa49d8" prot="public" virt="non-virtual"><scope>Resource</scope><name>filePathName</name></member>
+      <member refid="struct_resource_1a6d7e5386dab132c6ff3bf268c896da46" prot="public" virt="non-virtual"><scope>Resource</scope><name>id</name></member>
+      <member refid="struct_resource_1a4459bb60f5d48fb4b77919e45a0d973a" prot="public" virt="non-virtual"><scope>Resource</scope><name>is_downloading</name></member>
+      <member refid="struct_resource_1ab27d632de3aaa900460f7bf2b0a61e69" prot="public" virt="non-virtual"><scope>Resource</scope><name>missingBlocks</name></member>
+      <member refid="struct_resource_1a12f6231e35a6ca1b9b628dd506dc0215" prot="public" virt="non-virtual"><scope>Resource</scope><name>peers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

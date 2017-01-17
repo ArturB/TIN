@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*
  * Plik zawierający funkcje realizujące sieciową logike aplikacji.
  * Miejsce dodawania bibliotek.
@@ -6,6 +7,12 @@
  * Adam Małkowski
  * Piotr Włodkowski
  */
+=======
+/**
+  * \file p2p-actions.hpp
+  * Obsługa komend interpretera, w tym sieciowa logika aplikacji. 
+  */
+>>>>>>> Stashed changes
 #ifndef P2P_ACTIONS_HPP
 #define P2P_ACTIONS_HPP
 
@@ -18,7 +25,7 @@ using namespace std;
 		DEKLARACJE
  *************************/
 
-
+///Zawartość ostatnio wpisanej przez użytkownika komendy.
 struct CommandData {
 	string filePath;
 	string fileName;
@@ -31,10 +38,14 @@ struct CommandData {
 	bool writing;
 };
 
+///Zmienna globalna do której interpreter zapisuje zawartość ostatnio wpisanej komendy. 
 struct CommandData cmdata;
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 void  upload_action();
 void* upload_thread(void*);
 void  delete_action();
@@ -67,6 +78,7 @@ ResourceHeader header_from_command_data(CommandData* data);
 void run_downloadings();
 
 
+<<<<<<< Updated upstream
 //Mutex chroniący dostęp do stdout
 pthread_mutex_t termtx;
 //Mutex chroniący dostęp do cmdata
@@ -75,14 +87,34 @@ pthread_mutex_t cmtx;
 //Komunikaty
 const char* welcome = 
 	"Welcome in Pompous AAP File Transfer Protocol v1.0!\nRemember: your computer is your friend.\n\n";
+=======
+///Mutex chroniący dostęp do stdout
+pthread_mutex_t termtx;
+///Mutex chroniący dostęp do cmdata
+pthread_mutex_t cmtx;
+
+///Komunikat powitalny
+const char* welcome = 
+	"Welcome in Pompous AAP File Transfer Protocol v1.0!\nRemember: your computer is your friend.\n\n";
+///Znak zachęty
+>>>>>>> Stashed changes
 const char* prompt = ">> ";
+///Komunikat o błedzie parsowania komendy
 const char* errMsg = "command error"; 
+///Komunikat o błędzie podczas tworzenia wątku obsługi komendy. 
 const char* threadFailed = "Creating command thread failed!\n>> ";
+///Komunikat o błędzie tworzenia wątku odbiorczego UDP. 
 const char* receiverFailed = "Creating receiver thread failed!\n>> ";
+///Komunikat o błędzie tworzenia wątku odbiorczego TCP.
 const char* tcpThreadFailed = "Creating data-changing thread failed!\n>> ";
+<<<<<<< Updated upstream
 const char* downloadThreadFailed = "Creating download thread failed!\n>> ";
 
 //zmienne
+=======
+///Komunikat o błędzie tworzenia wątku obsłgi komendy DOWNLOAD. 
+const char* downloadThreadFailed = "Creating download thread failed!\n>> ";
+>>>>>>> Stashed changes
 
 uint64_t id;
 
@@ -93,14 +125,22 @@ uint64_t id;
 	    PROCEDURY
  ***************************/
 
+<<<<<<< Updated upstream
 //Bezpieczne wypisywanie na stdout z relizacją wzajemnego wykluczania.
+=======
+///Bezpieczne wypisywanie na stdout z relizacją wzajemnego wykluczania.
+>>>>>>> Stashed changes
 void safe_cout(string str) {
 	pthread_mutex_lock(&termtx);
 	cout<<str;
 	fflush(stdout);
 	pthread_mutex_unlock(&termtx);
 }
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Procedura wołana bezpośrednio po uruchomieniu programu.
 	Inicjuje mutexy, pobiera ID obecnego klienta, deserializuje metadane
 	tworzy wątki nasłuchując, sprawdza poprawność danych 
@@ -132,7 +172,11 @@ void main_init() {
 	check_files_validations();
 }
 
+<<<<<<< Updated upstream
 //Destrukcja muteksów i innych aktywów
+=======
+///Destrukcja muteksów i innych zasobów wymagających zwolnienia. 
+>>>>>>> Stashed changes
 void main_destroy() {
 	pthread_mutex_destroy(&termtx);
 	pthread_mutex_destroy(&cmtx);
@@ -140,7 +184,7 @@ void main_destroy() {
 	safe_cout("Saving metadata:" + to_string(serializeMetaData()) + "\n");
 }
 
-
+///Uruchom wątek obsługi komendy UPLOAD. 
 void upload_action() {
 	pthread_t uploadThread;
 	if(pthread_create(&uploadThread, NULL, upload_thread, (void*)&cmdata))
@@ -149,8 +193,13 @@ void upload_action() {
 	}
 }
 
+<<<<<<< Updated upstream
 /*
 	Cialo watku obslugujacego operacje dodania zasobu.
+=======
+/**
+	Ciało watku obslugujacego operacje dodania zasobu.
+>>>>>>> Stashed changes
 	W przypadku udanego dodania rozsyla o tym fakcie informace wraz z danymi zasobu.
 */
 void* upload_thread(void* par) {
@@ -183,6 +232,7 @@ void* upload_thread(void* par) {
 	}
 }
 
+///Uruchom wątek obsługi komendy DELETE. 
 void delete_action() {
 	pthread_t deleteThread;
 	if(pthread_create(&deleteThread, NULL, delete_thread, (void*)&cmdata))
@@ -191,7 +241,11 @@ void delete_action() {
 	}
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Cialo watku obslugujacego operacje usuniecia zasobu.
 	W przypadku udanego usuniecia zasobu, ktorego bylismy wlascicielami,
 	rozsyla o tym fakcie informace wraz z danymi usunietego zasobu.
@@ -220,7 +274,11 @@ void* delete_thread(void* par) {
 		free((void*)fid.owner);
 	}
 }
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Wątek nasłuchujący na próby połączenia TCP w celu pobrania od nas danych.
 	W przypadku nawiązania uruchamia wątek obsługujący dane połączenie.
 */
@@ -271,7 +329,11 @@ void* receiver_thread_TCP(void* par)
 }
 
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Ciało wątku obsługującego zapytanie DOWN.
 	Po odebraniu wiadomości sprawdza o jaki fragmenty jesteśmy pytani i 
 	odsyła je kolejno.
@@ -356,6 +418,7 @@ void* response_down_tcp(void* par)
 	close(msgsock);
 }
 
+<<<<<<< Updated upstream
 /*
 	Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać.
 	result		- parametr wynikowy, lista przedziałów o które mamy spytać.
@@ -364,6 +427,16 @@ void* response_down_tcp(void* par)
 	portion		- liczba fragmentów o które zapytamy.
 	from		- ostatni fragment o który zapytaliśmy.
 	Zwraca numer ostatniego fragmentu o który zapytamy.
+=======
+/**
+	Funkcja obliczająca o jakie fragmenty pobieranego pliku spytać.
+	\param result		- parametr wynikowy, lista przedziałów o które mamy spytać.
+	\param intervals_count - parametr wynikowy, liczba przedziałów.
+	\param input		- lista brakujących bloków.
+	\param portion		- liczba fragmentów o które zapytamy.
+	\param from		- ostatni fragment o który zapytaliśmy.
+	\return Numer ostatniego fragmentu o który zapytamy.
+>>>>>>> Stashed changes
 */
 int get_next_fragments(Interval* result, vector<long>* input, int* intervals_count, int portion, int from)
 {
@@ -415,7 +488,11 @@ int get_next_fragments(Interval* result, vector<long>* input, int* intervals_cou
 		return (*input)[i-1];
 }
 
+<<<<<<< Updated upstream
 //Funkcja wysyłająca wiadomość DOWN.
+=======
+///Wyślij wiadomość DOWN.
+>>>>>>> Stashed changes
 bool send_down_message(DownMsg* down_msg, int socket_tcp)
 {
 	if (send(socket_tcp, down_msg, sizeof(DownMsg), 0) < 0)
@@ -426,7 +503,11 @@ bool send_down_message(DownMsg* down_msg, int socket_tcp)
 	return true;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Funkcja zajmująca się odbiorem pojedyńczego fragmentu zasobu.
 	W przypadku wystąpienia problemów z odbiorem, usuwa nadawce
 	z listy maszyn od których pobieramy.
@@ -436,9 +517,14 @@ bool send_down_message(DownMsg* down_msg, int socket_tcp)
 			z listy maszyn od których pobieramy
 		b) w. p. p. prosi go o następne fragmenty
 		
+<<<<<<< Updated upstream
 	Zwraca true gdy udało się odebrać fragment.
 */
 
+=======
+	\return true gdy udało się odebrać fragment, false w przeciwnym wypadku. 
+*/
+>>>>>>> Stashed changes
 bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading, int* fragment_counter)
 {	
 
@@ -479,6 +565,7 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 	if((*host)->is_all_fragments() && (*res)->missingBlocks.size()!= 0) 
 	{
 		if(file_downloading->speed_in_hosts((*host)->get_speed()) == HOST_NUMER && HOST_NUMER != 1)
+<<<<<<< Updated upstream
 		{
 			close((*host)->sock);
 			file_downloading->avaiable_hosts.push_back(*(*host));
@@ -486,6 +573,15 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 		}
 		else
 		{
+=======
+		{
+			close((*host)->sock);
+			file_downloading->avaiable_hosts.push_back(*(*host));
+			(*host) = file_downloading->using_hosts.erase((*host));
+		}
+		else
+		{
+>>>>>>> Stashed changes
 			if(file_downloading->speed_in_hosts((*host)->get_speed() < TOP_HOSTS ))
 			{
 				(*host)->grow_portion();
@@ -517,9 +613,15 @@ bool recive_fragment(deque<Host>::iterator *host, FileDownload *file_downloading
 	}
 	return true;
 }
+<<<<<<< Updated upstream
 /*
 	Wyświetla komunikat o stanie pobierania.
 	break_downloading - gdy true, wypisuje informacje o przerwaniu pobierania pliku.
+=======
+/**
+	Wyświetla komunikat o postępie pobierania.
+	\param break_downloading gdy true, wypisuje informacje o przerwaniu pobierania pliku.
+>>>>>>> Stashed changes
 */
 void write_progress_of_download(list<Resource>::iterator* file, bool break_downloading)	
 {
@@ -542,6 +644,7 @@ void write_progress_of_download(list<Resource>::iterator* file, bool break_downl
 	safe_cout(text);
 }
 
+///Uruchom wątek obsługi komendy DOWNLOAD. 
 void download_action() {
 	pthread_t downloadThread;
 	if(pthread_create(&downloadThread, NULL, download_thread, (void*)&cmdata)) 
@@ -550,7 +653,11 @@ void download_action() {
 	}
 }
 
+<<<<<<< Updated upstream
 //Funkcja pomocnicza tworząca strukturę ResourceHeader z CommandData.
+=======
+///Generator nagłówka wiadomości do wysłania z danych w CommandData.
+>>>>>>> Stashed changes
 ResourceHeader header_from_command_data(CommandData* data)
 {
 	ResourceHeader result;
@@ -568,7 +675,11 @@ ResourceHeader header_from_command_data(CommandData* data)
 	return result;
 }
 
+<<<<<<< Updated upstream
 //Funkcja pomocnicza tworząca strukturę ResourceHeader z FileID.
+=======
+///Generator nagłówka wiadomości do wysłania z danych w FileID.
+>>>>>>> Stashed changes
 ResourceHeader header_from_id(FileID* file, MsgType type)
 {
 	ResourceHeader header;
@@ -577,6 +688,7 @@ ResourceHeader header_from_id(FileID* file, MsgType type)
 	int name_length;
 	for(name_length = 0; file->name[name_length] != 0 && name_length < 256; ++name_length);
 	memcpy((void*) header.name, file->name, name_length);
+<<<<<<< Updated upstream
 
 	header.size.longNum = file->size;
 	header.time.ttime = file->time;
@@ -585,11 +697,22 @@ ResourceHeader header_from_id(FileID* file, MsgType type)
 }
 
 //Funkcja pomocnicza tworząca strukturę FileID z ResourceHeader.
+=======
+
+	header.size.longNum = file->size;
+	header.time.ttime = file->time;
+	memcpy((void*) header.owner, file->owner, 6);
+	return header;
+}
+
+///Funkcja pomocnicza tworząca strukturę FileID z nagłówka wiadomości.
+>>>>>>> Stashed changes
 struct FileIDStruct fileid_from_header(ResourceHeader* header)
 {
 	struct FileIDStruct id;
 	
 	int i;
+<<<<<<< Updated upstream
 
 	char* buf_name = strdup(header->name);
 	char* buf_owner = new char[6];
@@ -603,6 +726,21 @@ struct FileIDStruct fileid_from_header(ResourceHeader* header)
 }
 
 /*
+=======
+
+	char* buf_name = strdup(header->name);
+	char* buf_owner = new char[6];
+
+	memcpy(buf_owner, header->owner, 6);
+	id.name = buf_name;
+	id.owner = buf_owner;
+	id.size = header->size.longNum;
+	id.time = header->time.ttime;
+	return id;
+}
+
+/**
+>>>>>>> Stashed changes
 	Ciało wątku pobierającego.
 	Próbuje znaleść zasób w sieci, jeżeli mu to się uda rozpoczyna pobieranie zasobu.
 */
@@ -655,7 +793,11 @@ void* download_thread(void* par)
 	return NULL;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Funkcja odpowiadająca za pobieranie zasobu.
 	Rozsyła zapytania o zasoby do pierwszych HOST_NUMER dostępnych maszyn,
 	następnie w pętli czego na odbiór fragmentu po czym
@@ -666,6 +808,7 @@ void* download_thread(void* par)
 	i rozsyła zapytanie FIND.
 	Gdy są dostępne maszyny od których nie pobieramy, rozpoczyna pobieranie.
 	
+<<<<<<< Updated upstream
 	Co około 5% pobierania wypisuje o tym informacje.
 
 */
@@ -683,6 +826,24 @@ void* download_file(void* par)
 
 	setFileIsDownloading(file);
 
+=======
+	Co około 10% pobierania wypisuje o tym informacje.
+
+*/
+void* download_file(void* par)
+{
+	list<Resource>::iterator file = *((list<Resource>::iterator*) par);
+	delete (list<Resource>::iterator*) par;
+	int info_message = 0;
+	int fragment_counter = 0;
+	ResourceHeader header;
+
+	FileDownload file_downloading(&file);
+	file_downloading.avaiable_hosts = file->peers; 
+
+	setFileIsDownloading(file);
+
+>>>>>>> Stashed changes
 	DownMsg down_msg; 
 	header = header_from_id(file->id, DOWN_MSG);
 	down_msg.header = header;
@@ -828,7 +989,11 @@ void* download_file(void* par)
 	return NULL;
 }
 
+<<<<<<< Updated upstream
 //Funkcja zamykająca połączenia z maszynami z zadanego kontenera.
+=======
+///Funkcja zamykająca połączenia z maszynami z zadanej listy hostów.
+>>>>>>> Stashed changes
 void close_hosts_sockets(deque<Host> *collection)
 {
 	deque<Host>::iterator it = collection->begin();
@@ -839,8 +1004,12 @@ void close_hosts_sockets(deque<Host> *collection)
 	}
 }
 
+<<<<<<< Updated upstream
 /* procedura wątku nasłuchującego komunikatów
 	od innych węzłów sieci
+=======
+/** Procedura wątku nasłuchującego komunikatów rozgłoszeniowych	od innych węzłów sieci.
+>>>>>>> Stashed changes
 */
 void* receiver_thread_UDP(void* par) 
 {
@@ -928,8 +1097,13 @@ void* receiver_thread_UDP(void* par)
 	close(sock);
 }
 
+<<<<<<< Updated upstream
 /*
 	wyslanie broadcastem wskazanej struktury ResourceHeader
+=======
+/**
+	Wyslanie na adres rozgłoszeniowy wskazanej struktury ResourceHeader.
+>>>>>>> Stashed changes
 */
 void send_broadcast(ResourceHeader *header)
 {
@@ -972,9 +1146,14 @@ void send_broadcast(ResourceHeader *header)
 	close(sock);
 }
 
+<<<<<<< Updated upstream
 /*
 	wyslanie wiadomosci, ktorej tresc i adres odbiorcy zapisane sa w obiekcie NetMsg 
 	znajdujacym sie pod adresem, ktory podajemy w argumencie wywolania funkcji
+=======
+/**
+	Wyslanie wiadomosci, ktorej tresc i adres odbiorcy zapisane sa w obiekcie NetMsg.
+>>>>>>> Stashed changes
 */
 void send_response(NetMsg *data, int port)
 {
@@ -1013,7 +1192,7 @@ void send_response(NetMsg *data, int port)
 	close(sock);
 }
 
-//procedura wołana przez komendę find
+///Uruchom wątek obslugi komendy FIND. 
 void find_action() {
 	pthread_t findThread;
 	if(pthread_create(&findThread, NULL, find_thread, (void*)&cmdata))
@@ -1022,9 +1201,14 @@ void find_action() {
 	}
 }
 
+<<<<<<< Updated upstream
 /*
 	Procedura wątku obsługi komendy find. Funkcja przez okreslony czas
 	zbiera informacje HAS_MSG na temat zasobow, (lub wyszukuje okreslona liczba zasobow),
+=======
+/**
+	Procedura wątku obsługi komendy find. Funkcja przez okreslony czas zbiera informacje HAS_MSG na temat zasobow, (lub wyszukuje okreslona liczba zasobow),
+>>>>>>> Stashed changes
 	tworzy struktury, ktore umozliwia pobranie tych zasobow i przypisuje do nich liste peerow, 
 	od ktorych zasob mozna sciagnac. Rozwiazuje tez konflikty wlascicieli, jesli je stwierdzi.
 */
@@ -1102,9 +1286,22 @@ void* find_thread(void* par) {
 			return NULL;
 		}
 		if(header->type != HAS_MSG)	//zly komunikat
+<<<<<<< Updated upstream
+=======
 		{
 			continue;
 		}
+
+		//ktos przyslal informacje o zasobie, ktorego bylismy wlascicielami (usunelismy zasob)
+		if(bytesToLong(header->owner) == id && isFileInStorage(header)==NULL)
+>>>>>>> Stashed changes
+		{
+			NetMsg netMsg(header,&clientaddr, &length);
+			netMsg.header.type = FORCE_DEL_MSG;
+			send_response(&netMsg);
+			continue;
+		}
+<<<<<<< Updated upstream
 
 		//ktos przyslal informacje o zasobie, ktorego bylismy wlascicielami (usunelismy zasob)
 		if(bytesToLong(header->owner) == id && isFileInStorage(header)==NULL)
@@ -1114,6 +1311,8 @@ void* find_thread(void* par) {
 			send_response(&netMsg);
 			continue;
 		}
+=======
+>>>>>>> Stashed changes
 		resourceIt = openResource(header);	//stworzenie lub zwrocenie struktury zasobu
 		bool isUnique = true;
 		//sprawdzenie, czy nie mamy juz zapisanego adresu wezla, ktory przyslal nam informacje o zasobie
@@ -1188,9 +1387,14 @@ void* find_thread(void* par) {
 	}
 }
 
+<<<<<<< Updated upstream
 /*
 	Cialo watku, uruchamianego, by rozeslac komunikaty FIND_MSG
 	z informacjami o zasobach, ktorych szukamy.
+=======
+/**
+	Cialo watku obsługi komendy FIND. 
+>>>>>>> Stashed changes
 */
 void* find_msg_sender_thread(void *par)
 {
@@ -1205,7 +1409,11 @@ void* find_msg_sender_thread(void *par)
 }
 
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu UP_MSG.
 	Jesli mamy zasob, o ktorym dostalismy inforamacje - odsylamy komunikat
 	HAS_MSG czym powodujemy wywlaszczenie.
@@ -1224,7 +1432,11 @@ void* up_msg_reaction(void* par)
 	delete netMsg;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu HAS_MSG.
 	Jesli z informacji o zasobie wynika, ze mamy do niego przypisanego
 	wlasciciela pasozytniczego - nastepuje zmiana wlasciciela.
@@ -1262,7 +1474,11 @@ void* has_msg_reaction(void* par)
 	delete netMsg;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu DEL_MSG.
 	Funkcja natychmiast usuwa zasob, o ktorym otrzymala informacje, jesli go posiada 
 	i spelniony jest ktorys z warunkow:
@@ -1293,7 +1509,11 @@ void* del_msg_reaction(void* par)
 	delete netMsg;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FORCE_DEL_MSG lub DONT_MSG.
 	Funkcja natychmiast usuwa zasob, o ktorym otrzymala informacje, jesli go posiada.
 */
@@ -1310,7 +1530,11 @@ void* force_del_msg_reaction(void* par)
 	delete netMsg;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+>>>>>>> Stashed changes
 	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu FIND_MSG.
 	Fukcja wyszukuje zasoby, ktore pasuja do przyslanych kryteriow wyszukiwania, a ktore
 	mamy sciagniete w calosci. Wysyla informacje o tych zasobach wraz z wiadomoscia HAS_MSG
@@ -1331,9 +1555,15 @@ void* find_msg_reaction(void* par)
 	delete netMsg;
 }
 
+<<<<<<< Updated upstream
 /*
 	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu OWN_MSG.
 	Fukcja sprawdza, czy mamy zasob, o ktorym informacje otrzymalismy.
+=======
+/**
+	Cialo watku, uruchamianego pod wplywem otrzymania komunikatu OWN_MSG.
+	Funkcja sprawdza, czy mamy zasob, o ktorym informacje otrzymalismy.
+>>>>>>> Stashed changes
 	Jesli nie, a bylismy jego wlascicielem, odsylamy do wezla, ktory przyslal 
 	nam wiadomosc OWN_MSG komunikat DONT_MSG.
 */
@@ -1351,7 +1581,12 @@ void* own_msg_reaction(void* par)
 	delete netMsg;
 }
 
+<<<<<<< Updated upstream
 /*
+=======
+/**
+    Obsługa sytuacji niespójnych informacji o wlaścicielach zasobów. 
+>>>>>>> Stashed changes
 	Funkcja dla każdego zasobu, ktorego nie jest wlascicielem sprawdza, czy
 	wlasciceil nie usunal tego zasobu (wysyla broadcast z informacja o zasobie i
 	komunikatem OWN_MSG)
@@ -1396,7 +1631,11 @@ void check_files_validations()
 	} 
 }
 
+<<<<<<< Updated upstream
 //Funkcja uruchamiająca procesy pobierania niedokończone podczas ostatniego działania aplikacji.
+=======
+///Funkcja uruchamiająca procesy pobierania niedokończone podczas ostatniego działania aplikacji.
+>>>>>>> Stashed changes
 void run_downloadings()
 {
 	lockMetaDataMutex();

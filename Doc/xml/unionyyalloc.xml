@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="unionyyalloc" kind="union" language="C++" prot="public">
+    <compoundname>yyalloc</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionyyalloc_1a4800e0520a89a4789afa7b5d82197e65" prot="public" static="no" mutable="no">
+        <type>yytype_int16</type>
+        <definition>yytype_int16 yyalloc::yyss_alloc</definition>
+        <argsstring></argsstring>
+        <name>yyss_alloc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" line="372" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionyyalloc_1a9326f4fdc6f737a929444427836d8928" prot="public" static="no" mutable="no">
+        <type><ref refid="union_y_y_s_t_y_p_e" kindref="compound">YYSTYPE</ref></type>
+        <definition>YYSTYPE yyalloc::yyvs_alloc</definition>
+        <argsstring></argsstring>
+        <name>yyvs_alloc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" line="373" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" bodystart="373" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="48">
+        <label>yyalloc</label>
+        <link refid="unionyyalloc"/>
+        <childnode refid="49" relation="usage">
+          <edgelabel>yyvs_alloc</edgelabel>
+        </childnode>
+      </node>
+      <node id="51">
+        <label>FileIDsStruct</label>
+        <link refid="struct_file_i_ds_struct"/>
+        <childnode refid="50" relation="usage">
+          <edgelabel>ids</edgelabel>
+        </childnode>
+      </node>
+      <node id="50">
+        <label>FileIDStruct</label>
+        <link refid="struct_file_i_d_struct"/>
+      </node>
+      <node id="49">
+        <label>YYSTYPE</label>
+        <link refid="union_y_y_s_t_y_p_e"/>
+        <childnode refid="50" relation="usage">
+          <edgelabel>id</edgelabel>
+        </childnode>
+        <childnode refid="51" relation="usage">
+          <edgelabel>ids</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" line="371" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/TIN.tab.c" bodystart="370" bodyend="374"/>
+    <listofallmembers>
+      <member refid="unionyyalloc_1a4800e0520a89a4789afa7b5d82197e65" prot="public" virt="non-virtual"><scope>yyalloc</scope><name>yyss_alloc</name></member>
+      <member refid="unionyyalloc_1a9326f4fdc6f737a929444427836d8928" prot="public" virt="non-virtual"><scope>yyalloc</scope><name>yyvs_alloc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

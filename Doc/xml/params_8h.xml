@@ -1,0 +1,424 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="params_8h" kind="file" language="C++">
+    <compoundname>params.h</compoundname>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">sys/socket.h</includes>
+    <includes local="no">netinet/in.h</includes>
+    <includes local="no">netdb.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">arpa/inet.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">pthread.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">list</includes>
+    <includes local="no">set</includes>
+    <includes local="no">dirent.h</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">deque</includes>
+    <includedby refid="structs_8h" local="yes">C:/Users/Artur/Downloads/TIN-master/structs.h</includedby>
+    <incdepgraph>
+      <node id="143">
+        <label>list</label>
+      </node>
+      <node id="134">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="137">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="138">
+        <label>string</label>
+      </node>
+      <node id="142">
+        <label>fstream</label>
+      </node>
+      <node id="135">
+        <label>netdb.h</label>
+      </node>
+      <node id="140">
+        <label>pthread.h</label>
+      </node>
+      <node id="132">
+        <label>sys/types.h</label>
+      </node>
+      <node id="139">
+        <label>unistd.h</label>
+      </node>
+      <node id="147">
+        <label>vector</label>
+      </node>
+      <node id="146">
+        <label>sstream</label>
+      </node>
+      <node id="141">
+        <label>iostream</label>
+      </node>
+      <node id="148">
+        <label>deque</label>
+      </node>
+      <node id="131">
+        <label>C:/Users/Artur/Downloads/TIN-master/params.h</label>
+        <link refid="params_8h"/>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="144">
+        <label>set</label>
+      </node>
+      <node id="136">
+        <label>stdio.h</label>
+      </node>
+      <node id="145">
+        <label>dirent.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="150">
+        <label>C:/Users/Artur/Downloads/TIN-master/structs.h</label>
+        <link refid="structs_8h"/>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="152">
+        <label>C:/Users/Artur/Downloads/TIN-master/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+      </node>
+      <node id="155">
+        <label>C:/Users/Artur/Downloads/TIN-master/filedownload.hpp</label>
+        <link refid="filedownload_8hpp"/>
+        <childnode refid="153" relation="include">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>C:/Users/Artur/Downloads/TIN-master/data.hpp</label>
+        <link refid="data_8hpp"/>
+        <childnode refid="154" relation="include">
+        </childnode>
+      </node>
+      <node id="156">
+        <label>C:/Users/Artur/Downloads/TIN-master/netmsg.hpp</label>
+        <link refid="netmsg_8hpp"/>
+        <childnode refid="153" relation="include">
+        </childnode>
+      </node>
+      <node id="149">
+        <label>C:/Users/Artur/Downloads/TIN-master/params.h</label>
+        <link refid="params_8h"/>
+        <childnode refid="150" relation="include">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp</label>
+        <link refid="p2p-actions_8hpp"/>
+      </node>
+      <node id="151">
+        <label>C:/Users/Artur/Downloads/TIN-master/host.hpp</label>
+        <link refid="host_8hpp"/>
+        <childnode refid="152" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561b" prot="public" static="no">
+        <name>MsgType</name>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561ba7e401f0eecbbd9f78664b7b9674a14cc" prot="public">
+          <name>UP_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561bae3a1df5a12ed737ab62f39808bb93df4" prot="public">
+          <name>HAS_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561ba1919132a5fe5f1a7097dc88b99eb0af8" prot="public">
+          <name>DEL_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561baf72f10a35ebc9408a7e1cbf6b5c10333" prot="public">
+          <name>FORCE_DEL_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561ba57a4e867c3303aa6edd0af51cbf3381e" prot="public">
+          <name>FIND_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561ba4e1e9dacb1ff267ab6f0411091825971" prot="public">
+          <name>DOWN_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561baa21f4d72ac1f21cfef8387649746822c" prot="public">
+          <name>OWN_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561ba2ba7e910b29dced94cf65701ec06e4af" prot="public">
+          <name>DONT_MSG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Możliwe typy wiadomości. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="52" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="params_8h_1a11717c934f77ad5167dac5d28562d85a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int PORT</definition>
+        <argsstring></argsstring>
+        <name>PORT</name>
+        <initializer>= 35787</initializer>
+        <briefdescription>
+<para>Porty używane w programie. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="31" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1affc40bcb7571b3915335e4c46b18b1f9" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int FIND_PORT</definition>
+        <argsstring></argsstring>
+        <name>FIND_PORT</name>
+        <initializer>= 35788</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="32" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1acb2e2f20f8ff6363fe6b3a60cc394c5b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int HOST_NUMER</definition>
+        <argsstring></argsstring>
+        <name>HOST_NUMER</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Liczbe maszyn od których pobieramy jednoczesnie jeden plik. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="35" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1ae270d91a9c5dc96eb46c8b6ed4743748" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int START_FRAGMENT_COUNT</definition>
+        <argsstring></argsstring>
+        <name>START_FRAGMENT_COUNT</name>
+        <initializer>=  1024</initializer>
+        <briefdescription>
+<para>Startowa liczba fragmentów w zapytaniu DOWN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="37" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1a52bb08da926e5d4ae68bf2c2064d14ff" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int TIMEOUT_SEC</definition>
+        <argsstring></argsstring>
+        <name>TIMEOUT_SEC</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Czas oczekiwania na najbliższy fragment w procesie pobierania. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="39" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1a88e62f2cab00c86b2412f4e6c83a0e97" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int TIMEOUT_SEC_FIND_AGAIN</definition>
+        <argsstring></argsstring>
+        <name>TIMEOUT_SEC_FIND_AGAIN</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Czas oczekiwania na rozesłanie zapytania FIND w procesie pobierania z którym nie są skojarzone żadne maszyny. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="41" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1a3242a27e0a9ad18c15cc649e18c1921f" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double GROW_PORTION</definition>
+        <argsstring></argsstring>
+        <name>GROW_PORTION</name>
+        <initializer>= 1.2</initializer>
+        <briefdescription>
+<para>Współczynnik zwiększania liczności fragmentów w zapydaniu DOWN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="43" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1a49b72f05314ee5d1d520b417eebf41d1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int TOP_HOSTS</definition>
+        <argsstring></argsstring>
+        <name>TOP_HOSTS</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Liczba najlepszych maszyn, którym zwiększamy liczbe fragmentów w najbliższych zapytaniach DOWN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="45" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1ab15ce9f15bb1f848cb0abfd574d821fb" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int TCP_ONE_TIME_CONNECTION</definition>
+        <argsstring></argsstring>
+        <name>TCP_ONE_TIME_CONNECTION</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>Liczba kolejkowanych połączeń na accept. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="47" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="params_8h_1a1e32f61f5ac8d270bad6b3303b873295" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int TIMEOUT_FIND</definition>
+        <argsstring></argsstring>
+        <name>TIMEOUT_FIND</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Czas oczekiwania na odpowiedzi w polecniu FIND. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/params.h" line="49" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/params.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Plik z parametrami z których korzystamy w programie. </para>    </briefdescription>
+    <detaileddescription>
+<para>Miejsce dodawania bibliotek. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="7"><highlight class="preprocessor">#ifndef<sp/>PARAMS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PARAMS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;netinet/in.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;netdb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;arpa/inet.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;dirent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;deque&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="params_8h_1a11717c934f77ad5167dac5d28562d85a" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a11717c934f77ad5167dac5d28562d85a" kindref="member">PORT</ref><sp/>=<sp/>35787;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>FIND_PORT<sp/>=<sp/>35788;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="params_8h_1acb2e2f20f8ff6363fe6b3a60cc394c5b" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1acb2e2f20f8ff6363fe6b3a60cc394c5b" kindref="member">HOST_NUMER</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="37" refid="params_8h_1ae270d91a9c5dc96eb46c8b6ed4743748" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1ae270d91a9c5dc96eb46c8b6ed4743748" kindref="member">START_FRAGMENT_COUNT</ref><sp/>=<sp/><sp/>1024;</highlight></codeline>
+<codeline lineno="39" refid="params_8h_1a52bb08da926e5d4ae68bf2c2064d14ff" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a52bb08da926e5d4ae68bf2c2064d14ff" kindref="member">TIMEOUT_SEC</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="41" refid="params_8h_1a88e62f2cab00c86b2412f4e6c83a0e97" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a88e62f2cab00c86b2412f4e6c83a0e97" kindref="member">TIMEOUT_SEC_FIND_AGAIN</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="43" refid="params_8h_1a3242a27e0a9ad18c15cc649e18c1921f" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a3242a27e0a9ad18c15cc649e18c1921f" kindref="member">GROW_PORTION</ref><sp/>=<sp/>1.2;</highlight></codeline>
+<codeline lineno="45" refid="params_8h_1a49b72f05314ee5d1d520b417eebf41d1" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a49b72f05314ee5d1d520b417eebf41d1" kindref="member">TOP_HOSTS</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="47" refid="params_8h_1ab15ce9f15bb1f848cb0abfd574d821fb" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1ab15ce9f15bb1f848cb0abfd574d821fb" kindref="member">TCP_ONE_TIME_CONNECTION</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="49" refid="params_8h_1a1e32f61f5ac8d270bad6b3303b873295" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a1e32f61f5ac8d270bad6b3303b873295" kindref="member">TIMEOUT_FIND</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561b" refkind="member"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561b" kindref="member">MsgType</ref><sp/>{UP_MSG,<sp/>HAS_MSG,<sp/>DEL_MSG,<sp/>FORCE_DEL_MSG,<sp/>FIND_MSG,<sp/>DOWN_MSG,<sp/>OWN_MSG,<sp/>DONT_MSG};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Artur/Downloads/TIN-master/params.h"/>
+  </compounddef>
+</doxygen>

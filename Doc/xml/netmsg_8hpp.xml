@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="netmsg_8hpp" kind="file" language="C++">
+    <compoundname>netmsg.hpp</compoundname>
+    <includes refid="structs_8h" local="yes">structs.h</includes>
+    <includedby refid="data_8hpp" local="yes">C:/Users/Artur/Downloads/TIN-master/data.hpp</includedby>
+    <incdepgraph>
+      <node id="93">
+        <label>list</label>
+      </node>
+      <node id="84">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="87">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="80">
+        <label>structs.h</label>
+        <link refid="structs_8h"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>string</label>
+      </node>
+      <node id="92">
+        <label>fstream</label>
+      </node>
+      <node id="85">
+        <label>netdb.h</label>
+      </node>
+      <node id="90">
+        <label>pthread.h</label>
+      </node>
+      <node id="82">
+        <label>sys/types.h</label>
+      </node>
+      <node id="89">
+        <label>unistd.h</label>
+      </node>
+      <node id="97">
+        <label>vector</label>
+      </node>
+      <node id="96">
+        <label>sstream</label>
+      </node>
+      <node id="79">
+        <label>C:/Users/Artur/Downloads/TIN-master/netmsg.hpp</label>
+        <link refid="netmsg_8hpp"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>iostream</label>
+      </node>
+      <node id="98">
+        <label>deque</label>
+      </node>
+      <node id="81">
+        <label>params.h</label>
+        <link refid="params_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="94">
+        <label>set</label>
+      </node>
+      <node id="86">
+        <label>stdio.h</label>
+      </node>
+      <node id="95">
+        <label>dirent.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="100">
+        <label>C:/Users/Artur/Downloads/TIN-master/data.hpp</label>
+        <link refid="data_8hpp"/>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>C:/Users/Artur/Downloads/TIN-master/netmsg.hpp</label>
+        <link refid="netmsg_8hpp"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp</label>
+        <link refid="p2p-actions_8hpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_net_msg" prot="public">NetMsg</innerclass>
+    <briefdescription>
+<para>Klasa reprezentująca komunikat protokołu AAP. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>NETMSG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NETMSG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="structs_8h" kindref="compound">structs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="class_net_msg" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_net_msg" kindref="compound">NetMsg</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref><sp/>header;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;long&gt;<sp/>blocks;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sockaddr_in*<sp/>sender;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>socklen_t*<sp/>addres_length;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="20" refid="class_net_msg_1a1e60adc7bac23e6b780dabfb88e5dfd5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_net_msg_1a1e60adc7bac23e6b780dabfb88e5dfd5" kindref="member">NetMsg</ref>(){}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23" refid="class_net_msg_1a6e6312f6ff36128456ec56397d24733c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_net_msg_1a6e6312f6ff36128456ec56397d24733c" kindref="member">~NetMsg</ref>(){}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="class_net_msg_1acadb41fa77b8007002fe6563e19e3cb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_net_msg_1acadb41fa77b8007002fe6563e19e3cb6" kindref="member">NetMsg</ref>(<ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref>*<sp/>h,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sockaddr_in*<sp/>sender_addr,<sp/>socklen_t*<sp/>addr_length)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;header,<sp/>h,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(header));<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sender<sp/>=<sp/>sender_addr;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addres_length<sp/>=<sp/>addr_length;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="class_net_msg_1a5c0f48da4be1cf5bb540ff526c571f27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_net_msg_1a5c0f48da4be1cf5bb540ff526c571f27" kindref="member">NetMsg</ref>(<ref refid="struct_down_msg" kindref="compound">DownMsg</ref>*<sp/>d,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sockaddr_in*<sp/>sender_addr,<sp/>socklen_t*<sp/>addr_length)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;header,<sp/>&amp;(d-&gt;header),<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(header));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sender<sp/>=<sp/>sender_addr;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addres_length<sp/>=<sp/>addr_length;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>64<sp/>&amp;&amp;<sp/>d-&gt;fragments[i].start<sp/>!=<sp/>0;<sp/>++i)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>d-&gt;fragments[i].start;<sp/>j<sp/>&lt;=<sp/>d-&gt;fragments[i].end;<sp/>++j)<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blocks.push_back(j);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50" refid="class_net_msg_1a7a33b55595a5cf9b8ad2118d393bbd7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_net_msg_1a7a33b55595a5cf9b8ad2118d393bbd7b" kindref="member">setFileId</ref>(<ref refid="struct_file_i_d_struct" kindref="compound">FileID</ref>*<sp/>fid)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fid-&gt;name<sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(header.name,fid-&gt;name,256);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fid-&gt;owner<sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(header.owner,fid-&gt;owner,6);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header.size.longNum<sp/>=<sp/>fid-&gt;size;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header.time.ttime<sp/>=<sp/>fid-&gt;time;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="class_net_msg_1aa286e9f47f65942cb900b16b48fdcbcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_net_msg_1aa286e9f47f65942cb900b16b48fdcbcd" kindref="member">setReceiver</ref>(<ref refid="class_host" kindref="compound">Host</ref><sp/>h)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sender<sp/>=<sp/>&amp;(h.addr);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addres_length<sp/>=<sp/>&amp;(h.addr_length);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Artur/Downloads/TIN-master/netmsg.hpp"/>
+  </compounddef>
+</doxygen>

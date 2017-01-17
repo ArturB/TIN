@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_down_msg" kind="struct" language="C++" prot="public">
+    <compoundname>DownMsg</compoundname>
+    <includes refid="structs_8h" local="no">structs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_down_msg_1af526a437ede2686dcdbfba8d1f3580d4" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref></type>
+        <definition>ResourceHeader DownMsg::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="52" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_down_msg_1ab78b73721446ffc9cee963471c02541a" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval DownMsg::fragments[64]</definition>
+        <argsstring>[64]</argsstring>
+        <name>fragments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="53" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Struktura reprzentująca wiadomość DOWN. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="9">
+        <label>ResourceHeader::size_union</label>
+        <link refid="union_resource_header_1_1size__union"/>
+      </node>
+      <node id="5">
+        <label>DownMsg</label>
+        <link refid="struct_down_msg"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>fragments</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>header</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Interval</label>
+        <link refid="struct_interval"/>
+      </node>
+      <node id="7">
+        <label>ResourceHeader</label>
+        <link refid="struct_resource_header"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>time</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>size</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ResourceHeader::time_union</label>
+        <link refid="union_resource_header_1_1time__union"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="51" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="51" bodyend="54"/>
+    <listofallmembers>
+      <member refid="struct_down_msg_1ab78b73721446ffc9cee963471c02541a" prot="public" virt="non-virtual"><scope>DownMsg</scope><name>fragments</name></member>
+      <member refid="struct_down_msg_1af526a437ede2686dcdbfba8d1f3580d4" prot="public" virt="non-virtual"><scope>DownMsg</scope><name>header</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

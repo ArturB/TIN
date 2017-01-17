@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_file_fragment" kind="struct" language="C++" prot="public">
+    <compoundname>FileFragment</compoundname>
+    <includes refid="structs_8h" local="no">structs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_file_fragment_1aec957195e41a9c165e448930408b0639" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t FileFragment::byteArray[1024]</definition>
+        <argsstring>[1024]</argsstring>
+        <name>byteArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="58" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_file_fragment_1a2cfc5171d8f04c7d4dfa5b1bda021600" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long FileFragment::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="59" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Struktura przechowująca dane pojedynczego bloku pliku. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="57" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="57" bodyend="60"/>
+    <listofallmembers>
+      <member refid="struct_file_fragment_1aec957195e41a9c165e448930408b0639" prot="public" virt="non-virtual"><scope>FileFragment</scope><name>byteArray</name></member>
+      <member refid="struct_file_fragment_1a2cfc5171d8f04c7d4dfa5b1bda021600" prot="public" virt="non-virtual"><scope>FileFragment</scope><name>number</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

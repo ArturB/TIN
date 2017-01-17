@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_host" kind="class" language="C++" prot="public">
+    <compoundname>Host</compoundname>
+    <includes refid="host_8hpp" local="no">host.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_host_1a1c86bc931f6fdecd7301c3f1960aec1d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Host::sock</definition>
+        <argsstring></argsstring>
+        <name>sock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="15" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_host_1a6ea5dea42f2ac6664dbe813aa9cf37a4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Host::asked_fragment</definition>
+        <argsstring></argsstring>
+        <name>asked_fragment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="15" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_host_1a89a76ceaf4dd2a55839cc45261f86581" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Host::get_fragment</definition>
+        <argsstring></argsstring>
+        <name>get_fragment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="15" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_host_1a901b037ed1d91c8738b1641bbca7b9c2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Host::portion</definition>
+        <argsstring></argsstring>
+        <name>portion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="15" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_host_1a76429ebe3ffa84853a1ba3c76b6db242" prot="public" static="no" mutable="no">
+        <type>time_t</type>
+        <definition>time_t Host::time_of_start</definition>
+        <argsstring></argsstring>
+        <name>time_of_start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="16" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_host_1a908d06036ac831cbee398475cf0eeb13" prot="public" static="no" mutable="no">
+        <type>struct sockaddr_in</type>
+        <definition>struct sockaddr_in Host::addr</definition>
+        <argsstring></argsstring>
+        <name>addr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="16" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_host_1ab9ca90e49d5107de87a4a554ecc86664" prot="public" static="no" mutable="no">
+        <type>socklen_t</type>
+        <definition>socklen_t Host::addr_length</definition>
+        <argsstring></argsstring>
+        <name>addr_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="18" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_host_1a369c12e7425c030528bab0784da40e4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Host::Host</definition>
+        <argsstring>()</argsstring>
+        <name>Host</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="20" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="20" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_host_1a6c14f16c39ae6bc5db2672e0141adccd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Host::~Host</definition>
+        <argsstring>()</argsstring>
+        <name>~Host</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="22" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="22" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_host_1abda4ab1cba5d53f8eaf71c300f263573" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Host::Host</definition>
+        <argsstring>(struct sockaddr_in *host_addr, socklen_t *host_addr_length)</argsstring>
+        <name>Host</name>
+        <param>
+          <type>struct sockaddr_in *</type>
+          <declname>host_addr</declname>
+        </param>
+        <param>
+          <type>socklen_t *</type>
+          <declname>host_addr_length</declname>
+        </param>
+        <briefdescription>
+<para>Konstruktor przygotowujący podstawowe informacje o maszynie i połączeniu z nią - w tym jej adres. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="25" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="25" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_host_1a8acce84ed598511c05bc950493ee858b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Host::connect_host_socket</definition>
+        <argsstring>()</argsstring>
+        <name>connect_host_socket</name>
+        <briefdescription>
+<para>Metoda zestawiająca połączenie. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="36" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="36" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_host_1abfc281007f5dbaa959aec153244a854a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Host::is_all_fragments</definition>
+        <argsstring>()</argsstring>
+        <name>is_all_fragments</name>
+        <briefdescription>
+<para>Metoda inkrementująca liczbe pobranych pakietów w ramacj połączenia oraz zwracająca czy odebraliśmy wszystkie fragmenty o które prosiliśmy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="56" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="56" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_host_1a94b108bf6444c29160268093f0e2a518" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double Host::get_speed</definition>
+        <argsstring>()</argsstring>
+        <name>get_speed</name>
+        <briefdescription>
+<para>Metoda zwracająca prędkość pobierania z danej maszyny. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="63" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_host_1a016a497f1bbffdd88a061ffe39f3e1cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Host::grow_portion</definition>
+        <argsstring>()</argsstring>
+        <name>grow_portion</name>
+        <briefdescription>
+<para>Metoda zwiększająca porcje fragmentów o które będziemy prosić w zapytaniu DOWN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="69" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Klasa reprezentująca hosta od którego można pobierać dane. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Artur/Downloads/TIN-master/host.hpp" line="13" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/host.hpp" bodystart="12" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_host_1a908d06036ac831cbee398475cf0eeb13" prot="public" virt="non-virtual"><scope>Host</scope><name>addr</name></member>
+      <member refid="class_host_1ab9ca90e49d5107de87a4a554ecc86664" prot="public" virt="non-virtual"><scope>Host</scope><name>addr_length</name></member>
+      <member refid="class_host_1a6ea5dea42f2ac6664dbe813aa9cf37a4" prot="public" virt="non-virtual"><scope>Host</scope><name>asked_fragment</name></member>
+      <member refid="class_host_1a8acce84ed598511c05bc950493ee858b" prot="public" virt="non-virtual"><scope>Host</scope><name>connect_host_socket</name></member>
+      <member refid="class_host_1a89a76ceaf4dd2a55839cc45261f86581" prot="public" virt="non-virtual"><scope>Host</scope><name>get_fragment</name></member>
+      <member refid="class_host_1a94b108bf6444c29160268093f0e2a518" prot="public" virt="non-virtual"><scope>Host</scope><name>get_speed</name></member>
+      <member refid="class_host_1a016a497f1bbffdd88a061ffe39f3e1cf" prot="public" virt="non-virtual"><scope>Host</scope><name>grow_portion</name></member>
+      <member refid="class_host_1a369c12e7425c030528bab0784da40e4b" prot="public" virt="non-virtual"><scope>Host</scope><name>Host</name></member>
+      <member refid="class_host_1abda4ab1cba5d53f8eaf71c300f263573" prot="public" virt="non-virtual"><scope>Host</scope><name>Host</name></member>
+      <member refid="class_host_1abfc281007f5dbaa959aec153244a854a" prot="public" virt="non-virtual"><scope>Host</scope><name>is_all_fragments</name></member>
+      <member refid="class_host_1a901b037ed1d91c8738b1641bbca7b9c2" prot="public" virt="non-virtual"><scope>Host</scope><name>portion</name></member>
+      <member refid="class_host_1a1c86bc931f6fdecd7301c3f1960aec1d" prot="public" virt="non-virtual"><scope>Host</scope><name>sock</name></member>
+      <member refid="class_host_1a76429ebe3ffa84853a1ba3c76b6db242" prot="public" virt="non-virtual"><scope>Host</scope><name>time_of_start</name></member>
+      <member refid="class_host_1a6c14f16c39ae6bc5db2672e0141adccd" prot="public" virt="non-virtual"><scope>Host</scope><name>~Host</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

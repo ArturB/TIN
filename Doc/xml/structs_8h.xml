@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structs_8h" kind="file" language="C++">
+    <compoundname>structs.h</compoundname>
+    <includes refid="params_8h" local="yes">params.h</includes>
+    <includedby refid="host_8hpp" local="yes">C:/Users/Artur/Downloads/TIN-master/host.hpp</includedby>
+    <includedby refid="netmsg_8hpp" local="yes">C:/Users/Artur/Downloads/TIN-master/netmsg.hpp</includedby>
+    <includedby refid="_t_i_n_8tab_8c" local="yes">C:/Users/Artur/Downloads/TIN-master/TIN.tab.c</includedby>
+    <includedby refid="_t_i_n_8yy_8c" local="yes">C:/Users/Artur/Downloads/TIN-master/TIN.yy.c</includedby>
+    <incdepgraph>
+      <node id="195">
+        <label>list</label>
+      </node>
+      <node id="186">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="189">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="182">
+        <label>C:/Users/Artur/Downloads/TIN-master/structs.h</label>
+        <link refid="structs_8h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="190">
+        <label>string</label>
+      </node>
+      <node id="194">
+        <label>fstream</label>
+      </node>
+      <node id="187">
+        <label>netdb.h</label>
+      </node>
+      <node id="192">
+        <label>pthread.h</label>
+      </node>
+      <node id="184">
+        <label>sys/types.h</label>
+      </node>
+      <node id="191">
+        <label>unistd.h</label>
+      </node>
+      <node id="199">
+        <label>vector</label>
+      </node>
+      <node id="198">
+        <label>sstream</label>
+      </node>
+      <node id="193">
+        <label>iostream</label>
+      </node>
+      <node id="200">
+        <label>deque</label>
+      </node>
+      <node id="183">
+        <label>params.h</label>
+        <link refid="params_8h"/>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="196">
+        <label>set</label>
+      </node>
+      <node id="188">
+        <label>stdio.h</label>
+      </node>
+      <node id="197">
+        <label>dirent.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="201">
+        <label>C:/Users/Artur/Downloads/TIN-master/structs.h</label>
+        <link refid="structs_8h"/>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+      <node id="203">
+        <label>C:/Users/Artur/Downloads/TIN-master/resource.h</label>
+        <link refid="resource_8h"/>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+      </node>
+      <node id="206">
+        <label>C:/Users/Artur/Downloads/TIN-master/filedownload.hpp</label>
+        <link refid="filedownload_8hpp"/>
+        <childnode refid="204" relation="include">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>C:/Users/Artur/Downloads/TIN-master/data.hpp</label>
+        <link refid="data_8hpp"/>
+        <childnode refid="205" relation="include">
+        </childnode>
+      </node>
+      <node id="207">
+        <label>C:/Users/Artur/Downloads/TIN-master/netmsg.hpp</label>
+        <link refid="netmsg_8hpp"/>
+        <childnode refid="204" relation="include">
+        </childnode>
+      </node>
+      <node id="205">
+        <label>C:/Users/Artur/Downloads/TIN-master/p2p-actions.hpp</label>
+        <link refid="p2p-actions_8hpp"/>
+      </node>
+      <node id="202">
+        <label>C:/Users/Artur/Downloads/TIN-master/host.hpp</label>
+        <link refid="host_8hpp"/>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_file_i_d_struct" prot="public">FileIDStruct</innerclass>
+    <innerclass refid="struct_file_i_ds_struct" prot="public">FileIDsStruct</innerclass>
+    <innerclass refid="struct_resource_header" prot="public">ResourceHeader</innerclass>
+    <innerclass refid="union_resource_header_1_1size__union" prot="public">ResourceHeader::size_union</innerclass>
+    <innerclass refid="union_resource_header_1_1time__union" prot="public">ResourceHeader::time_union</innerclass>
+    <innerclass refid="struct_interval" prot="public">Interval</innerclass>
+    <innerclass refid="struct_down_msg" prot="public">DownMsg</innerclass>
+    <innerclass refid="struct_file_fragment" prot="public">FileFragment</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="structs_8h_1ad2196a018ba2b7686a1088e9b0feacd3" prot="public" static="no">
+        <type>struct <ref refid="struct_file_i_d_struct" kindref="compound">FileIDStruct</ref></type>
+        <definition>typedef struct FileIDStruct  FileID</definition>
+        <argsstring></argsstring>
+        <name>FileID</name>
+        <briefdescription>
+<para>Struktura identyfikująca zasób sieciowy (nie lokalny). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="16" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structs_8h_1a32d1770e140d577d976b0503a585c1b9" prot="public" static="no">
+        <type>struct <ref refid="struct_file_i_ds_struct" kindref="compound">FileIDsStruct</ref></type>
+        <definition>typedef struct FileIDsStruct  FileIDs</definition>
+        <argsstring></argsstring>
+        <name>FileIDs</name>
+        <briefdescription>
+<para>Struktura będąca kontenerem zasobów sieciowych. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structs_8h_1a50e428119ab866f85978e54a971fe137" prot="public" static="no">
+        <type>struct <ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref></type>
+        <definition>typedef struct ResourceHeader  ResourceHeader</definition>
+        <argsstring></argsstring>
+        <name>ResourceHeader</name>
+        <briefdescription>
+<para>Struktura reprezentująca nagłówek komunikatu protokołu AAP. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structs_8h_1ad581781adf44f4a9db073013c8aa1d33" prot="public" static="no">
+        <type>struct <ref refid="struct_interval" kindref="compound">Interval</ref></type>
+        <definition>typedef struct Interval  Interval</definition>
+        <argsstring></argsstring>
+        <name>Interval</name>
+        <briefdescription>
+<para>truktura reprzentująca pojedynczy przedział numerów bloków z zapytania DOWN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structs_8h_1a208916648f4c5edc7faf29ade5dd3ae4" prot="public" static="no">
+        <type>struct <ref refid="struct_down_msg" kindref="compound">DownMsg</ref></type>
+        <definition>typedef struct DownMsg  DownMsg</definition>
+        <argsstring></argsstring>
+        <name>DownMsg</name>
+        <briefdescription>
+<para>Struktura reprzentująca wiadomość DOWN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="54" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structs_8h_1a9d0ed14c3ebf07053f4a45910928fc8d" prot="public" static="no">
+        <type>struct <ref refid="struct_file_fragment" kindref="compound">FileFragment</ref></type>
+        <definition>typedef struct FileFragment  FileFragment</definition>
+        <argsstring></argsstring>
+        <name>FileFragment</name>
+        <briefdescription>
+<para>Struktura przechowująca dane pojedynczego bloku pliku. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="60" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="structs_8h_1af176e32c7a1ac429d45241dbcda652f9" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MAX_MSG_SIZE</definition>
+        <argsstring></argsstring>
+        <name>MAX_MSG_SIZE</name>
+        <initializer>= sizeof(struct <ref refid="struct_down_msg" kindref="compound">DownMsg</ref>)</initializer>
+        <briefdescription>
+<para>Maksymalny możliwy rozmiar wiadomości. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="63" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structs_8h_1a6f424412717ce27b4f5a521b75251382" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MIN_MSG_SIZE</definition>
+        <argsstring></argsstring>
+        <name>MIN_MSG_SIZE</name>
+        <initializer>= sizeof(struct <ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref>)</initializer>
+        <briefdescription>
+<para>Minimalny możlwy rozmiar wiadomości. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="65" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Różne struktury wykorzystywane w programie. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>STRUCTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STRUCTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="params_8h" kindref="compound">params.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="struct_file_i_d_struct" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_file_i_d_struct" kindref="compound">FileIDStruct</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>owner;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>size;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>time_t<sp/>time;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}<sp/><ref refid="structs_8h_1ad2196a018ba2b7686a1088e9b0feacd3" kindref="member">FileID</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="struct_file_i_ds_struct" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_file_i_ds_struct" kindref="compound">FileIDsStruct</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_file_i_d_struct" kindref="compound">FileID</ref>*<sp/>ids;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}<sp/><ref refid="structs_8h_1a32d1770e140d577d976b0503a585c1b9" kindref="member">FileIDs</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="struct_resource_header" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>name[256];</highlight></codeline>
+<codeline lineno="28" refid="union_resource_header_1_1size__union" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_resource_header_1_1size__union" kindref="compound">size_union</ref></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byteNum[8];</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>longNum;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>size;</highlight></codeline>
+<codeline lineno="34" refid="union_resource_header_1_1time__union" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_resource_header_1_1time__union" kindref="compound">time_union</ref></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byteTime[8];</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time_t<sp/>ttime;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>time;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>owner[6];<sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="params_8h_1a2ea0bb09adcce7f655e8f8ee8d30561b" kindref="member">MsgType</ref><sp/>type;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}<sp/><ref refid="structs_8h_1a50e428119ab866f85978e54a971fe137" kindref="member">ResourceHeader</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="struct_interval" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_interval" kindref="compound">Interval</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>start;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>end;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}<sp/><ref refid="structs_8h_1ad581781adf44f4a9db073013c8aa1d33" kindref="member">Interval</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="struct_down_msg" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_down_msg" kindref="compound">DownMsg</ref>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref><sp/>header;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_interval" kindref="compound">Interval</ref><sp/>fragments[64];</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}<sp/><ref refid="structs_8h_1a208916648f4c5edc7faf29ade5dd3ae4" kindref="member">DownMsg</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="struct_file_fragment" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_file_fragment" kindref="compound">FileFragment</ref>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>byteArray[1024];</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>number;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}<sp/><ref refid="structs_8h_1a9d0ed14c3ebf07053f4a45910928fc8d" kindref="member">FileFragment</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="structs_8h_1af176e32c7a1ac429d45241dbcda652f9" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structs_8h_1af176e32c7a1ac429d45241dbcda652f9" kindref="member">MAX_MSG_SIZE</ref><sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_down_msg" kindref="compound">DownMsg</ref>);</highlight></codeline>
+<codeline lineno="65" refid="structs_8h_1a6f424412717ce27b4f5a521b75251382" refkind="member"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structs_8h_1a6f424412717ce27b4f5a521b75251382" kindref="member">MIN_MSG_SIZE</ref><sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_resource_header" kindref="compound">ResourceHeader</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h"/>
+  </compounddef>
+</doxygen>

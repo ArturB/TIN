@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*
  * Klasa pomocnicza zbierająca podstawowe informacje nt. procesu pobierania pliku
  * Anna Skupińska
@@ -5,12 +6,19 @@
  * Adam Małkowski
  * Piotr Włodkowski
  */
+=======
+/**
+  * \file filedownload.hpp
+  * Klasa reprezentująca aktualnie pobierany w systemie plik. 
+  */
+>>>>>>> Stashed changes
 
 #ifndef FILEDOWNLOAD_H
 #define FILEDOWNLOAD_H
 
 #include "resource.h"
 
+///Klasa reprezentująca aktualnie pobierany w systemie plik. 
 class FileDownload
 {
 	public:
@@ -19,7 +27,14 @@ class FileDownload
 		deque<Host> using_hosts;
 		int fragments;
 
+<<<<<<< Updated upstream
 		//Konstruktor - liczy liczbe fragmentów pliku.
+=======
+		///Konstruktor
+		/**
+		  * \param param iterator po fragmentach pliku do pobrania
+		  */
+>>>>>>> Stashed changes
 		FileDownload(list<Resource>::iterator* param)
 		{
 			file = param;
@@ -28,7 +43,11 @@ class FileDownload
 				++fragments;
 		}
 
+<<<<<<< Updated upstream
 		//Metoda podająca które miejsce na liście elementów od których pobieramy zajmuje elemenet o zadanej prędkości.
+=======
+		///Zwraca ranking hosta wg prędkości pobierania. Plik pobieramy od 5 najszybszych hostów. 
+>>>>>>> Stashed changes
 		int speed_in_hosts(double speed)
 		{
 			int place = 1;

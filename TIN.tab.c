@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 /* A Bison parser, made by GNU Bison 2.7.  */
+=======
+/** \file TIN.tab.h Code for a Bison parser, made by GNU Bison 2.7.  */
+>>>>>>> Stashed changes
 
 /* Bison implementation for Yacc-like parsers in C
    

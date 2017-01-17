@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_interval" kind="struct" language="C++" prot="public">
+    <compoundname>Interval</compoundname>
+    <includes refid="structs_8h" local="no">structs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_interval_1a525d4cb9602a4fccd33440950096e7fa" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long Interval::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="46" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_interval_1a649f108d63bca22ed02fcf782184b6d0" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long Interval::end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="47" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>truktura reprzentująca pojedynczy przedział numerów bloków z zapytania DOWN. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="45" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="44" bodyend="48"/>
+    <listofallmembers>
+      <member refid="struct_interval_1a649f108d63bca22ed02fcf782184b6d0" prot="public" virt="non-virtual"><scope>Interval</scope><name>end</name></member>
+      <member refid="struct_interval_1a525d4cb9602a4fccd33440950096e7fa" prot="public" virt="non-virtual"><scope>Interval</scope><name>start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

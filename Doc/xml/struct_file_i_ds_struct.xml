@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct_file_i_ds_struct" kind="struct" language="C++" prot="public">
+    <compoundname>FileIDsStruct</compoundname>
+    <includes refid="structs_8h" local="no">structs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_file_i_ds_struct_1a7b13c30dc793b79a122308f2a08d886a" prot="public" static="no" mutable="no">
+        <type><ref refid="structs_8h_1ad2196a018ba2b7686a1088e9b0feacd3" kindref="member">FileID</ref> *</type>
+        <definition>FileID* FileIDsStruct::ids</definition>
+        <argsstring></argsstring>
+        <name>ids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="20" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_file_i_ds_struct_1a9baa91042030bfe34c2d713660d50971" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned FileIDsStruct::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="21" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Struktura będąca kontenerem zasobów sieciowych. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="15">
+        <label>FileIDsStruct</label>
+        <link refid="struct_file_i_ds_struct"/>
+        <childnode refid="16" relation="usage">
+          <edgelabel>ids</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>FileIDStruct</label>
+        <link refid="struct_file_i_d_struct"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Artur/Downloads/TIN-master/structs.h" line="19" column="1" bodyfile="C:/Users/Artur/Downloads/TIN-master/structs.h" bodystart="19" bodyend="22"/>
+    <listofallmembers>
+      <member refid="struct_file_i_ds_struct_1a7b13c30dc793b79a122308f2a08d886a" prot="public" virt="non-virtual"><scope>FileIDsStruct</scope><name>ids</name></member>
+      <member refid="struct_file_i_ds_struct_1a9baa91042030bfe34c2d713660d50971" prot="public" virt="non-virtual"><scope>FileIDsStruct</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

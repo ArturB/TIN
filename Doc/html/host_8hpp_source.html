@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AAP File Transfer Protocol: Plik źródłowy C:/Users/Artur/Downloads/TIN-master/host.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logoTIN.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">AAP File Transfer Protocol
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Projekt na Techniki Intenetowe 2016Z. Wydział Elektroniki i Technik Informacyjnych Politechniki Warszawskiej.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('host_8hpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">host.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="host_8hpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef HOST_H</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define HOST_H</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="structs_8h.html">structs.h</a>&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_host.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_host.html">Host</a></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">int</span> sock, asked_fragment, get_fragment, portion;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        time_t time_of_start;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">struct </span>sockaddr_in addr;    </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        socklen_t addr_length;  </div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_host.html">Host</a>(){}</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        ~<a class="code" href="class_host.html">Host</a>(){}</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_host.html#abda4ab1cba5d53f8eaf71c300f263573">   25</a></span>&#160;        <a class="code" href="class_host.html#abda4ab1cba5d53f8eaf71c300f263573">Host</a>(<span class="keyword">struct</span> sockaddr_in* host_addr, socklen_t* host_addr_length)</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            addr = *host_addr;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            addr.sin_port = htons(<a class="code" href="params_8h.html#a11717c934f77ad5167dac5d28562d85a">PORT</a>);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            addr_length = *host_addr_length;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            portion = <a class="code" href="params_8h.html#ae270d91a9c5dc96eb46c8b6ed4743748">START_FRAGMENT_COUNT</a>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            asked_fragment = 0;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            get_fragment = 0;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_host.html#a8acce84ed598511c05bc950493ee858b">   36</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_host.html#a8acce84ed598511c05bc950493ee858b">connect_host_socket</a>()</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">if</span> (sock == -1) {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                perror(<span class="stringliteral">&quot;Opening stream socket&quot;</span>);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (connect(sock, (sockaddr*)(&amp;addr), addr_length) &lt; 0)</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            time ( &amp;time_of_start );</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            asked_fragment = portion;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            get_fragment = 0;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_host.html#abfc281007f5dbaa959aec153244a854a">   56</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_host.html#abfc281007f5dbaa959aec153244a854a">is_all_fragments</a>()</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            ++get_fragment;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> asked_fragment &lt;= get_fragment;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_host.html#a94b108bf6444c29160268093f0e2a518">   63</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_host.html#a94b108bf6444c29160268093f0e2a518">get_speed</a>()</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> get_fragment / time_of_start;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_host.html#a016a497f1bbffdd88a061ffe39f3e1cf">   69</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_host.html#a016a497f1bbffdd88a061ffe39f3e1cf">grow_portion</a>()</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            portion = (int) ((<span class="keywordtype">double</span>)portion * <a class="code" href="params_8h.html#a3242a27e0a9ad18c15cc649e18c1921f">GROW_PORTION</a>);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="structs_8h_html"><div class="ttname"><a href="structs_8h.html">structs.h</a></div><div class="ttdoc">Różne struktury wykorzystywane w programie. </div></div>
+<div class="ttc" id="class_host_html"><div class="ttname"><a href="class_host.html">Host</a></div><div class="ttdoc">Klasa reprezentująca hosta od którego można pobierać dane. </div><div class="ttdef"><b>Definition:</b> host.hpp:12</div></div>
+<div class="ttc" id="class_host_html_abfc281007f5dbaa959aec153244a854a"><div class="ttname"><a href="class_host.html#abfc281007f5dbaa959aec153244a854a">Host::is_all_fragments</a></div><div class="ttdeci">bool is_all_fragments()</div><div class="ttdoc">Metoda inkrementująca liczbe pobranych pakietów w ramacj połączenia oraz zwracająca czy odebraliśmy w...</div><div class="ttdef"><b>Definition:</b> host.hpp:56</div></div>
+<div class="ttc" id="class_host_html_a8acce84ed598511c05bc950493ee858b"><div class="ttname"><a href="class_host.html#a8acce84ed598511c05bc950493ee858b">Host::connect_host_socket</a></div><div class="ttdeci">bool connect_host_socket()</div><div class="ttdoc">Metoda zestawiająca połączenie. </div><div class="ttdef"><b>Definition:</b> host.hpp:36</div></div>
+<div class="ttc" id="class_host_html_abda4ab1cba5d53f8eaf71c300f263573"><div class="ttname"><a href="class_host.html#abda4ab1cba5d53f8eaf71c300f263573">Host::Host</a></div><div class="ttdeci">Host(struct sockaddr_in *host_addr, socklen_t *host_addr_length)</div><div class="ttdoc">Konstruktor przygotowujący podstawowe informacje o maszynie i połączeniu z nią - w tym jej adres...</div><div class="ttdef"><b>Definition:</b> host.hpp:25</div></div>
+<div class="ttc" id="class_host_html_a016a497f1bbffdd88a061ffe39f3e1cf"><div class="ttname"><a href="class_host.html#a016a497f1bbffdd88a061ffe39f3e1cf">Host::grow_portion</a></div><div class="ttdeci">void grow_portion()</div><div class="ttdoc">Metoda zwiększająca porcje fragmentów o które będziemy prosić w zapytaniu DOWN. </div><div class="ttdef"><b>Definition:</b> host.hpp:69</div></div>
+<div class="ttc" id="params_8h_html_ae270d91a9c5dc96eb46c8b6ed4743748"><div class="ttname"><a href="params_8h.html#ae270d91a9c5dc96eb46c8b6ed4743748">START_FRAGMENT_COUNT</a></div><div class="ttdeci">const int START_FRAGMENT_COUNT</div><div class="ttdoc">Startowa liczba fragmentów w zapytaniu DOWN. </div><div class="ttdef"><b>Definition:</b> params.h:37</div></div>
+<div class="ttc" id="params_8h_html_a11717c934f77ad5167dac5d28562d85a"><div class="ttname"><a href="params_8h.html#a11717c934f77ad5167dac5d28562d85a">PORT</a></div><div class="ttdeci">const int PORT</div><div class="ttdoc">Porty używane w programie. </div><div class="ttdef"><b>Definition:</b> params.h:31</div></div>
+<div class="ttc" id="params_8h_html_a3242a27e0a9ad18c15cc649e18c1921f"><div class="ttname"><a href="params_8h.html#a3242a27e0a9ad18c15cc649e18c1921f">GROW_PORTION</a></div><div class="ttdeci">const double GROW_PORTION</div><div class="ttdoc">Współczynnik zwiększania liczności fragmentów w zapydaniu DOWN. </div><div class="ttdef"><b>Definition:</b> params.h:43</div></div>
+<div class="ttc" id="class_host_html_a94b108bf6444c29160268093f0e2a518"><div class="ttname"><a href="class_host.html#a94b108bf6444c29160268093f0e2a518">Host::get_speed</a></div><div class="ttdeci">double get_speed()</div><div class="ttdoc">Metoda zwracająca prędkość pobierania z danej maszyny. </div><div class="ttdef"><b>Definition:</b> host.hpp:63</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_450eddcfee19448261d49b2440c74ad1.html">Artur</a></li><li class="navelem"><a class="el" href="dir_0a41ef01bad04e11fd1e136d271b34db.html">Downloads</a></li><li class="navelem"><a class="el" href="dir_1b7a9a7bbe7b707b36ee6fb91fe1c968.html">TIN-master</a></li><li class="navelem"><a class="el" href="host_8hpp.html">host.hpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>
