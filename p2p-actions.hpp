@@ -174,7 +174,7 @@ void* upload_thread(void* par) {
 		}
 		else
 		{
-			safe_cout("File " + parT.fileName + " uploaded!\n>> ");
+			safe_cout("File " + parT.fileName + " uploaded! Size: " + to_string(it->id->size) + "\n>> ");
 			NetMsg netMsg;
 			netMsg.setFileId(it->id);
 			netMsg.header.type = UP_MSG;
@@ -802,17 +802,17 @@ void* download_file(void* par)
 		percent *= 100;
 
 
-		/*if(info_message + 1 <= (int)percent/5)
+		if(info_message + 1 <= (int)percent/10)
 		{
-			info_message = (int)percent/5;
+			info_message = (int)percent/10;
 			write_progress_of_download(&file, false);
-		}*/
+		}
 
 		
 		if(file->missingBlocks.size() == 0)
 		{
 			write_progress_of_download(&file, false);
-			safe_cout("Downloading ends!...\n>> ");
+			safe_cout("Downloading file ends! File path - " + string(file->filePathName) + "\n>> ");
 			close_hosts_sockets(&file_downloading.using_hosts);
 			return NULL;
 		}
