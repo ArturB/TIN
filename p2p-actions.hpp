@@ -810,15 +810,16 @@ void* download_file(void* par)
 		percent *= 100;
 
 
-		if(info_message + 1 <= (int)percent/5)
+		/*if(info_message + 1 <= (int)percent/5)
 		{
 			info_message = (int)percent/5;
 			write_progress_of_download(&file, false);
-		}
+		}*/
 
 		
 		if(file->missingBlocks.size() == 0)
 		{
+			write_progress_of_download(&file, false);
 			safe_cout("Downloading ends!...\n>> ");
 			close_hosts_sockets(&file_downloading.using_hosts);
 			return NULL;
